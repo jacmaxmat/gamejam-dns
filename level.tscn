@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dbryayljgw6o2"]
+
+[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://icon.svg" id="1_u52ul"]
+
+[node name="Level" type="Node2D" unique_id=1145782967]
+position = Vector2(533, 261)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1314869011]
+modulate = Color(0, 0, 0, 1)
+offset_left = 3.0
+offset_top = -3.0
+offset_right = 131.0
+offset_bottom = 125.0
+texture = ExtResource("1_u52ul")
