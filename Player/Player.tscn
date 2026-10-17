@@ -1,18 +1,20 @@
 [gd_scene format=3 uid="uid://dxqolxv2isnx4"]
 
-[ext_resource type="Script" uid="uid://l2xwkp5ehgai" path="res://Player/player.gd" id="1_nt8xy"]
-[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="2_p34sf"]
-[ext_resource type="PackedScene" uid="uid://ba5qchpqa3sjt" path="res://Player/PlayerComponents/GravityComponent.tscn" id="3_jcd70"]
-[ext_resource type="PackedScene" uid="uid://8dihvdwt7vo2" path="res://Player/PlayerComponents/InputComponent.tscn" id="4_jcd70"]
-[ext_resource type="PackedScene" uid="uid://dvgthpgx2ov87" path="res://Player/PlayerComponents/MovementComponent.tscn" id="5_mg4xy"]
-[ext_resource type="PackedScene" uid="uid://cah3v6u2iposi" path="res://Player/PlayerComponents/JumpComponent.tscn" id="5_p34sf"]
-[ext_resource type="PackedScene" uid="uid://bh5y5laitjgr2" path="res://Player/PlayerComponents/ShootingComponent.tscn" id="7_b5s0s"]
-[ext_resource type="PackedScene" uid="uid://w2g1t002cg0n" path="res://Player/PlayerComponents/AimComponent.tscn" id="8_4nyta"]
-[ext_resource type="PackedScene" uid="uid://dkhf0xdun4k5b" path="res://Player/Bullet.tscn" id="9_nemls"]
+[ext_resource type="Script" uid="uid://l2xwkp5ehgai" path="res://Player/player.gd" id="1_0j2ni"]
+[ext_resource type="Texture2D" uid="uid://iho0cg5jbj1i" path="res://assety/ludek_idle.png" id="2_v0k0e"]
+[ext_resource type="Texture2D" uid="uid://s6j63fg8ttfd" path="res://assety/ludek_cialo_przod.png" id="3_5wa8t"]
+[ext_resource type="PackedScene" uid="uid://ddxu1ya4pl67h" path="res://Player/PlayerComponents/AnimationComponent.tscn" id="4_p7tob"]
+[ext_resource type="Texture2D" uid="uid://bk337i8te72i1" path="res://assety/ludek_skok.png" id="4_v0k0e"]
+[ext_resource type="PackedScene" uid="uid://w2g1t002cg0n" path="res://Player/PlayerComponents/AimComponent.tscn" id="5_dm7nj"]
+[ext_resource type="PackedScene" uid="uid://bh5y5laitjgr2" path="res://Player/PlayerComponents/ShootingComponent.tscn" id="6_3mea3"]
+[ext_resource type="PackedScene" uid="uid://cah3v6u2iposi" path="res://Player/PlayerComponents/JumpComponent.tscn" id="7_7v5gs"]
+[ext_resource type="PackedScene" uid="uid://dkhf0xdun4k5b" path="res://Player/Bullet.tscn" id="8_5wa8t"]
+[ext_resource type="PackedScene" uid="uid://dvgthpgx2ov87" path="res://Player/PlayerComponents/MovementComponent.tscn" id="8_8sa4y"]
+[ext_resource type="PackedScene" uid="uid://ba5qchpqa3sjt" path="res://Player/PlayerComponents/GravityComponent.tscn" id="9_3nb2p"]
+[ext_resource type="PackedScene" uid="uid://8dihvdwt7vo2" path="res://Player/PlayerComponents/InputComponent.tscn" id="10_d7xyo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8ooo"]
-radius = 8.0
-height = 20.0
+radius = 14.0
 
 [sub_resource type="Animation" id="Animation_p34sf"]
 length = 0.26666668
@@ -20,14 +22,50 @@ step = 0.083333336
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture:region")
+tracks/0/path = NodePath("VisualLayer/LowerBody:hframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Rect2(9, 51, 16, 13), Rect2(9, 51, 16, 13)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VisualLayer/LowerBody:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VisualLayer/LowerBody:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VisualLayer/LowerBody:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_v0k0e")]
 }
 
 [sub_resource type="Animation" id="Animation_b5s0s"]
@@ -36,7 +74,7 @@ step = 0.083333336
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture:region")
+tracks/0/path = NodePath("VisualLayer/UpperBody:texture:region")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -46,47 +84,191 @@ tracks/0/keys = {
 "values": [Rect2(9, 51, 16, 13), Rect2(105, 52, 16, 12)]
 }
 
+[sub_resource type="Animation" id="Animation_0j2ni"]
+resource_name = "jump"
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualLayer/LowerBody:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.64142895),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_v0k0e")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VisualLayer/LowerBody:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.64142895),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VisualLayer/LowerBody:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.64142895),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VisualLayer/LowerBody:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.16666667, 0.33333334, 0.5, 0.64142895),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 0]
+}
+
+[sub_resource type="Animation" id="Animation_evw08"]
+resource_name = "legs_idle"
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualLayer/LowerBody:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_v0k0e")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VisualLayer/LowerBody:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VisualLayer/LowerBody:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VisualLayer/LowerBody:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4nyta"]
 _data = {
 &"RESET": SubResource("Animation_p34sf"),
-&"idle": SubResource("Animation_b5s0s")
+&"idle": SubResource("Animation_b5s0s"),
+&"jump": SubResource("Animation_0j2ni"),
+&"legs_idle": SubResource("Animation_evw08")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=283957801 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "shooting_component", "aim_component")]
-script = ExtResource("1_nt8xy")
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v0k0e"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0j2ni"]
+animation = &"legs_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v0k0e"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5wa8t"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p7tob"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0j2ni"]
+states/End/position = Vector2(536, 100)
+states/jump/node = SubResource("AnimationNodeAnimation_v0k0e")
+states/jump/position = Vector2(352, 18)
+states/legs_idle/node = SubResource("AnimationNodeAnimation_0j2ni")
+states/legs_idle/position = Vector2(352, 97)
+transitions = ["Start", "legs_idle", SubResource("AnimationNodeStateMachineTransition_v0k0e"), "legs_idle", "End", SubResource("AnimationNodeStateMachineTransition_5wa8t"), "legs_idle", "jump", SubResource("AnimationNodeStateMachineTransition_p7tob")]
+
+[node name="Player" type="CharacterBody2D" unique_id=283957801 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "shooting_component", "aim_component", "animation_component")]
+script = ExtResource("1_0j2ni")
 gravity_component = NodePath("GravityComponent")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
 jump_component = NodePath("JumpComponent")
 shooting_component = NodePath("ShootingComponent")
 aim_component = NodePath("AimComponent")
+animation_component = NodePath("AnimationComponent")
+
+[node name="VisualLayer" type="Node2D" parent="." unique_id=808254088]
+position = Vector2(30, -1)
+
+[node name="LowerBody" type="Sprite2D" parent="VisualLayer" unique_id=967972025]
+texture = ExtResource("2_v0k0e")
+hframes = 2
+
+[node name="UpperBody" type="Sprite2D" parent="VisualLayer" unique_id=2003255157]
+texture = ExtResource("3_5wa8t")
+
+[node name="GunBarrel" type="Node2D" parent="VisualLayer/UpperBody" unique_id=1600311324]
+position = Vector2(-2, -3)
+scale = Vector2(10.666666, 6.4810114)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591169664]
 shape = SubResource("CapsuleShape2D_e8ooo")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2003255157]
-position = Vector2(3.5762793e-07, 0.124997064)
-scale = Vector2(0.09375001, 0.1542969)
-texture = ExtResource("2_p34sf")
-
-[node name="GunBarrel" type="Node2D" parent="Sprite2D" unique_id=1600311324]
-position = Vector2(127.999985, -0.8101074)
-scale = Vector2(10.666666, 6.4810114)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2128793517]
 libraries/ = SubResource("AnimationLibrary_4nyta")
 
-[node name="AimComponent" parent="." unique_id=815195812 node_paths=PackedStringArray("upper_body_node") instance=ExtResource("8_4nyta")]
-upper_body_node = NodePath("../Sprite2D")
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1861349606]
+tree_root = SubResource("AnimationNodeStateMachine_0j2ni")
+anim_player = NodePath("../AnimationPlayer")
 
-[node name="GravityComponent" parent="." unique_id=205644579 instance=ExtResource("3_jcd70")]
+[node name="AnimationComponent" parent="." unique_id=205644579 node_paths=PackedStringArray("animation_tree", "visuals_node") instance=ExtResource("4_p7tob")]
+animation_tree = NodePath("../AnimationTree")
+visuals_node = NodePath("../VisualLayer")
 
-[node name="InputComponent" parent="." unique_id=875117109 instance=ExtResource("4_jcd70")]
+[node name="AimComponent" parent="." unique_id=1526710016 node_paths=PackedStringArray("upper_body_node") instance=ExtResource("5_dm7nj")]
+upper_body_node = NodePath("../VisualLayer/UpperBody")
 
-[node name="MovementComponent" parent="." unique_id=519919160 instance=ExtResource("5_mg4xy")]
+[node name="ShootingComponent" parent="." unique_id=351609752 node_paths=PackedStringArray("spawn_point") instance=ExtResource("6_3mea3")]
+bullet_scene = ExtResource("8_5wa8t")
+spawn_point = NodePath("../VisualLayer/UpperBody/GunBarrel")
 
-[node name="JumpComponent" parent="." unique_id=1854653841 instance=ExtResource("5_p34sf")]
+[node name="JumpComponent" parent="." unique_id=391932550 instance=ExtResource("7_7v5gs")]
+jump_velocity = -500.0
 
-[node name="ShootingComponent" parent="." unique_id=1564365199 node_paths=PackedStringArray("spawn_point") instance=ExtResource("7_b5s0s")]
-bullet_scene = ExtResource("9_nemls")
-spawn_point = NodePath("../Sprite2D/GunBarrel")
+[node name="MovementComponent" parent="." unique_id=889880810 instance=ExtResource("8_8sa4y")]
+
+[node name="GravityComponent" parent="." unique_id=758592051 instance=ExtResource("9_3nb2p")]
+
+[node name="InputComponent" parent="." unique_id=398532608 instance=ExtResource("10_d7xyo")]
