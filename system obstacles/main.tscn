@@ -3,8 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://cpk6n684j18a2" path="res://system obstacles/outside_game_manager.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://7x3pl4ailoo4" path="res://system obstacles/main.gd" id="1_x7n1j"]
 [ext_resource type="PackedScene" uid="uid://dbryayljgw6o2" path="res://system obstacles/window.tscn" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://7cniskgodnyi" path="res://assety/mapa.jpg" id="3_4avnr"]
 [ext_resource type="PackedScene" uid="uid://ddeq8d7thtyfc" path="res://menus/final_screen.tscn" id="6_mv0n7"]
+[ext_resource type="Script" uid="uid://hgu722xobe4n" path="res://system obstacles/camera_2d.gd" id="7_4avnr"]
 [ext_resource type="PackedScene" uid="uid://s1otfbodyphd" path="res://menus/title_screen.tscn" id="7_mv0n7"]
 [ext_resource type="Script" uid="uid://cvob6keoht0el" path="res://system obstacles/window_view.gd" id="7_tkfrg"]
 [ext_resource type="PackedScene" uid="uid://dv08oewojoqsl" path="res://system obstacles/bullet.tscn" id="11_lq1mb"]
@@ -134,27 +135,23 @@ _data = {
 script = ExtResource("1_x7n1j")
 
 [node name="Bullet" parent="." unique_id=448943462 instance=ExtResource("11_lq1mb")]
-position = Vector2(235, 200)
+position = Vector2(497, 532)
 
 [node name="SubViewportContainer" parent="Bullet" index="0" unique_id=1441149278]
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 96.0
-offset_bottom = 96.0
-stretch = true
+z_index = -1
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 44.0
+offset_bottom = 39.0
 
-[node name="SubViewport" parent="Bullet/SubViewportContainer" index="0" unique_id=142064119]
-size = Vector2i(128, 128)
+[node name="TextureRect" parent="Bullet/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(448943462, 142064119) index="0" unique_id=879736922]
+z_index = -2
 
-[node name="TextureRect" parent="Bullet/SubViewportContainer/SubViewport" index="0" unique_id=879736922]
-offset_left = 17.0
-offset_top = -5.0
-offset_right = -45.0
-offset_bottom = -67.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+[node name="Camera2D" parent="Bullet/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(448943462, 142064119) index="1" unique_id=948608287]
+position = Vector2(32, 33)
 
 [node name="OutsideGameManager" parent="." unique_id=2016209311 instance=ExtResource("1_ig7tw")]
+active = false
 
 [node name="Window" parent="." unique_id=427429608 instance=ExtResource("2_0xm2m")]
 visible = false
@@ -184,12 +181,23 @@ handle_input_locally = false
 size = Vector2i(2, 2)
 render_target_update_mode = 0
 
-[node name="Level" type="Node2D" parent="Window/WindowView/SubViewport" unique_id=1752344095]
+[node name="Camera2D" type="Camera2D" parent="Window/WindowView/SubViewport" unique_id=587621793]
+script = ExtResource("7_4avnr")
 
-[node name="Sprite2D" type="Sprite2D" parent="Window/WindowView/SubViewport/Level" unique_id=558917339]
-position = Vector2(217.99998, 123.99999)
-scale = Vector2(10, 10)
-texture = ExtResource("4_1bvp3")
+[node name="TextureRect" type="TextureRect" parent="Window/WindowView/SubViewport" unique_id=649328313]
+z_index = 1
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1150.0
+offset_bottom = 646.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource("3_4avnr")
+stretch_mode = 2
 
 [node name="TitleScreen" parent="Window" unique_id=1027695133 instance=ExtResource("7_mv0n7")]
 visible = true

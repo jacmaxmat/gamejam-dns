@@ -1,27 +1,71 @@
 [gd_scene format=3 uid="uid://tlauidkrriq1"]
 
-[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="1_21o1x"]
 [ext_resource type="Script" uid="uid://xl46x5ro4jty" path="res://system obstacles/icon.gd" id="1_ewbvy"]
+[ext_resource type="Texture2D" uid="uid://d01f4sloflqld" path="res://assety/ikony.png" id="2_ewbvy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
-size = Vector2(52, 52)
+size = Vector2(40, 36)
+
+[sub_resource type="Animation" id="Animation_ewbvy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_uq0jc"]
+resource_name = "spawn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3b0pt"]
+_data = {
+&"RESET": SubResource("Animation_ewbvy"),
+&"spawn": SubResource("Animation_uq0jc")
+}
 
 [node name="Icon" type="Node2D" unique_id=1018225709]
+scale = Vector2(1e-05, 1e-05)
 script = ExtResource("1_ewbvy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=824792633]
-modulate = Color(1, 0.18039216, 0.12156863, 1)
 z_index = -2
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("1_21o1x")
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_ewbvy")
+hframes = 7
+frame = 1
+region_rect = Rect2(16, 0, 16, 16)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=927342953]
-collision_layer = 0
-collision_mask = 0
-monitoring = false
+collision_layer = 64
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1315073196]
 shape = SubResource("RectangleShape2D_bhunq")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=129486675]
+libraries/ = SubResource("AnimationLibrary_3b0pt")
+autoplay = &"spawn"
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

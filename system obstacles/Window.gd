@@ -13,7 +13,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#global_position = get_global_mouse_position()
+	global_position = get_global_mouse_position()
 	$Bar/CollisionShape2D.shape.extents.x = $Sprite2D.size.x/2
 	$Bar.position.x = $Sprite2D.size.x/2
 	$CollisionShape2D.shape.extents = $Sprite2D.size/2
