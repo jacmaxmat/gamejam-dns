@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="ggggggggggggg"
+run/main_scene="uid://ccuqjonnlhllu"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*uid://e1hjcbnnyn6s"
 
 [display]
 

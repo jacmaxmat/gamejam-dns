@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cpk6n684j18a2"]
+
+[ext_resource type="Script" uid="uid://b4cc54pdbusj6" path="res://outside_game_manager.gd" id="1_e6pw0"]
+
+[node name="OutsideGameManager" type="Node2D" unique_id=2016209311]
+script = ExtResource("1_e6pw0")
+
+[node name="EventTimer" type="Timer" parent="." unique_id=42273018]
+
+[node name="DragTimer" type="Timer" parent="." unique_id=1609768309]
+wait_time = 5.0
+
+[connection signal="timeout" from="EventTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DragTimer" to="." method="_on_drag_timer_timeout"]

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dbryayljgw6o2"]
+
+[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://icon.svg" id="1_u52ul"]
+[ext_resource type="Script" uid="uid://dfvp4pl3k7a1g" path="res://Window.gd" id="1_vonw3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(330, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_riqys"]
+size = Vector2(385, 383)
+
+[node name="Window" type="CharacterBody2D" unique_id=427429608]
+script = ExtResource("1_vonw3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1334644388]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(20, 20)
+texture = ExtResource("1_u52ul")
+
+[node name="Bar" type="Area2D" parent="." unique_id=414648937]
+position = Vector2(0, -176)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bar" unique_id=892292731]
+position = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_bhunq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1169904597]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_riqys")
