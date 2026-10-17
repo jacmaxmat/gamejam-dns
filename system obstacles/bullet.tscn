@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dv08oewojoqsl"]
+
+[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="1_4y0sg"]
+[ext_resource type="Script" uid="uid://ca5h3f2v8ltkq" path="res://system obstacles/bullet.gd" id="1_rx032"]
+[ext_resource type="Texture2D" uid="uid://7cniskgodnyi" path="res://assety/mapa.jpg" id="2_culrh"]
+[ext_resource type="Script" uid="uid://bqnx1omp38ney" path="res://system obstacles/asdasd.gd" id="2_uugo7"]
+
+[node name="Bullet" type="Area2D" unique_id=448943462]
+script = ExtResource("1_rx032")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1441149278]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -26.0
+offset_right = 46.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=142064119]
+handle_input_locally = false
+size = Vector2i(64, 64)
+render_target_update_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=879736922]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource("2_culrh")
+stretch_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport" unique_id=948608287]
+position = Vector2(30, 33)
+limit_enabled = false
+script = ExtResource("2_uugo7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1294541853]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(12, 7.0000005)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_4y0sg")

@@ -9,9 +9,13 @@ var is_dragging = false
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if global_position.x < Global.window.bar.global_position.x:
+		scale.x = 1
+	else:
+		scale.x = -1
+		
 	if !is_dragging:
 		global_position = global_position.move_toward(Global.window.bar.global_position, move_speed * delta)
 
@@ -20,5 +24,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	Global.cursors_dragging += 1
 	var cursor_dragging = cursor_instance.instantiate()
 	cursor_dragging.global_position = self.global_position - Global.window.global_position
+	cursor_dragging.scale.x = scale.x
 	Global.window.add_child(cursor_dragging)
 	queue_free()

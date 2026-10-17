@@ -2,6 +2,7 @@ extends Node2D
 
 var events = ["popup", "cursor", "push"]
 var current_event = "none"
+@export var active = true
 
 var popup_preload = preload("uid://dfyfwjfuri5wl")
 var cursor_preload = preload("uid://dohkivpoc06r6")
@@ -10,7 +11,8 @@ var push_preload = preload("uid://b4ttwoadwy288")
 @export var drag_speed := 80
 
 func _ready() -> void:
-	$EventTimer.start()
+	if active:
+		$EventTimer.start()
 
 func _process(delta: float) -> void:
 	if Global.cursors_dragging > 0:

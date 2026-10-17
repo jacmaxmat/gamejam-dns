@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dfvp4pl3k7a1g" path="res://system obstacles/Window.gd" id="1_bnn13"]
 [ext_resource type="Texture2D" uid="uid://dgd2gfi6kmte0" path="res://system obstacles/okno.png" id="2_5n0ag"]
-[ext_resource type="PackedScene" uid="uid://dxqolxv2isnx4" path="res://Player/Player.tscn" id="2_8lrwx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(472, 14)
@@ -10,16 +9,10 @@ size = Vector2(472, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_riqys"]
 size = Vector2(240, 135)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8ooo"]
-size = Vector2(472, 20)
-
 [node name="Window" type="CharacterBody2D" unique_id=427429608]
 collision_layer = 2147483664
 collision_mask = 32
 script = ExtResource("1_bnn13")
-
-[node name="Player" parent="." unique_id=283957801 instance=ExtResource("2_8lrwx")]
-position = Vector2(76, 214)
 
 [node name="Sprite2D" type="TextureRect" parent="." unique_id=294253054]
 anchors_preset = 8
@@ -45,7 +38,3 @@ shape = SubResource("RectangleShape2D_bhunq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1169904597]
 shape = SubResource("RectangleShape2D_riqys")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1029677891]
-position = Vector2(240, 257)
-shape = SubResource("RectangleShape2D_e8ooo")

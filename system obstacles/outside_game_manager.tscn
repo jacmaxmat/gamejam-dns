@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cpk6n684j18a2"]
 
 [ext_resource type="Script" uid="uid://b4cc54pdbusj6" path="res://system obstacles/outside_game_manager.gd" id="1_vxjq3"]
+[ext_resource type="PackedScene" uid="uid://g10siwdo3ou0" path="res://system obstacles/icon_spawner.tscn" id="2_7qj5b"]
 
 [node name="OutsideGameManager" type="Node2D" unique_id=2016209311]
 script = ExtResource("1_vxjq3")
@@ -9,6 +10,8 @@ script = ExtResource("1_vxjq3")
 
 [node name="DragTimer" type="Timer" parent="." unique_id=1609768309]
 wait_time = 5.0
+
+[node name="IconSpawner" parent="." unique_id=1060868986 instance=ExtResource("2_7qj5b")]
 
 [connection signal="timeout" from="EventTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="DragTimer" to="." method="_on_drag_timer_timeout"]

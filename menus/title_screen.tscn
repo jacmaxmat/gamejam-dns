@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://s1otfbodyphd"]
 
 [ext_resource type="Script" uid="uid://b2r2dysbk44y1" path="res://menus/title_screen.gd" id="1_m4alt"]
+[ext_resource type="FontFile" uid="uid://e20nougn4186" path="res://font/upheaval/upheavtt.ttf" id="2_i63b8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frbl3"]
 corner_detail = 1
@@ -38,6 +39,7 @@ focus_neighbor_bottom = NodePath("../QuitButton")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.580392, 0.580392, 0.580392, 1)
 theme_override_colors/font_hover_color = Color(0.823529, 0.823529, 0.823529, 1)
+theme_override_fonts/font = ExtResource("2_i63b8")
 theme_override_font_sizes/font_size = 64
 theme_override_styles/hover = SubResource("StyleBoxFlat_frbl3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ui8m6")
@@ -54,12 +56,13 @@ focus_neighbor_bottom = NodePath("../StartGameButton")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.580392, 0.580392, 0.580392, 1)
 theme_override_colors/font_hover_color = Color(0.823529, 0.823529, 0.823529, 1)
+theme_override_fonts/font = ExtResource("2_i63b8")
 theme_override_font_sizes/font_size = 64
 theme_override_styles/hover = SubResource("StyleBoxFlat_frbl3")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ui8m6")
 text = "Quit"
 flat = true
 
-[connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

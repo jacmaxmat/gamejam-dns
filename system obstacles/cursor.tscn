@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dohkivpoc06r6"]
 
 [ext_resource type="Script" uid="uid://dy0qn3xxo543q" path="res://system obstacles/cursor.gd" id="1_33ngw"]
-[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="2_3b742"]
+[ext_resource type="Texture2D" uid="uid://cq2toap4mqvbk" path="res://assety/kursor.png" id="2_33ngw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5l68f"]
 size = Vector2(24, 24)
@@ -10,8 +10,8 @@ size = Vector2(24, 24)
 script = ExtResource("1_33ngw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1725713856]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_3b742")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_33ngw")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=410495786]
 collision_layer = 0
