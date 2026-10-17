@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://ciifwcv23fsq3"]
+
+[ext_resource type="PackedScene" uid="uid://dxqolxv2isnx4" path="res://Player/Player.tscn" id="1_cmmnu"]
+[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="2_bcsus"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8ooo"]
+size = Vector2(743, 23)
+
+[node name="PlayerTestWindow" type="Node" unique_id=748172979]
+
+[node name="Player" parent="." unique_id=283957801 instance=ExtResource("1_cmmnu")]
+position = Vector2(363, 289)
+scale = Vector2(2.4444444, 2.3333333)
+
+[node name="floor" type="Sprite2D" parent="." unique_id=929130000]
+position = Vector2(371.00003, 371)
+scale = Vector2(5.8, 0.18)
+texture = ExtResource("2_bcsus")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="floor" unique_id=1108202473]
+position = Vector2(-63.965523, -2061.1113)
+scale = Vector2(0.1724138, 5.555556)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor/StaticBody2D" unique_id=1090001610]
+position = Vector2(372.5, 370.5)
+shape = SubResource("RectangleShape2D_e8ooo")
+
+[node name="wall1" type="Sprite2D" parent="." unique_id=1278239680]
+position = Vector2(11.9999695, 393)
+rotation = 1.5707959
+scale = Vector2(5.8, 0.18)
+texture = ExtResource("2_bcsus")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall1" unique_id=1071701]
+position = Vector2(-63.965523, -2061.1113)
+scale = Vector2(0.1724138, 5.555556)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall1/StaticBody2D" unique_id=341701640]
+position = Vector2(372.5, 370.5)
+shape = SubResource("RectangleShape2D_e8ooo")
+
+[node name="wall2" type="Sprite2D" parent="." unique_id=513274996]
+position = Vector2(732, 394.00003)
+rotation = 1.5707959
+scale = Vector2(5.8, 0.18)
+texture = ExtResource("2_bcsus")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall2" unique_id=486709506]
+position = Vector2(-63.965523, -2061.1113)
+scale = Vector2(0.1724138, 5.555556)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2/StaticBody2D" unique_id=1791154444]
+position = Vector2(372.5, 370.5)
+shape = SubResource("RectangleShape2D_e8ooo")

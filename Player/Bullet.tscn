@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dkhf0xdun4k5b"]
+
+[ext_resource type="Script" uid="uid://csdlx5gv5eopw" path="res://Player/bullet.gd" id="1_508bx"]
+[ext_resource type="Texture2D" uid="uid://duljscq5cnfvp" path="res://assety/ludek/ludzik_pocisk.png" id="1_nyi2d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_508bx"]
+atlas = ExtResource("1_nyi2d")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnl8s"]
+atlas = ExtResource("1_nyi2d")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e8ooo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_508bx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnl8s")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hynge"]
+radius = 4.0
+height = 16.0
+
+[node name="Bullet" type="Area2D" unique_id=1822330316]
+script = ExtResource("1_508bx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=502729570]
+sprite_frames = SubResource("SpriteFrames_e8ooo")
+frame_progress = 0.24011646
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=290140722]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_hynge")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1132215206]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
