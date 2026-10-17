@@ -18,6 +18,7 @@ config/icon="res://system obstacles/icon.svg"
 [autoload]
 
 Global="*uid://e1hjcbnnyn6s"
+SaveManager="*uid://c7o3gytw4e6cy"
 
 [display]
 

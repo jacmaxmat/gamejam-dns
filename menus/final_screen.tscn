@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://ddeq8d7thtyfc"]
+
+[ext_resource type="Script" uid="uid://bsatiy7l0smbo" path="res://menus/final_screen.gd" id="1_pyxie"]
+
+[node name="Highscores" type="Control" unique_id=1713517902]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FinalScreen" type="Control" parent="." unique_id=805079245]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pyxie")
+
+[node name="TextureRect2" type="TextureRect" parent="FinalScreen" unique_id=642151123]
+visible = false
+modulate = Color(0.19607843, 0.19607843, 0.19607843, 0.7411765)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Scores" type="VBoxContainer" parent="FinalScreen" unique_id=1286536015]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -131.0
+offset_top = 218.0
+offset_right = 132.0
+offset_bottom = 218.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MyScore" type="Label" parent="FinalScreen/Scores" unique_id=1536295842]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.13725491, 0.20784314, 1)
+theme_override_font_sizes/font_size = 32
+text = "Score: 10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Highscore" type="Label" parent="FinalScreen/Scores" unique_id=607319196]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Highscore: 10000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Retry" type="Button" parent="FinalScreen" unique_id=518377491]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 317.0
+offset_right = 708.0
+offset_bottom = 413.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 48
+text = "Retry"
+
+[node name="Menu" type="Button" parent="FinalScreen" unique_id=1122766306]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 370.0
+offset_right = 850.0
+offset_bottom = 466.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
+
+[connection signal="pressed" from="FinalScreen/Retry" to="FinalScreen" method="_on_retry_pressed"]
+[connection signal="pressed" from="FinalScreen/Menu" to="FinalScreen" method="_on_menu_pressed"]

@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://ccuqjonnlhllu"]
 
 [ext_resource type="PackedScene" uid="uid://cpk6n684j18a2" path="res://system obstacles/outside_game_manager.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://7x3pl4ailoo4" path="res://system obstacles/main.gd" id="1_x7n1j"]
 [ext_resource type="PackedScene" uid="uid://dbryayljgw6o2" path="res://system obstacles/window.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dfyfwjfuri5wl" path="res://system obstacles/popup.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://ddeq8d7thtyfc" path="res://menus/final_screen.tscn" id="6_mv0n7"]
 [ext_resource type="PackedScene" uid="uid://b4ttwoadwy288" path="res://system obstacles/pusher.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://s1otfbodyphd" path="res://menus/title_screen.tscn" id="7_mv0n7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(41, 737)
@@ -19,6 +22,7 @@ size = Vector2(45, 673)
 size = Vector2(1209, 44)
 
 [node name="Main" type="Node2D" unique_id=406022306]
+script = ExtResource("1_x7n1j")
 
 [node name="OutsideGameManager" parent="." unique_id=2016209311 instance=ExtResource("1_ig7tw")]
 
@@ -30,20 +34,45 @@ expand_mode = 1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Window" unique_id=1189050736]
 z_index = -1
-offset_right = 526.0
-offset_bottom = 502.0
+offset_right = 480.0
+offset_bottom = 270.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Window/SubViewportContainer" unique_id=496213117]
 handle_input_locally = false
-size = Vector2i(526, 502)
+size = Vector2i(480, 270)
 render_target_update_mode = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="Window/SubViewportContainer/SubViewport" unique_id=558917339]
 scale = Vector2(10, 10)
 texture = ExtResource("4_1bvp3")
+
+[node name="TitleScreen" parent="Window" unique_id=1027695133 instance=ExtResource("7_mv0n7")]
+offset_left = -335.0
+offset_top = 166.0
+offset_right = -335.0
+offset_bottom = 166.0
+
+[node name="Highscores" parent="Window" unique_id=1713517902 instance=ExtResource("6_mv0n7")]
+visible = true
+offset_left = 235.0
+offset_top = -132.0
+offset_right = 235.0
+offset_bottom = -132.0
+
+[node name="Retry" parent="Window/Highscores/FinalScreen" parent_id_path=PackedInt32Array(1713517902, 805079245) index="2" unique_id=518377491]
+offset_left = -42.0
+offset_top = 280.0
+offset_right = 131.0
+offset_bottom = 376.0
+
+[node name="Menu" parent="Window/Highscores/FinalScreen" parent_id_path=PackedInt32Array(1713517902, 805079245) index="3" unique_id=1122766306]
+offset_left = -84.0
+offset_top = 333.0
+offset_right = 273.0
+offset_bottom = 429.0
 
 [node name="Bounds" type="Node2D" parent="." unique_id=161645737]
 
@@ -95,3 +124,4 @@ visible = false
 position = Vector2(-267, -271)
 
 [editable path="Window"]
+[editable path="Window/Highscores"]
