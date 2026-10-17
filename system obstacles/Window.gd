@@ -10,13 +10,20 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#global_position = get_global_mouse_position()
 	$Bar/CollisionShape2D.shape.extents.x = $Sprite2D.size.x/2
 	$Bar.position.x = $Sprite2D.size.x/2
 	$CollisionShape2D.shape.extents = $Sprite2D.size/2
 	$CollisionShape2D.position = $Sprite2D.size/2
-	$SubViewportContainer.global_position = global_position
+	#$SubViewportContainer.global_position = global_position
 	#$SubViewportContainer/SubViewport.size = Vector2(480*$Sprite2D.scale.x, 270*$Sprite2D.scale.y)
 	$SubViewportContainer.size = $Sprite2D.size
+	
+	
+	if Input.is_action_pressed("ui_left"):
+		resize(Vector2(1,0), 3)
+	if Input.is_action_pressed("ui_right"):
+		resize(Vector2(-1,0), 3)
 
 func resize(dir, resize_speed):
 	match dir:
@@ -27,18 +34,26 @@ func resize(dir, resize_speed):
 			#$Sprite2D.size.x -= resize_speed * 2
 			#global_position.x += resize_speed*2
 			global_position.x += dif
+			#Global.cam.offset.x += dif
 		Vector2(-1,0):
+			var start_size = $Sprite2D.size.x
 			$Sprite2D.size.x = max($Sprite2D.size.x - (resize_speed), 200)
+			var dif = start_size - $Sprite2D.size.x
+			#Global.cam.offset.x += dif
 			#$Sprite2D.size.x -= resize_speed
 		Vector2(0,1):
 			var start_size = $Sprite2D.size.y
 			$Sprite2D.size.y = max($Sprite2D.size.y - (resize_speed * 2), 200)
 			var dif = start_size - $Sprite2D.size.y
 			global_position.y += dif
+			#Global.cam.offset.y -= dif
 			#$Sprite2D.size.y -= resize_speed * 2
 			#global_position.y += resize_speed*2
 		Vector2(0,-1):
+			var start_size = $Sprite2D.size.y
 			$Sprite2D.size.y = max($Sprite2D.size.y - (resize_speed), 200)
+			var dif = start_size - $Sprite2D.size.y
+			#Global.cam.offset.y += dif
 	#if Input.is_action_pressed("ui_left"):
 		#$Sprite2D.size.x -= resize_speed
 	#elif Input.is_action_pressed("ui_right"):

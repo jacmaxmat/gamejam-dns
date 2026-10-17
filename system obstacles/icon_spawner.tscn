@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://g10siwdo3ou0"]
+
+[ext_resource type="Script" uid="uid://csdwo7esnweba" path="res://system obstacles/icon_spawner.gd" id="1_ergwx"]
+
+[node name="IconSpawner" type="Node2D" unique_id=1060868986]
+script = ExtResource("1_ergwx")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=901374649]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

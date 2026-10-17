@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ddeq8d7thtyfc"]
 
 [ext_resource type="Script" uid="uid://bsatiy7l0smbo" path="res://menus/final_screen.gd" id="1_pyxie"]
+[ext_resource type="FontFile" uid="uid://e20nougn4186" path="res://font/upheaval/upheavtt.ttf" id="2_30ftb"]
 
 [node name="Highscores" type="Control" unique_id=1713517902]
 process_mode = 2
@@ -47,6 +48,7 @@ grow_vertical = 2
 [node name="MyScore" type="Label" parent="FinalScreen/Scores" unique_id=1536295842]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.13725491, 0.20784314, 1)
+theme_override_fonts/font = ExtResource("2_30ftb")
 theme_override_font_sizes/font_size = 32
 text = "Score: 10"
 horizontal_alignment = 1
@@ -54,6 +56,7 @@ vertical_alignment = 1
 
 [node name="Highscore" type="Label" parent="FinalScreen/Scores" unique_id=607319196]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_30ftb")
 theme_override_font_sizes/font_size = 32
 text = "Highscore: 10000"
 horizontal_alignment = 1
@@ -66,6 +69,7 @@ offset_top = 317.0
 offset_right = 708.0
 offset_bottom = 413.0
 scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_30ftb")
 theme_override_font_sizes/font_size = 48
 text = "Retry"
 
@@ -76,6 +80,7 @@ offset_top = 370.0
 offset_right = 850.0
 offset_bottom = 466.0
 scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_30ftb")
 theme_override_font_sizes/font_size = 48
 text = "Main Menu"
 

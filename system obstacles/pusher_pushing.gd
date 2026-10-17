@@ -7,7 +7,6 @@ var shrink_speed = 30
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("?")
 	offset_scale_y = (abs(global_position.y - Global.window.global_position.y))/Global.window.frame.size.y
 	offset_scale_x = (global_position.x - Global.window.global_position.x)/Global.window.frame.size.x
 

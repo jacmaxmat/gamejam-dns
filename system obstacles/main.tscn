@@ -4,10 +4,13 @@
 [ext_resource type="Script" uid="uid://7x3pl4ailoo4" path="res://system obstacles/main.gd" id="1_x7n1j"]
 [ext_resource type="PackedScene" uid="uid://dbryayljgw6o2" path="res://system obstacles/window.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://dfyfwjfuri5wl" path="res://system obstacles/popup.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://hgu722xobe4n" path="res://system obstacles/camera_2d.gd" id="5_tkfrg"]
 [ext_resource type="PackedScene" uid="uid://ddeq8d7thtyfc" path="res://menus/final_screen.tscn" id="6_mv0n7"]
-[ext_resource type="PackedScene" uid="uid://b4ttwoadwy288" path="res://system obstacles/pusher.tscn" id="7_272bh"]
 [ext_resource type="PackedScene" uid="uid://s1otfbodyphd" path="res://menus/title_screen.tscn" id="7_mv0n7"]
+[ext_resource type="PackedScene" uid="uid://dv08oewojoqsl" path="res://system obstacles/bullet.tscn" id="11_lq1mb"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lq1mb"]
+viewport_path = NodePath("../SubViewportContainer/SubViewport")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(41, 737)
@@ -21,42 +24,133 @@ size = Vector2(45, 673)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6f8o3"]
 size = Vector2(1209, 44)
 
+[sub_resource type="Animation" id="Animation_tkfrg"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Window:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Window:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Window:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4avnr"]
+resource_name = "start"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Window:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(1e-05, 0, 0, 0.083333336, 0.166665, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Window:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(1e-05, 0, 0, 0.083333336, 0.166665, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Window:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lq1mb"]
+_data = {
+&"RESET": SubResource("Animation_tkfrg"),
+&"start": SubResource("Animation_4avnr")
+}
+
 [node name="Main" type="Node2D" unique_id=406022306]
 script = ExtResource("1_x7n1j")
 
 [node name="OutsideGameManager" parent="." unique_id=2016209311 instance=ExtResource("1_ig7tw")]
+active = false
 
 [node name="Window" parent="." unique_id=427429608 instance=ExtResource("2_0xm2m")]
+visible = false
 position = Vector2(365, 98)
 
 [node name="Sprite2D" parent="Window" index="0" unique_id=294253054]
+size_flags_horizontal = 6
+size_flags_vertical = 6
 expand_mode = 1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Window" unique_id=1189050736]
 z_index = -1
 offset_right = 480.0
 offset_bottom = 270.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 2
+size_flags_vertical = 2
+offset_transform_enabled = true
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Window/SubViewportContainer" unique_id=496213117]
+transparent_bg = true
 handle_input_locally = false
 size = Vector2i(480, 270)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="Window/SubViewportContainer/SubViewport" unique_id=558917339]
 scale = Vector2(10, 10)
 texture = ExtResource("4_1bvp3")
 
+[node name="Camera2D" type="Camera2D" parent="Window/SubViewportContainer/SubViewport" unique_id=1972881426]
+limit_enabled = false
+script = ExtResource("5_tkfrg")
+
 [node name="TitleScreen" parent="Window" unique_id=1027695133 instance=ExtResource("7_mv0n7")]
-offset_left = -335.0
-offset_top = 166.0
-offset_right = -335.0
-offset_bottom = 166.0
+visible = true
+offset_left = -338.0
+offset_top = 202.0
+offset_right = -338.0
+offset_bottom = 202.0
 
 [node name="Highscores" parent="Window" unique_id=1713517902 instance=ExtResource("6_mv0n7")]
-visible = true
 offset_left = 235.0
 offset_top = -132.0
 offset_right = 235.0
@@ -73,6 +167,26 @@ offset_left = -84.0
 offset_top = 333.0
 offset_right = 273.0
 offset_bottom = 429.0
+
+[node name="Bullet" parent="Window" unique_id=448943462 instance=ExtResource("11_lq1mb")]
+position = Vector2(-281, 265)
+
+[node name="SubViewportContainer" parent="Window/Bullet" index="1" unique_id=268532204]
+offset_left = -15.0
+offset_top = -9.0
+offset_right = 37.0
+offset_bottom = 38.0
+stretch = true
+
+[node name="SubViewport" parent="Window/Bullet/SubViewportContainer" index="0" unique_id=1023203146]
+size = Vector2i(52, 47)
+render_target_update_mode = 0
+
+[node name="Sprite2D" parent="Window/Bullet/SubViewportContainer/SubViewport" index="0" unique_id=1294541853]
+position = Vector2(31.999998, 33)
+
+[node name="TextureRect" parent="Window/Bullet/SubViewportContainer/SubViewport" index="1" unique_id=879736922]
+texture = SubResource("ViewportTexture_lq1mb")
 
 [node name="Bounds" type="Node2D" parent="." unique_id=161645737]
 
@@ -117,11 +231,10 @@ position = Vector2(594.5, 670)
 shape = SubResource("RectangleShape2D_6f8o3")
 one_way_collision = true
 
-[node name="Popup" parent="." unique_id=999077596 instance=ExtResource("6_7mycd")]
-visible = false
-
-[node name="Pusher2" parent="." unique_id=918429332 instance=ExtResource("7_272bh")]
-position = Vector2(-267, -271)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1735942089]
+process_mode = 2
+libraries/ = SubResource("AnimationLibrary_lq1mb")
 
 [editable path="Window"]
 [editable path="Window/Highscores"]
+[editable path="Window/Bullet"]
