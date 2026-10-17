@@ -12,6 +12,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if Global.is_game_over:
+		queue_free()
 	global_position.y = Global.window.global_position.y + (Global.window.frame.size.y * offset_scale_y)
 	global_position.x = Global.window.global_position.x + (Global.window.frame.size.x * offset_scale_x)
 		

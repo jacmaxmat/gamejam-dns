@@ -25,10 +25,11 @@ offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_5n0ag")
+expand_mode = 1
 
 [node name="Bar" type="Area2D" parent="." unique_id=414648937]
 position = Vector2(240, 3)
-collision_layer = 2147483664
+collision_layer = 2149580800
 collision_mask = 0
 monitoring = false
 

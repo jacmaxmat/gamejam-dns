@@ -135,23 +135,9 @@ _data = {
 script = ExtResource("1_x7n1j")
 
 [node name="Bullet" parent="." unique_id=448943462 instance=ExtResource("11_lq1mb")]
-position = Vector2(497, 532)
-
-[node name="SubViewportContainer" parent="Bullet" index="0" unique_id=1441149278]
-z_index = -1
-offset_left = -20.0
-offset_top = -25.0
-offset_right = 44.0
-offset_bottom = 39.0
-
-[node name="TextureRect" parent="Bullet/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(448943462, 142064119) index="0" unique_id=879736922]
-z_index = -2
-
-[node name="Camera2D" parent="Bullet/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(448943462, 142064119) index="1" unique_id=948608287]
-position = Vector2(32, 33)
+position = Vector2(360, 555)
 
 [node name="OutsideGameManager" parent="." unique_id=2016209311 instance=ExtResource("1_ig7tw")]
-active = false
 
 [node name="Window" parent="." unique_id=427429608 instance=ExtResource("2_0xm2m")]
 visible = false
@@ -160,7 +146,6 @@ position = Vector2(334, 187)
 [node name="Sprite2D" parent="Window" index="0" unique_id=294253054]
 size_flags_horizontal = 6
 size_flags_vertical = 6
-expand_mode = 1
 
 [node name="WindowView" type="SubViewportContainer" parent="Window" unique_id=1189050736]
 z_index = -1
@@ -169,8 +154,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 2
+size_flags_vertical = 2
 offset_transform_enabled = true
 stretch = true
 script = ExtResource("7_tkfrg")
@@ -190,8 +175,10 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1150.0
-offset_bottom = 646.0
+offset_left = -334.0
+offset_top = -187.0
+offset_right = 816.0
+offset_bottom = 459.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
@@ -212,13 +199,16 @@ offset_top = -132.0
 offset_right = 235.0
 offset_bottom = -132.0
 
-[node name="Retry" parent="Window/Highscores/FinalScreen" parent_id_path=PackedInt32Array(1713517902, 805079245) index="2" unique_id=518377491]
+[node name="FinalScreen" parent="Window/Highscores" index="0" unique_id=805079245 node_paths=PackedStringArray("a_player")]
+a_player = NodePath("../../../AnimationPlayer")
+
+[node name="Retry" parent="Window/Highscores/FinalScreen" index="2" unique_id=518377491]
 offset_left = -42.0
 offset_top = 280.0
 offset_right = 131.0
 offset_bottom = 376.0
 
-[node name="Menu" parent="Window/Highscores/FinalScreen" parent_id_path=PackedInt32Array(1713517902, 805079245) index="3" unique_id=1122766306]
+[node name="Menu" parent="Window/Highscores/FinalScreen" index="3" unique_id=1122766306]
 offset_left = -84.0
 offset_top = 333.0
 offset_right = 273.0
@@ -268,9 +258,10 @@ shape = SubResource("RectangleShape2D_6f8o3")
 one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1735942089]
-process_mode = 2
+process_mode = 3
 libraries/ = SubResource("AnimationLibrary_lq1mb")
 
-[editable path="Bullet"]
+[connection signal="animation_finished" from="AnimationPlayer" to="Window/Highscores/FinalScreen" method="_on_animation_player_animation_finished"]
+
 [editable path="Window"]
 [editable path="Window/Highscores"]

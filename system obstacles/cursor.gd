@@ -11,6 +11,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Global.is_game_over:
+		queue_free()
 	if global_position.x < Global.window.bar.global_position.x:
 		scale.x = 1
 	else:

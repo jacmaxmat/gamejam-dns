@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://djondfk448f7j"]
+
+[ext_resource type="Script" uid="uid://q7gvfxt3gjxm" path="res://enemy_spawner.gd" id="1_ewhtn"]
+
+[sub_resource type="Curve2D" id="Curve2D_00s5r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -2, -20, 0, 0, 0, 0, 1196, -29, 0, 0, 0, 0, 1195, 680, 0, 0, 0, 0, -36, 679, 0, 0, 0, 0, -30, -17)
+}
+point_count = 5
+
+[node name="EnemySpawner" type="Node2D" unique_id=2087444717]
+script = ExtResource("1_ewhtn")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=450600022]
+curve = SubResource("Curve2D_00s5r")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=356702354]
+position = Vector2(-2, -20)
+rotation = -0.0075123794
+
+[node name="SpawnPoint" type="Marker2D" parent="Path2D/PathFollow2D" unique_id=1267048404]
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1420878603]
+wait_time = 5.0
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

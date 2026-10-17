@@ -12,13 +12,19 @@ func _process(delta: float) -> void:
 	pass
 
 func spawn_icon():
-	var posx = 44 + randi_range(0,12) * 88
-	var posy = 26 + randi_range(0,6) * 85
+	var slotx = randi_range(0,12)
+	var sloty = randi_range(0,6)
+	while Global.icons.has([slotx,sloty]):
+		slotx = randi_range(0,12)
+		sloty = randi_range(0,6)
+	var posx = 44 + slotx * 88
+	var posy = 26 + sloty * 85
 	var icon_instance = icon_preload.instantiate()
 	icon_instance.global_position = Vector2(posx, posy)
+	icon_instance.slotx = slotx
+	icon_instance.sloty = sloty
 	get_tree().get_root().add_child(icon_instance)
+	Global.icons.append([slotx,sloty])
 	
-
 func _on_spawn_timer_timeout() -> void:
-	print("spawn")
 	spawn_icon()
