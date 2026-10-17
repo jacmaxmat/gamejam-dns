@@ -1,8 +1,8 @@
 extends Node2D
 
-var cursor_instance = preload("res://cursor_dragging.tscn")
+var cursor_instance = preload("res://system obstacles/cursor_dragging.tscn")
 
-@export var move_speed := 100
+@export var move_speed := 200
 var is_dragging = false
 
 # Called when the node enters the scene tree for the first time.
@@ -21,5 +21,4 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	var cursor_dragging = cursor_instance.instantiate()
 	cursor_dragging.global_position = self.global_position - Global.window.global_position
 	Global.window.add_child(cursor_dragging)
-	print(cursor_dragging.global_position)
 	queue_free()

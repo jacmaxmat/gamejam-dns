@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b4ttwoadwy288"]
+
+[ext_resource type="Script" uid="uid://dui6cr5f1r00t" path="res://system obstacles/pusher.gd" id="1_g6yi4"]
+[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="2_tbk6w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j84ox"]
+size = Vector2(64, 64)
+
+[node name="Pusher" type="Node2D" unique_id=85188675]
+script = ExtResource("1_g6yi4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2100792272]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tbk6w")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1251982560]
+collision_layer = 0
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=439291785]
+shape = SubResource("RectangleShape2D_j84ox")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1874043293]
+rect = Rect2(-32, -33, 64, 66)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

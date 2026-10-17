@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://ccuqjonnlhllu"]
+
+[ext_resource type="PackedScene" uid="uid://cpk6n684j18a2" path="res://system obstacles/outside_game_manager.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dbryayljgw6o2" path="res://system obstacles/window.tscn" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dfyfwjfuri5wl" path="res://system obstacles/popup.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://b4ttwoadwy288" path="res://system obstacles/pusher.tscn" id="7_272bh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(41, 737)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_riqys"]
+size = Vector2(1163, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sn0t7"]
+size = Vector2(45, 673)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6f8o3"]
+size = Vector2(1209, 44)
+
+[node name="Main" type="Node2D" unique_id=406022306]
+
+[node name="OutsideGameManager" parent="." unique_id=2016209311 instance=ExtResource("1_ig7tw")]
+
+[node name="Window" parent="." unique_id=427429608 instance=ExtResource("2_0xm2m")]
+position = Vector2(365, 98)
+
+[node name="Sprite2D" parent="Window" index="0" unique_id=294253054]
+expand_mode = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Window" unique_id=1189050736]
+z_index = -1
+offset_right = 526.0
+offset_bottom = 502.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Window/SubViewportContainer" unique_id=496213117]
+handle_input_locally = false
+size = Vector2i(526, 502)
+render_target_update_mode = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Window/SubViewportContainer/SubViewport" unique_id=558917339]
+scale = Vector2(10, 10)
+texture = ExtResource("4_1bvp3")
+
+[node name="Bounds" type="Node2D" parent="." unique_id=161645737]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bounds" unique_id=260136422]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/StaticBody2D" unique_id=493165055]
+position = Vector2(-20.5, 341.5)
+shape = SubResource("RectangleShape2D_bhunq")
+one_way_collision = true
+one_way_collision_direction = Vector2(-1, 0)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Bounds" unique_id=377044387]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds/StaticBody2D2" unique_id=2008299228]
+position = Vector2(581.5, -21)
+shape = SubResource("RectangleShape2D_riqys")
+one_way_collision = true
+one_way_collision_direction = Vector2(0, -1)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Bounds" unique_id=1694242842]
+position = Vector2(5, 0)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds/StaticBody2D3" unique_id=1601739725]
+position = Vector2(1174.5, 326.5)
+shape = SubResource("RectangleShape2D_sn0t7")
+one_way_collision = true
+one_way_collision_direction = Vector2(1, 0)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Bounds" unique_id=2097496668]
+position = Vector2(0, 1)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounds/StaticBody2D4" unique_id=337140700]
+position = Vector2(594.5, 670)
+shape = SubResource("RectangleShape2D_6f8o3")
+one_way_collision = true
+
+[node name="Popup" parent="." unique_id=999077596 instance=ExtResource("6_7mycd")]
+visible = false
+
+[node name="Pusher2" parent="." unique_id=918429332 instance=ExtResource("7_272bh")]
+position = Vector2(-267, -271)
+
+[editable path="Window"]

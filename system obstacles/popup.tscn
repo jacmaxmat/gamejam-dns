@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dfyfwjfuri5wl"]
+
+[ext_resource type="Script" uid="uid://cqayyjm44ltcs" path="res://system obstacles/popup.gd" id="1_y1rju"]
+[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="2_he16x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(128, 128)
+
+[node name="Popup" type="CharacterBody2D" unique_id=999077596]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_y1rju")
+speed = 200
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1434749119]
+texture = ExtResource("2_he16x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1143563576]
+shape = SubResource("RectangleShape2D_bhunq")

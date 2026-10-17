@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b2netpucwfun7"]
+
+[ext_resource type="Script" uid="uid://fd8y1avcbknd" path="res://system obstacles/pusher_pushing.gd" id="1_61ajv"]
+[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="2_0lqdb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_erw3r"]
+size = Vector2(64, 64)
+
+[node name="PusherPushing" type="Node2D" unique_id=2146072756]
+script = ExtResource("1_61ajv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1034969592]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0lqdb")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=58287591]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1357138539]
+shape = SubResource("RectangleShape2D_erw3r")

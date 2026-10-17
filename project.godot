@@ -13,7 +13,7 @@ config_version=5
 config/name="ggggggggggggg"
 run/main_scene="uid://ccuqjonnlhllu"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://system obstacles/icon.svg"
 
 [autoload]
 
@@ -30,6 +30,14 @@ window/hdr/request_hdr_output=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/per_pixel_transparency/allowed=true
+
+[layer_names]
+
+2d_physics/layer_1="null"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Solid"
+2d_physics/layer_5="Window"
+2d_physics/layer_6="Bounds"
 
 [physics]
 

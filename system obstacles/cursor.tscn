@@ -1,19 +1,21 @@
 [gd_scene format=3 uid="uid://dohkivpoc06r6"]
 
-[ext_resource type="Script" uid="uid://dy0qn3xxo543q" path="res://cursor.gd" id="1_fsq4c"]
-[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://icon.svg" id="2_5l68f"]
+[ext_resource type="Script" uid="uid://dy0qn3xxo543q" path="res://system obstacles/cursor.gd" id="1_33ngw"]
+[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="2_3b742"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5l68f"]
 size = Vector2(24, 24)
 
 [node name="Cursor" type="Node2D" unique_id=1389714305]
-script = ExtResource("1_fsq4c")
+script = ExtResource("1_33ngw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1725713856]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_5l68f")
+texture = ExtResource("2_3b742")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=410495786]
+collision_layer = 0
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=571265894]
 shape = SubResource("RectangleShape2D_5l68f")

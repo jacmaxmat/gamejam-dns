@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cpk6n684j18a2"]
 
-[ext_resource type="Script" uid="uid://b4cc54pdbusj6" path="res://outside_game_manager.gd" id="1_e6pw0"]
+[ext_resource type="Script" uid="uid://b4cc54pdbusj6" path="res://system obstacles/outside_game_manager.gd" id="1_vxjq3"]
 
 [node name="OutsideGameManager" type="Node2D" unique_id=2016209311]
-script = ExtResource("1_e6pw0")
+script = ExtResource("1_vxjq3")
 
 [node name="EventTimer" type="Timer" parent="." unique_id=42273018]
 
