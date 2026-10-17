@@ -4,13 +4,10 @@
 [ext_resource type="Script" uid="uid://7x3pl4ailoo4" path="res://system obstacles/main.gd" id="1_x7n1j"]
 [ext_resource type="PackedScene" uid="uid://dbryayljgw6o2" path="res://system obstacles/window.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="4_1bvp3"]
-[ext_resource type="Script" uid="uid://hgu722xobe4n" path="res://system obstacles/camera_2d.gd" id="5_tkfrg"]
 [ext_resource type="PackedScene" uid="uid://ddeq8d7thtyfc" path="res://menus/final_screen.tscn" id="6_mv0n7"]
 [ext_resource type="PackedScene" uid="uid://s1otfbodyphd" path="res://menus/title_screen.tscn" id="7_mv0n7"]
+[ext_resource type="Script" uid="uid://cvob6keoht0el" path="res://system obstacles/window_view.gd" id="7_tkfrg"]
 [ext_resource type="PackedScene" uid="uid://dv08oewojoqsl" path="res://system obstacles/bullet.tscn" id="11_lq1mb"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_lq1mb"]
-viewport_path = NodePath("../SubViewportContainer/SubViewport")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(41, 737)
@@ -60,6 +57,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Window:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(334, 187)]
+}
+
+[sub_resource type="Animation" id="Animation_mv0n7"]
+resource_name = "game_over"
 
 [sub_resource type="Animation" id="Animation_4avnr"]
 resource_name = "start"
@@ -90,7 +102,7 @@ tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("Window:visible")
-tracks/2/interp = 1
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
@@ -98,50 +110,86 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Window:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(574, 322), Vector2(334, 187)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lq1mb"]
 _data = {
 &"RESET": SubResource("Animation_tkfrg"),
+&"game_over": SubResource("Animation_mv0n7"),
 &"start": SubResource("Animation_4avnr")
 }
 
 [node name="Main" type="Node2D" unique_id=406022306]
 script = ExtResource("1_x7n1j")
 
+[node name="Bullet" parent="." unique_id=448943462 instance=ExtResource("11_lq1mb")]
+position = Vector2(235, 200)
+
+[node name="SubViewportContainer" parent="Bullet" index="0" unique_id=1441149278]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 96.0
+offset_bottom = 96.0
+stretch = true
+
+[node name="SubViewport" parent="Bullet/SubViewportContainer" index="0" unique_id=142064119]
+size = Vector2i(128, 128)
+
+[node name="TextureRect" parent="Bullet/SubViewportContainer/SubViewport" index="0" unique_id=879736922]
+offset_left = 17.0
+offset_top = -5.0
+offset_right = -45.0
+offset_bottom = -67.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
 [node name="OutsideGameManager" parent="." unique_id=2016209311 instance=ExtResource("1_ig7tw")]
-active = false
 
 [node name="Window" parent="." unique_id=427429608 instance=ExtResource("2_0xm2m")]
 visible = false
-position = Vector2(365, 98)
+position = Vector2(334, 187)
 
 [node name="Sprite2D" parent="Window" index="0" unique_id=294253054]
 size_flags_horizontal = 6
 size_flags_vertical = 6
 expand_mode = 1
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Window" unique_id=1189050736]
+[node name="WindowView" type="SubViewportContainer" parent="Window" unique_id=1189050736]
 z_index = -1
-offset_right = 480.0
-offset_bottom = 270.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
 offset_transform_enabled = true
 stretch = true
+script = ExtResource("7_tkfrg")
 
-[node name="SubViewport" type="SubViewport" parent="Window/SubViewportContainer" unique_id=496213117]
+[node name="SubViewport" type="SubViewport" parent="Window/WindowView" unique_id=496213117]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(480, 270)
+size = Vector2i(2, 2)
 render_target_update_mode = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Window/SubViewportContainer/SubViewport" unique_id=558917339]
+[node name="Level" type="Node2D" parent="Window/WindowView/SubViewport" unique_id=1752344095]
+
+[node name="Sprite2D" type="Sprite2D" parent="Window/WindowView/SubViewport/Level" unique_id=558917339]
+position = Vector2(217.99998, 123.99999)
 scale = Vector2(10, 10)
 texture = ExtResource("4_1bvp3")
-
-[node name="Camera2D" type="Camera2D" parent="Window/SubViewportContainer/SubViewport" unique_id=1972881426]
-limit_enabled = false
-script = ExtResource("5_tkfrg")
 
 [node name="TitleScreen" parent="Window" unique_id=1027695133 instance=ExtResource("7_mv0n7")]
 visible = true
@@ -167,26 +215,6 @@ offset_left = -84.0
 offset_top = 333.0
 offset_right = 273.0
 offset_bottom = 429.0
-
-[node name="Bullet" parent="Window" unique_id=448943462 instance=ExtResource("11_lq1mb")]
-position = Vector2(-281, 265)
-
-[node name="SubViewportContainer" parent="Window/Bullet" index="1" unique_id=268532204]
-offset_left = -15.0
-offset_top = -9.0
-offset_right = 37.0
-offset_bottom = 38.0
-stretch = true
-
-[node name="SubViewport" parent="Window/Bullet/SubViewportContainer" index="0" unique_id=1023203146]
-size = Vector2i(52, 47)
-render_target_update_mode = 0
-
-[node name="Sprite2D" parent="Window/Bullet/SubViewportContainer/SubViewport" index="0" unique_id=1294541853]
-position = Vector2(31.999998, 33)
-
-[node name="TextureRect" parent="Window/Bullet/SubViewportContainer/SubViewport" index="1" unique_id=879736922]
-texture = SubResource("ViewportTexture_lq1mb")
 
 [node name="Bounds" type="Node2D" parent="." unique_id=161645737]
 
@@ -235,6 +263,6 @@ one_way_collision = true
 process_mode = 2
 libraries/ = SubResource("AnimationLibrary_lq1mb")
 
+[editable path="Bullet"]
 [editable path="Window"]
 [editable path="Window/Highscores"]
-[editable path="Window/Bullet"]

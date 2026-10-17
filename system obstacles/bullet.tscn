@@ -2,56 +2,45 @@
 
 [ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="1_4y0sg"]
 [ext_resource type="Script" uid="uid://ca5h3f2v8ltkq" path="res://system obstacles/bullet.gd" id="1_rx032"]
-[ext_resource type="Script" uid="uid://3g0uxd44wd40" path="res://system obstacles/camera_2dbullet.gd" id="2_uugo7"]
+[ext_resource type="Script" uid="uid://bqnx1omp38ney" path="res://system obstacles/asdasd.gd" id="2_uugo7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rx032"]
-size = Vector2(24, 24)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_bhunq"]
+[sub_resource type="ImageTexture" id="ImageTexture_tkfrg"]
 
 [node name="Bullet" type="Area2D" unique_id=448943462]
 script = ExtResource("1_rx032")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=92075657]
-shape = SubResource("RectangleShape2D_rx032")
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1441149278]
+offset_left = -228.0
+offset_top = -214.0
+offset_right = 284.0
+offset_bottom = 298.0
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=268532204]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -17.0
-offset_right = 16.0
-offset_bottom = 15.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1023203146]
-disable_3d = true
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=142064119]
 handle_input_locally = false
-size = Vector2i(64, 32)
-size_2d_override_stretch = true
 render_target_update_mode = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1294541853]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(12, 7.0000005)
-texture = ExtResource("1_4y0sg")
 
 [node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=879736922]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 17.0
-offset_right = 1136.0
-offset_bottom = 633.0
+offset_left = 210.0
+offset_top = 188.0
+offset_right = -238.0
+offset_bottom = -260.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("ViewportTexture_bhunq")
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = SubResource("ImageTexture_tkfrg")
 stretch_mode = 2
 
-[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport" unique_id=1961353910]
-position = Vector2(56, 136)
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport" unique_id=948608287]
+position = Vector2(419, 216)
 limit_enabled = false
 script = ExtResource("2_uugo7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1294541853]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(12, 7.0000005)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_4y0sg")

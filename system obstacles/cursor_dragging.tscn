@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://lplf73itbd4l"]
 
 [ext_resource type="Script" uid="uid://bst88428t8nxa" path="res://system obstacles/cursor_dragging.gd" id="1_b3fxp"]
-[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="2_1mjcm"]
+[ext_resource type="Texture2D" uid="uid://cq2toap4mqvbk" path="res://assety/kursor.png" id="2_b3fxp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_igwmr"]
-radius = 14.142136
+radius = 21.0
 
 [node name="CursorDragging" type="Node2D" unique_id=2082774963]
 script = ExtResource("1_b3fxp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1893719952]
 z_index = 1
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_1mjcm")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_b3fxp")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1341460598]
 collision_layer = 0

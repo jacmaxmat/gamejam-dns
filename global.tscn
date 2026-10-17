@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://clucvc6d8mpml"]
+
+[ext_resource type="Script" uid="uid://e1hjcbnnyn6s" path="res://system obstacles/Global.gd" id="1_6q3x5"]
+
+[node name="Global" type="Node" unique_id=603741700]
+process_mode = 3
+script = ExtResource("1_6q3x5")
