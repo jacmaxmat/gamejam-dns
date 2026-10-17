@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://dxqolxv2isnx4"]
+
+[ext_resource type="Script" uid="uid://l2xwkp5ehgai" path="res://Player/player.gd" id="1_nt8xy"]
+[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="2_p34sf"]
+[ext_resource type="PackedScene" uid="uid://ba5qchpqa3sjt" path="res://Player/PlayerComponents/GravityComponent.tscn" id="3_jcd70"]
+[ext_resource type="PackedScene" uid="uid://8dihvdwt7vo2" path="res://Player/PlayerComponents/InputComponent.tscn" id="4_jcd70"]
+[ext_resource type="PackedScene" uid="uid://dvgthpgx2ov87" path="res://Player/PlayerComponents/MovementComponent.tscn" id="5_mg4xy"]
+[ext_resource type="PackedScene" uid="uid://cah3v6u2iposi" path="res://Player/PlayerComponents/JumpComponent.tscn" id="5_p34sf"]
+[ext_resource type="PackedScene" uid="uid://bh5y5laitjgr2" path="res://Player/PlayerComponents/ShootingComponent.tscn" id="7_b5s0s"]
+[ext_resource type="PackedScene" uid="uid://w2g1t002cg0n" path="res://Player/PlayerComponents/AimComponent.tscn" id="8_4nyta"]
+[ext_resource type="PackedScene" uid="uid://dkhf0xdun4k5b" path="res://Player/Bullet.tscn" id="9_nemls"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8ooo"]
+radius = 8.0
+height = 20.0
+
+[sub_resource type="Animation" id="Animation_p34sf"]
+length = 0.26666668
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(9, 51, 16, 13), Rect2(9, 51, 16, 13)]
+}
+
+[sub_resource type="Animation" id="Animation_b5s0s"]
+resource_name = "idle"
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.41666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(9, 51, 16, 13), Rect2(105, 52, 16, 12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nyta"]
+_data = {
+&"RESET": SubResource("Animation_p34sf"),
+&"idle": SubResource("Animation_b5s0s")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=283957801 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "shooting_component", "aim_component")]
+script = ExtResource("1_nt8xy")
+gravity_component = NodePath("GravityComponent")
+input_component = NodePath("InputComponent")
+movement_component = NodePath("MovementComponent")
+jump_component = NodePath("JumpComponent")
+shooting_component = NodePath("ShootingComponent")
+aim_component = NodePath("AimComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591169664]
+shape = SubResource("CapsuleShape2D_e8ooo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2003255157]
+position = Vector2(3.5762793e-07, 0.124997064)
+scale = Vector2(0.09375001, 0.1542969)
+texture = ExtResource("2_p34sf")
+
+[node name="GunBarrel" type="Node2D" parent="Sprite2D" unique_id=1600311324]
+position = Vector2(127.999985, -0.8101074)
+scale = Vector2(10.666666, 6.4810114)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2128793517]
+libraries/ = SubResource("AnimationLibrary_4nyta")
+
+[node name="AimComponent" parent="." unique_id=815195812 node_paths=PackedStringArray("upper_body_node") instance=ExtResource("8_4nyta")]
+upper_body_node = NodePath("../Sprite2D")
+
+[node name="GravityComponent" parent="." unique_id=205644579 instance=ExtResource("3_jcd70")]
+
+[node name="InputComponent" parent="." unique_id=875117109 instance=ExtResource("4_jcd70")]
+
+[node name="MovementComponent" parent="." unique_id=519919160 instance=ExtResource("5_mg4xy")]
+
+[node name="JumpComponent" parent="." unique_id=1854653841 instance=ExtResource("5_p34sf")]
+
+[node name="ShootingComponent" parent="." unique_id=1564365199 node_paths=PackedStringArray("spawn_point") instance=ExtResource("7_b5s0s")]
+bullet_scene = ExtResource("9_nemls")
+spawn_point = NodePath("../Sprite2D/GunBarrel")

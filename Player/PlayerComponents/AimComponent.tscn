@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://w2g1t002cg0n"]
+
+[ext_resource type="Script" uid="uid://kps6ii62uap7" path="res://Player/PlayerComponents/aim_component.gd" id="1_ms16u"]
+
+[node name="AimComponent" type="Node" unique_id=205644579]
+script = ExtResource("1_ms16u")

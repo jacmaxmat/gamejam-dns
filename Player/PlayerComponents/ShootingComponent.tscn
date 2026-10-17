@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bh5y5laitjgr2"]
+
+[ext_resource type="Script" uid="uid://t1cnqwwih88f" path="res://Player/PlayerComponents/shooting_component.gd" id="1_auhw7"]
+
+[node name="ShootingComponent" type="Node" unique_id=205644579]
+script = ExtResource("1_auhw7")
