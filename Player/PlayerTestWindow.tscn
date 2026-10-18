@@ -9,7 +9,7 @@ size = Vector2(743, 23)
 [node name="PlayerTestWindow" type="Node" unique_id=748172979]
 
 [node name="Player" parent="." unique_id=283957801 instance=ExtResource("1_cmmnu")]
-position = Vector2(310, 321)
+position = Vector2(529, 170)
 scale = Vector2(3, 3)
 
 [node name="floor" type="Sprite2D" parent="." unique_id=929130000]
