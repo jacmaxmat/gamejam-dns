@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://k6bao6rhpn2"]
 
-[ext_resource type="PackedScene" uid="uid://djondfk448f7j" path="res://enemy_spawner.tscn" id="2_vonw3"]
+[ext_resource type="PackedScene" uid="uid://y6xn3c1rgs1p" path="res://enemy_spawner.tscn" id="2_vonw3"]
 [ext_resource type="Script" uid="uid://cs64wbcoro1es" path="res://grounded_spawn.gd" id="3_0b4ue"]
 [ext_resource type="Texture2D" uid="uid://b8bd7lnxl32xh" path="res://mapa1.jpg" id="3_oi3di"]
 
@@ -130,6 +130,7 @@ texture = ExtResource("3_oi3di")
 [node name="EnemySpawner" parent="." unique_id=2087444717 instance=ExtResource("2_vonw3")]
 
 [node name="GroundedSpawn" type="Node2D" parent="." unique_id=804592975]
+process_mode = 4
 script = ExtResource("3_0b4ue")
 
 [node name="Timer" type="Timer" parent="GroundedSpawn" unique_id=821842055]

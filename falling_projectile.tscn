@@ -1,23 +1,57 @@
 [gd_scene format=3 uid="uid://h4t5f8dv7rut"]
 
-[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="1_hpjj2"]
 [ext_resource type="Script" uid="uid://djbbn8xc2jmjr" path="res://falling_projectile.gd" id="1_wh0q8"]
+[ext_resource type="Texture2D" uid="uid://dutbgcpsaspr7" path="res://assety/dron_projectile.png" id="2_s15j2"]
 [ext_resource type="PackedScene" uid="uid://xpwiohrhvva5" path="res://system obstacles/WindowBackground.tscn" id="3_s15j2"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4iml"]
+atlas = ExtResource("2_s15j2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q31ip"]
+atlas = ExtResource("2_s15j2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hmid"]
+atlas = ExtResource("2_s15j2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhunq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4iml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q31ip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hmid")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpjj2"]
+size = Vector2(11, 12)
 
 [node name="FallingProjectile" type="Area2D" unique_id=14631250]
 collision_layer = 0
 collision_mask = 6
 monitorable = false
 script = ExtResource("1_wh0q8")
+falling_speed = 90
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2052684474]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=353350948]
 modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_hpjj2")
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_bhunq")
+autoplay = "default"
+frame_progress = 0.23844904
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1696479184]
+position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_hpjj2")
 
 [node name="SubViewportContainer" parent="." unique_id=2093898323 instance=ExtResource("3_s15j2")]

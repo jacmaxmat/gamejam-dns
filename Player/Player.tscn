@@ -19,11 +19,14 @@
 [ext_resource type="Texture2D" uid="uid://vuly0sh18bn" path="res://assety/ludek_cialo_-45stopni.png" id="12_8sa4y"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cwhd1xmp1a823" path="res://Player/legs_machine.tres" id="12_d7xyo"]
 [ext_resource type="Texture2D" uid="uid://yk3b36yx2pkk" path="res://assety/ludek_cialo_45stopni.png" id="14_3nb2p"]
+[ext_resource type="AudioStream" uid="uid://byayw6hqlcrpt" path="res://dzwiek/garbage.wav" id="16_7v5gs"]
 [ext_resource type="Texture2D" uid="uid://c6s1xybsupqh2" path="res://assety/ludek_strzal_dol.png" id="19_evw08"]
 [ext_resource type="Texture2D" uid="uid://d27h48j3vu3b5" path="res://assety/ludek_strzal_-45stopni.png" id="20_7uipr"]
 [ext_resource type="Texture2D" uid="uid://ctxn76mfx0n0p" path="res://assety/ludek_strzal_gora.png" id="20_roy6y"]
 [ext_resource type="Texture2D" uid="uid://c48ojrgbv44wt" path="res://assety/ludek_strzal_prosto.png" id="20_u5tep"]
 [ext_resource type="Texture2D" uid="uid://ddxf8ficmmg2k" path="res://assety/ludek_strzal_45stopni.png" id="22_ps8ct"]
+[ext_resource type="AudioStream" uid="uid://bic2hwndc4i8d" path="res://dzwiek/jump1.wav" id="25_yifbt"]
+[ext_resource type="AudioStream" uid="uid://co57lmjcwokju" path="res://dzwiek/fall2.wav" id="27_hqjia"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8ooo"]
 radius = 14.0
@@ -1126,7 +1129,70 @@ _data = {
 &"walk": SubResource("Animation_p7tob")
 }
 
+[sub_resource type="Animation" id="Animation_x70vp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualLayer/LowerBody:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1.353256, 1.353256, 1.353256, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VisualLayer/UpperBody:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wo5nf"]
+resource_name = "asdasd"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisualLayer/LowerBody:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1.353256, 1.353256, 1.353256, 1), Color(1.8826746, 1.8826746, 1.8826746, 1), Color(10.5787325, 10.5787325, 10.5787325, 1), Color(2.5713813, 2.5713813, 2.5713813, 1), Color(7.7925534, 7.7925534, 7.7925534, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VisualLayer/UpperBody:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.8826746, 1.8826746, 1.8826746, 1), Color(10.5787325, 10.5787325, 10.5787325, 1), Color(2.5713813, 2.5713813, 2.5713813, 1), Color(7.7925534, 7.7925534, 7.7925534, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_croik"]
+_data = {
+&"RESET": SubResource("Animation_x70vp"),
+&"asdasd": SubResource("Animation_wo5nf")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=283957801 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "shooting_component", "aim_component", "animation_component")]
+texture_filter = 1
+scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_0j2ni")
@@ -1141,6 +1207,7 @@ animation_component = NodePath("AnimationComponent")
 [node name="VisualLayer" type="Node2D" parent="." unique_id=808254088]
 
 [node name="LowerBody" type="Sprite2D" parent="VisualLayer" unique_id=2055014946]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 position = Vector2(30, -1)
 texture = ExtResource("2_v0k0e")
 hframes = 2
@@ -1170,6 +1237,14 @@ gun_barrel = NodePath("../VisualLayer/UpperBody/BarrelGun")
 [node name="JumpComponent" parent="." unique_id=391932550 instance=ExtResource("7_7v5gs")]
 jump_velocity = -415.0
 
+[node name="JumpSound" type="AudioStreamPlayer" parent="JumpComponent" unique_id=1064557099]
+stream = ExtResource("25_yifbt")
+
+[node name="LandSound" type="AudioStreamPlayer" parent="JumpComponent" unique_id=1469974633]
+stream = ExtResource("27_hqjia")
+volume_db = -10.0
+pitch_scale = 0.5
+
 [node name="MovementComponent" parent="." unique_id=889880810 instance=ExtResource("8_8sa4y")]
 speed = 150.0
 ground_accel_speed = 17.0
@@ -1198,3 +1273,11 @@ parameters/Blend2/blend_amount = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1316428995]
 libraries/ = SubResource("AnimationLibrary_p7tob")
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=549546811]
+stream = ExtResource("16_7v5gs")
+
+[node name="Invincibility" type="AnimationPlayer" parent="." unique_id=577413648]
+libraries/ = SubResource("AnimationLibrary_croik")
+
+[connection signal="animation_finished" from="Invincibility" to="." method="_on_invincibility_animation_finished"]

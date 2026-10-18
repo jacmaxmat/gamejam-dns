@@ -39,6 +39,11 @@ func hit(damage):
 		queue_free()
 
 func _on_shoot_timer_timeout() -> void:
+	$Sprite2D.play("shoot")
 	var falling_projectile_instance = falling_projectile_preload.instantiate()
 	falling_projectile_instance.global_position = $ShootMarker.global_position
 	get_tree().get_root().add_child(falling_projectile_instance)
+
+
+func _on_sprite_2d_animation_finished() -> void:
+	$Sprite2D.play("default")

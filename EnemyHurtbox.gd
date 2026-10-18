@@ -2,4 +2,4 @@ extends Area2D
 
 
 func hit(damage):
-	get_parent().hit(damage)
+	get_parent().get_parent().hit(damage)

@@ -16,6 +16,7 @@ animations = [{
 }]
 
 [node name="BulletDestroy" type="AnimatedSprite2D" unique_id=975410563]
+visible = false
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_bhunq")
 autoplay = "default"

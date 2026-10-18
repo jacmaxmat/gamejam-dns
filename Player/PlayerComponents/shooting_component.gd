@@ -14,7 +14,7 @@ func shoot() -> void:
 	Global.shakecamera.screen_shake(3, .1)
 	var bullet = bullet_scene.instantiate()
 
-	bullet.global_position = gun_barrel.global_position
+	bullet.global_position = gun_barrel.global_position + Vector2(240,135)
 	get_tree().get_root().add_child(bullet)
 	bullet.look_at(bullet.get_global_mouse_position())
 	bullet.global_rotation_degrees += randi_range(-3, 3)
