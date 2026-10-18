@@ -8,7 +8,7 @@ var preload_bullet_destroy = preload("uid://c0ajdb5n0h87e")
 func _process(delta: float) -> void:
 	if Global.is_game_over:
 		queue_free()
-	position += hitbox.transform.x * speed * delta
+	position += transform.x * speed * delta
 	
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

@@ -8,7 +8,7 @@ var popup_preload = preload("uid://dfyfwjfuri5wl")
 var cursor_preload = preload("uid://dohkivpoc06r6")
 var push_preload = preload("uid://b4ttwoadwy288")
 
-@export var drag_speed := 80
+@export var drag_speed := 130
 
 func _ready() -> void:
 	if active:

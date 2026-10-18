@@ -9,8 +9,8 @@ size = Vector2(743, 23)
 [node name="PlayerTestWindow" type="Node" unique_id=748172979]
 
 [node name="Player" parent="." unique_id=283957801 instance=ExtResource("1_cmmnu")]
-position = Vector2(363, 289)
-scale = Vector2(2.4444444, 2.3333333)
+position = Vector2(529, 170)
+scale = Vector2(3, 3)
 
 [node name="floor" type="Sprite2D" parent="." unique_id=929130000]
 position = Vector2(371.00003, 371)
@@ -22,6 +22,19 @@ position = Vector2(-63.965523, -2061.1113)
 scale = Vector2(0.1724138, 5.555556)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor/StaticBody2D" unique_id=1090001610]
+position = Vector2(372.5, 370.5)
+shape = SubResource("RectangleShape2D_e8ooo")
+
+[node name="floor2" type="Sprite2D" parent="." unique_id=14674678]
+position = Vector2(843.00006, 248)
+scale = Vector2(5.8, 0.18)
+texture = ExtResource("2_bcsus")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="floor2" unique_id=850828498]
+position = Vector2(-63.965523, -2061.1113)
+scale = Vector2(0.1724138, 5.555556)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor2/StaticBody2D" unique_id=1959103451]
 position = Vector2(372.5, 370.5)
 shape = SubResource("RectangleShape2D_e8ooo")
 
