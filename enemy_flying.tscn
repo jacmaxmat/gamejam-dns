@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ykqpjllv8oe8"]
+
+[ext_resource type="PackedScene" uid="uid://dt2rugap4nnh8" path="res://enemy.tscn" id="1_0qh60"]
+[ext_resource type="Script" uid="uid://cn7o4866xwu50" path="res://enemy_flying.gd" id="2_bt453"]
+
+[node name="EnemyFlying" unique_id=1783562719 instance=ExtResource("1_0qh60")]
+script = ExtResource("2_bt453")
+health = 3
+move_speed = 100
+
+[node name="SubViewportContainer" parent="." index="2" unique_id=2093898323]
+offset_left = -33.0
+offset_top = -31.0
+offset_right = 31.0
+offset_bottom = 33.0
+
+[node name="ShootTimer" type="Timer" parent="." index="3" unique_id=2007863383]
+wait_time = 2.0
+
+[node name="ShootMarker" type="Marker2D" parent="." index="4" unique_id=103553264]
+position = Vector2(0, 21)
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+
+[editable path="SubViewportContainer"]

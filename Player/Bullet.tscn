@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dkhf0xdun4k5b"]
 
 [ext_resource type="Script" uid="uid://csdlx5gv5eopw" path="res://Player/bullet.gd" id="1_508bx"]
-[ext_resource type="Texture2D" uid="uid://duljscq5cnfvp" path="res://assety/ludek/ludzik_pocisk.png" id="1_nyi2d"]
+[ext_resource type="Texture2D" uid="uid://duljscq5cnfvp" path="res://assety/ludzik_pocisk.png" id="1_nyi2d"]
+[ext_resource type="PackedScene" uid="uid://xpwiohrhvva5" path="res://system obstacles/WindowBackground.tscn" id="3_ft26q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_508bx"]
 atlas = ExtResource("1_nyi2d")
@@ -26,20 +27,38 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hynge"]
-radius = 4.0
-height = 16.0
+radius = 7.0
+height = 18.0
 
-[node name="Bullet" type="Area2D" unique_id=1822330316]
+[node name="Bullet" type="Node2D" unique_id=851040047]
 script = ExtResource("1_508bx")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=502729570]
+[node name="BulletHitbox" type="Area2D" parent="." unique_id=1822330316]
+collision_layer = 0
+collision_mask = 264
+monitorable = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BulletHitbox" unique_id=502729570]
 sprite_frames = SubResource("SpriteFrames_e8ooo")
 frame_progress = 0.24011646
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=290140722]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletHitbox" unique_id=290140722]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_hynge")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1132215206]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="BulletHitbox" unique_id=1132215206]
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[node name="SubViewportContainer" parent="." unique_id=2093898323 instance=ExtResource("3_ft26q")]
+z_index = -4
+offset_left = -38.0
+offset_top = -36.0
+offset_right = 42.0
+offset_bottom = 44.0
+
+[node name="TextureRect" parent="SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(2093898323, 1565600406) index="0" unique_id=1998533188]
+z_index = -4
+
+[connection signal="area_entered" from="BulletHitbox" to="." method="_on_bullet_hitbox_area_entered"]
+[connection signal="screen_exited" from="BulletHitbox/VisibleOnScreenNotifier2D" to="BulletHitbox" method="_on_visible_on_screen_notifier_2d_screen_exited"]
+
+[editable path="SubViewportContainer"]

@@ -1,6 +1,6 @@
 extends Node2D
 
-var events = ["popup", "cursor", "push"]
+var events = ["cursor"]
 var current_event = "none"
 @export var active = true
 
@@ -19,9 +19,12 @@ func _process(delta: float) -> void:
 		if $DragTimer.is_stopped():
 			$DragTimer.start()
 			Global.drag_direction = Vector2(randf_range(0,1),randf_range(0,1)).normalized()
-		move_window(delta)
-	elif !$DragTimer.is_stopped():
-		$DragTimer.stop()
+		if Global.cursors_dragging > 0:
+			move_window(delta)
+	else:
+		Global.window.velocity = Vector2.ZERO
+		if !$DragTimer.is_stopped():
+			$DragTimer.stop()
 
 
 func move_window(delta):

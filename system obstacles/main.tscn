@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://hgu722xobe4n" path="res://system obstacles/camera_2d.gd" id="7_4avnr"]
 [ext_resource type="PackedScene" uid="uid://s1otfbodyphd" path="res://menus/title_screen.tscn" id="7_mv0n7"]
 [ext_resource type="Script" uid="uid://cvob6keoht0el" path="res://system obstacles/window_view.gd" id="7_tkfrg"]
-[ext_resource type="PackedScene" uid="uid://dv08oewojoqsl" path="res://system obstacles/bullet.tscn" id="11_lq1mb"]
+[ext_resource type="PackedScene" uid="uid://k6bao6rhpn2" path="res://level.tscn" id="8_4avnr"]
+[ext_resource type="PackedScene" uid="uid://dxqolxv2isnx4" path="res://Player/Player.tscn" id="9_qqf7j"]
+[ext_resource type="FontFile" uid="uid://e20nougn4186" path="res://font/upheaval/upheavtt.ttf" id="11_lq1mb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(41, 737)
@@ -134,9 +136,6 @@ _data = {
 [node name="Main" type="Node2D" unique_id=406022306]
 script = ExtResource("1_x7n1j")
 
-[node name="Bullet" parent="." unique_id=448943462 instance=ExtResource("11_lq1mb")]
-position = Vector2(360, 555)
-
 [node name="OutsideGameManager" parent="." unique_id=2016209311 instance=ExtResource("1_ig7tw")]
 
 [node name="Window" parent="." unique_id=427429608 instance=ExtResource("2_0xm2m")]
@@ -146,6 +145,15 @@ position = Vector2(334, 187)
 [node name="Sprite2D" parent="Window" index="0" unique_id=294253054]
 size_flags_horizontal = 6
 size_flags_vertical = 6
+
+[node name="HUD" parent="Window" index="3" unique_id=42208087]
+offset_left = 343.0
+offset_top = -14.0
+offset_right = 410.0
+offset_bottom = 26.0
+
+[node name="Score" parent="Window/HUD" index="0" unique_id=362071204]
+theme_override_colors/font_color = Color(1, 1, 0.2627451, 1)
 
 [node name="WindowView" type="SubViewportContainer" parent="Window" unique_id=1189050736]
 z_index = -1
@@ -170,7 +178,7 @@ render_target_update_mode = 0
 script = ExtResource("7_4avnr")
 
 [node name="TextureRect" type="TextureRect" parent="Window/WindowView/SubViewport" unique_id=649328313]
-z_index = 1
+z_index = -3
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -185,6 +193,12 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 texture = ExtResource("3_4avnr")
 stretch_mode = 2
+
+[node name="Player" parent="Window/WindowView/SubViewport" unique_id=548577304 instance=ExtResource("9_qqf7j")]
+position = Vector2(237, 82)
+collision_mask = 12
+
+[node name="Level" parent="Window/WindowView/SubViewport" unique_id=1088217774 instance=ExtResource("8_4avnr")]
 
 [node name="TitleScreen" parent="Window" unique_id=1027695133 instance=ExtResource("7_mv0n7")]
 visible = true
@@ -213,6 +227,16 @@ offset_left = -84.0
 offset_top = 333.0
 offset_right = 273.0
 offset_bottom = 429.0
+
+[node name="Label" type="Label" parent="Window" unique_id=1482713893]
+offset_left = 4.0
+offset_top = -2.0
+offset_right = 76.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0.3083999, 0.3083999, 0.3083999, 1)
+theme_override_fonts/font = ExtResource("11_lq1mb")
+theme_override_font_sizes/font_size = 16
+text = "game.exe"
 
 [node name="Bounds" type="Node2D" parent="." unique_id=161645737]
 
@@ -263,5 +287,7 @@ libraries/ = SubResource("AnimationLibrary_lq1mb")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="Window/Highscores/FinalScreen" method="_on_animation_player_animation_finished"]
 
+[editable path="OutsideGameManager"]
 [editable path="Window"]
+[editable path="Window/WindowView/SubViewport/Player"]
 [editable path="Window/Highscores"]

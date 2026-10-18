@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var health := 3
+
 @export_subgroup("Nodes")
 @export var gravity_component: GravityComponent
 @export var input_component: InputComponent
@@ -8,6 +10,9 @@ extends CharacterBody2D
 @export var shooting_component: ShootingComponent
 @export var aim_component: AimComponent
 @export var animation_component: AnimationComponent
+
+func _ready() -> void:
+	Global.player = self
 
 func _physics_process(delta: float) -> void:
 	gravity_component.handle_gravity(self, delta)
@@ -18,3 +23,6 @@ func _physics_process(delta: float) -> void:
 	shooting_component.handle_shoot(input_component.get_shoot_input())
 	
 	move_and_slide()
+
+func hit(amount):
+	Global.change_health(amount)

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://h4t5f8dv7rut"]
+
+[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="1_hpjj2"]
+[ext_resource type="Script" uid="uid://djbbn8xc2jmjr" path="res://falling_projectile.gd" id="1_wh0q8"]
+[ext_resource type="PackedScene" uid="uid://xpwiohrhvva5" path="res://system obstacles/WindowBackground.tscn" id="3_s15j2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpjj2"]
+
+[node name="FallingProjectile" type="Area2D" unique_id=14631250]
+collision_layer = 0
+collision_mask = 6
+monitorable = false
+script = ExtResource("1_wh0q8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2052684474]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_hpjj2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1696479184]
+shape = SubResource("RectangleShape2D_hpjj2")
+
+[node name="SubViewportContainer" parent="." unique_id=2093898323 instance=ExtResource("3_s15j2")]
+z_index = -5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="SubViewport" parent="SubViewportContainer" index="0" unique_id=1565600406]
+size = Vector2i(32, 32)
+
+[node name="Sprite2D" parent="SubViewportContainer" index="1" unique_id=1382969170]
+position = Vector2(15.999999, 15.500001)
+scale = Vector2(0.06666666, 0.122222215)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="SubViewportContainer"]

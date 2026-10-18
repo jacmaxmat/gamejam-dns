@@ -23,9 +23,11 @@ SaveManager="*uid://c7o3gytw4e6cy"
 
 [display]
 
+window/size/mode=3
 window/size/borderless=true
 window/size/always_on_top=true
 window/size/transparent=true
+window/size/no_focus=true
 window/hdr/request_hdr_output=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
@@ -59,6 +61,7 @@ shoot={
 2d_physics/layer_1="null"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Solid"
+2d_physics/layer_4="Enemy"
 2d_physics/layer_5="Window"
 2d_physics/layer_6="Bounds"
 

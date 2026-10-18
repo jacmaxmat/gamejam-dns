@@ -51,4 +51,4 @@ func handle_jump_buffer(body: CharacterBody2D, want_to_jump: bool) -> void:
 
 func handle_variable_jump_height(body: CharacterBody2D, jump_released: bool) -> void:
 	if jump_released and is_going_up:
-		body.velocity.y = body.velocity.y/2
+		body.velocity.y = body.velocity.y/3

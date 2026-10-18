@@ -12,10 +12,11 @@ func shoot() -> void:
 		return
 	
 	var bullet = bullet_scene.instantiate()
-	get_tree().current_scene.add_child(bullet)
+	bullet.global_position = Global.player.global_position + Vector2(240,135)
+	get_tree().get_root().add_child(bullet)
 	
-	bullet.global_position = spawn_point.global_position
-	bullet.global_rotation = spawn_point.global_rotation
+	#bullet.global_position = spawn_point.global_position
+	bullet.hitbox.global_rotation_degrees = spawn_point.global_rotation_degrees + randi_range(-3,3)
 	
 	can_shoot = false
 	await get_tree().create_timer(fire_rate).timeout

@@ -10,7 +10,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	global_position = get_global_mouse_position()
+	#global_position = get_global_mouse_position()
 	$Bar/CollisionShape2D.shape.extents.x = $Sprite2D.size.x/2
 	$Bar.position.x = $Sprite2D.size.x/2
 	$CollisionShape2D.shape.extents = $Sprite2D.size/2
@@ -28,39 +28,40 @@ func _process(delta: float) -> void:
 		resize(Vector2(-1,0), 3)
 
 func resize(dir, resize_speed):
-	match dir:
-		Vector2(1,0):
-			print("lewo")
-			var start_size = $Sprite2D.size.x
-			$Sprite2D.size.x = max($Sprite2D.size.x - (resize_speed * 2), 200)
-			var dif = start_size - $Sprite2D.size.x
-			print(dif)
-			$WindowView/SubViewport/TextureRect.global_position.x += dif
-			#$Sprite2D.size.x -= resize_speed * 2
-			#global_position.x += resize_speed*2
-			
-			global_position.x += dif
-			#Global.cam.offset.x += dif
-		Vector2(-1,0):
-			var start_size = $Sprite2D.size.x
-			$Sprite2D.size.x = max($Sprite2D.size.x - (resize_speed), 200)
-			var dif = start_size - $Sprite2D.size.x
-			print(dif)
-			$WindowView/SubViewport/TextureRect.global_position.x -= 3
-			#Global.cam.offset.x += dif
-			#$Sprite2D.size.x -= resize_speed
-		Vector2(0,1):
-			var start_size = $Sprite2D.size.y
-			$Sprite2D.size.y = max($Sprite2D.size.y - (resize_speed * 2), 200)
-			var dif = start_size - $Sprite2D.size.y
-			global_position.y += dif
-			#Global.cam.offset.y -= dif
-			#$Sprite2D.size.y -= resize_speed * 2
-			#global_position.y += resize_speed*2
-		Vector2(0,-1):
-			var start_size = $Sprite2D.size.y
-			$Sprite2D.size.y = max($Sprite2D.size.y - (resize_speed), 200)
-			var dif = start_size - $Sprite2D.size.y
+	pass
+	#match dir:
+		#Vector2(1,0):
+			#print("lewo")
+			#var start_size = $Sprite2D.size.x
+			#$Sprite2D.size.x = max($Sprite2D.size.x - (resize_speed * 2), 200)
+			#var dif = start_size - $Sprite2D.size.x
+			#print(dif)
+			#$WindowView/SubViewport/TextureRect.global_position.x += dif
+			##$Sprite2D.size.x -= resize_speed * 2
+			##global_position.x += resize_speed*2
+			#
+			#global_position.x += dif
+			##Global.cam.offset.x += dif
+		#Vector2(-1,0):
+			#var start_size = $Sprite2D.size.x
+			#$Sprite2D.size.x = max($Sprite2D.size.x - (resize_speed), 200)
+			#var dif = start_size - $Sprite2D.size.x
+			#print(dif)
+			#$WindowView/SubViewport/TextureRect.global_position.x -= 3
+			##Global.cam.offset.x += dif
+			##$Sprite2D.size.x -= resize_speed
+		#Vector2(0,1):
+			#var start_size = $Sprite2D.size.y
+			#$Sprite2D.size.y = max($Sprite2D.size.y - (resize_speed * 2), 200)
+			#var dif = start_size - $Sprite2D.size.y
+			#global_position.y += dif
+			##Global.cam.offset.y -= dif
+			##$Sprite2D.size.y -= resize_speed * 2
+			##global_position.y += resize_speed*2
+		#Vector2(0,-1):
+			#var start_size = $Sprite2D.size.y
+			#$Sprite2D.size.y = max($Sprite2D.size.y - (resize_speed), 200)
+			#var dif = start_size - $Sprite2D.size.y
 			#Global.cam.offset.y += dif
 	#if Input.is_action_pressed("ui_left"):
 		#$Sprite2D.size.x -= resize_speed
@@ -86,4 +87,7 @@ func _physics_process(delta: float) -> void:
 		#velocity.bounce(collision.get_normal().normalized() * velocity)
 
 func move(direction, speed, delta):
-	velocity = direction.normalized() * speed
+	if Global.cursors_dragging == 0:
+		velocity = Vector2.ZERO
+	else:
+		velocity = direction.normalized() * speed

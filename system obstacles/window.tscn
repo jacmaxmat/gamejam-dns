@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dfvp4pl3k7a1g" path="res://system obstacles/Window.gd" id="1_bnn13"]
 [ext_resource type="Texture2D" uid="uid://dgd2gfi6kmte0" path="res://system obstacles/okno.png" id="2_5n0ag"]
+[ext_resource type="FontFile" uid="uid://e20nougn4186" path="res://font/upheaval/upheavtt.ttf" id="3_5n0ag"]
+[ext_resource type="Script" uid="uid://b2hxw8brwdh4a" path="res://system obstacles/hud.gd" id="3_8lrwx"]
+[ext_resource type="Texture2D" uid="uid://dwlrd6180ceoh" path="res://assety/heart.png" id="5_308qr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(472, 14)
@@ -39,3 +42,41 @@ shape = SubResource("RectangleShape2D_bhunq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1169904597]
 shape = SubResource("RectangleShape2D_riqys")
+
+[node name="HUD" type="HBoxContainer" parent="." unique_id=42208087]
+offset_left = 342.0
+offset_top = -13.0
+offset_right = 394.0
+offset_bottom = 27.0
+alignment = 1
+script = ExtResource("3_8lrwx")
+
+[node name="Score" type="Label" parent="HUD" unique_id=362071204]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_5n0ag")
+theme_override_font_sizes/font_size = 16
+text = "Score: 0"
+
+[node name="Heart1" type="TextureRect" parent="." unique_id=865593871]
+offset_left = 110.0
+offset_right = 118.0
+offset_bottom = 40.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_308qr")
+stretch_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="." unique_id=1837270407]
+offset_left = 124.0
+offset_right = 132.0
+offset_bottom = 40.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_308qr")
+stretch_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="." unique_id=663685937]
+offset_left = 138.0
+offset_right = 146.0
+offset_bottom = 40.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_308qr")
+stretch_mode = 2

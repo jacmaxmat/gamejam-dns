@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://7cniskgodnyi" path="res://assety/mapa.jpg" id="1_ag5ri"]
 [ext_resource type="Script" uid="uid://bqnx1omp38ney" path="res://system obstacles/asdasd.gd" id="2_ftdl0"]
+[ext_resource type="Texture2D" uid="uid://dgd2gfi6kmte0" path="res://system obstacles/okno.png" id="3_ftdl0"]
 
 [node name="SubViewportContainer" type="SubViewportContainer" unique_id=2093898323]
 anchors_preset = 15
@@ -23,8 +24,21 @@ render_target_update_mode = 4
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 640.0
-offset_bottom = 136.0
+offset_right = 1088.0
+offset_bottom = 584.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource("1_ag5ri")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="SubViewport" unique_id=331636540]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1088.0
+offset_bottom = 584.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
@@ -36,3 +50,8 @@ stretch_mode = 2
 position = Vector2(30, 33)
 limit_enabled = false
 script = ExtResource("2_ftdl0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1382969170]
+position = Vector2(32.500004, 31.499998)
+scale = Vector2(0.13958333, 0.26296297)
+texture = ExtResource("3_ftdl0")

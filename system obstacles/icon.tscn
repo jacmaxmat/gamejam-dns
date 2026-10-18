@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://xl46x5ro4jty" path="res://system obstacles/icon.gd" id="1_ewbvy"]
 [ext_resource type="Texture2D" uid="uid://d01f4sloflqld" path="res://assety/ikony.png" id="2_ewbvy"]
+[ext_resource type="Script" uid="uid://ygah7pveascy" path="res://system obstacles/iconarea.gd" id="3_uq0jc"]
+[ext_resource type="FontFile" uid="uid://e20nougn4186" path="res://font/upheaval/upheavtt.ttf" id="4_3b0pt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(40, 36)
@@ -56,8 +58,9 @@ frame = 1
 region_rect = Rect2(16, 0, 16, 16)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=927342953]
-collision_layer = 64
+collision_layer = 256
 collision_mask = 16
+script = ExtResource("3_uq0jc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1315073196]
 shape = SubResource("RectangleShape2D_bhunq")
@@ -65,6 +68,20 @@ shape = SubResource("RectangleShape2D_bhunq")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=129486675]
 libraries/ = SubResource("AnimationLibrary_3b0pt")
 autoplay = &"spawn"
+
+[node name="Label" type="Label" parent="." unique_id=850367344]
+z_index = -3
+offset_left = -23.0
+offset_top = 19.0
+offset_right = 25.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_3b0pt")
+theme_override_font_sizes/font_size = 16
+text = "VIRUS"
+horizontal_alignment = 1
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
