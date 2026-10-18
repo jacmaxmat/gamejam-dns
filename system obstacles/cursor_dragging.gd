@@ -9,10 +9,12 @@ func _ready() -> void:
 
 func hit(damage):
 	health -= damage
+	$bialykursor.visible = true
 	if health <= 0:
 		Global.add_score(30)
-		Global.cursors_dragging -=1
-		queue_free() 
+		queue_free()
+	await get_tree().create_timer(.1).timeout
+	$bialykursor.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

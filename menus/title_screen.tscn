@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://s1otfbodyphd"]
 
 [ext_resource type="Script" uid="uid://b2r2dysbk44y1" path="res://menus/title_screen.gd" id="1_m4alt"]
+[ext_resource type="Texture2D" uid="uid://f048om40enbm" path="res://assety/b.png" id="2_dpr3f"]
 [ext_resource type="FontFile" uid="uid://e20nougn4186" path="res://font/upheaval/upheavtt.ttf" id="2_i63b8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frbl3"]
@@ -10,7 +11,6 @@ corner_detail = 1
 
 [node name="TitleScreen" type="Control" unique_id=1027695133]
 process_mode = 2
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,6 +18,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m4alt")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2048770605]
+modulate = Color(0.40784314, 0.44705883, 0.44705883, 1)
+layout_mode = 0
+offset_left = 539.0
+offset_top = 212.0
+offset_right = 603.0
+offset_bottom = 281.0
+texture = ExtResource("2_dpr3f")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=587451159]
 layout_mode = 1
@@ -31,12 +40,14 @@ offset_bottom = 56.0
 grow_vertical = 2
 
 [node name="StartGameButton" type="Button" parent="VBoxContainer" unique_id=871562043]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.8117647, 0.6745098, 0.32941177, 1)
 theme_override_colors/font_pressed_color = Color(0.580392, 0.580392, 0.580392, 1)
 theme_override_colors/font_hover_color = Color(0.823529, 0.823529, 0.823529, 1)
 theme_override_fonts/font = ExtResource("2_i63b8")
@@ -48,12 +59,14 @@ flat = true
 alignment = 0
 
 [node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1928437320]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 focus_neighbor_top = NodePath("../StartGameButton")
 focus_neighbor_bottom = NodePath("../StartGameButton")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.8117647, 0.6745098, 0.32941177, 1)
 theme_override_colors/font_pressed_color = Color(0.580392, 0.580392, 0.580392, 1)
 theme_override_colors/font_hover_color = Color(0.823529, 0.823529, 0.823529, 1)
 theme_override_fonts/font = ExtResource("2_i63b8")

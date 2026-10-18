@@ -20,7 +20,9 @@ func _process(delta: float) -> void:
 	if global_position.distance_to(target.global_position + target_offset) < 100:
 		if $ShootTimer.is_stopped():
 			$ShootTimer.start()
-		
+	if global_position.distance_to(Global.player.global_position + Vector2(240,135)) < 32:
+		Global.player.hit(1)
+		queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("hit"):

@@ -2,15 +2,16 @@
 
 [ext_resource type="Script" uid="uid://dy0qn3xxo543q" path="res://system obstacles/cursor.gd" id="1_33ngw"]
 [ext_resource type="Texture2D" uid="uid://cq2toap4mqvbk" path="res://assety/kursor.png" id="2_33ngw"]
+[ext_resource type="Texture2D" uid="uid://cn7qrxm3bqud1" path="res://assety/kursorbialy.png" id="3_3b742"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5l68f"]
-size = Vector2(24, 24)
+size = Vector2(50, 48)
 
 [node name="Cursor" type="Node2D" unique_id=1389714305]
 script = ExtResource("1_33ngw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1725713856]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 texture = ExtResource("2_33ngw")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=410495786]
@@ -18,6 +19,13 @@ collision_layer = 256
 collision_mask = 2097152
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=571265894]
+position = Vector2(-2, -2)
 shape = SubResource("RectangleShape2D_5l68f")
+
+[node name="bialykursor" type="Sprite2D" parent="." unique_id=118420746]
+visible = false
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("3_3b742")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

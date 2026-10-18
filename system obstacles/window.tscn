@@ -43,13 +43,16 @@ shape = SubResource("RectangleShape2D_bhunq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1169904597]
 shape = SubResource("RectangleShape2D_riqys")
 
-[node name="HUD" type="HBoxContainer" parent="." unique_id=42208087]
+[node name="HUD" type="HBoxContainer" parent="." unique_id=42208087 node_paths=PackedStringArray("heart1", "heart2", "heart3")]
 offset_left = 342.0
 offset_top = -13.0
 offset_right = 394.0
 offset_bottom = 27.0
 alignment = 1
 script = ExtResource("3_8lrwx")
+heart1 = NodePath("../Heart1")
+heart2 = NodePath("../Heart2")
+heart3 = NodePath("../Heart3")
 
 [node name="Score" type="Label" parent="HUD" unique_id=362071204]
 layout_mode = 2

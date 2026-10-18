@@ -50,13 +50,20 @@ shape = SubResource("CapsuleShape2D_hynge")
 
 [node name="SubViewportContainer" parent="." unique_id=2093898323 instance=ExtResource("3_ft26q")]
 z_index = -4
-offset_left = -38.0
-offset_top = -36.0
-offset_right = 42.0
-offset_bottom = 44.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 
-[node name="TextureRect" parent="SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(2093898323, 1565600406) index="0" unique_id=1998533188]
+[node name="SubViewport" parent="SubViewportContainer" index="0" unique_id=1565600406]
+size = Vector2i(32, 32)
+
+[node name="TextureRect" parent="SubViewportContainer/SubViewport" index="0" unique_id=1998533188]
 z_index = -4
+
+[node name="Sprite2D" parent="SubViewportContainer" index="1" unique_id=1382969170]
+position = Vector2(15.500002, 13.999998)
+scale = Vector2(0.06874999, 0.13333334)
 
 [connection signal="area_entered" from="BulletHitbox" to="." method="_on_bullet_hitbox_area_entered"]
 [connection signal="screen_exited" from="BulletHitbox/VisibleOnScreenNotifier2D" to="BulletHitbox" method="_on_visible_on_screen_notifier_2d_screen_exited"]

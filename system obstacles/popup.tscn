@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://dfyfwjfuri5wl"]
 
 [ext_resource type="Script" uid="uid://cqayyjm44ltcs" path="res://system obstacles/popup.gd" id="1_y1rju"]
-[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="2_he16x"]
+[ext_resource type="Texture2D" uid="uid://dw0lll0yi0od3" path="res://assety/popup_error.png" id="2_u1eis"]
+[ext_resource type="Texture2D" uid="uid://rry2g5tcb4ac" path="res://assety/popup_firewall.png" id="3_dcey8"]
+[ext_resource type="Texture2D" uid="uid://4uop6mu1xmf8" path="res://assety/popup_historia.png" id="4_1lbg3"]
+[ext_resource type="Texture2D" uid="uid://dkk8focqficlg" path="res://assety/popup_mamuski.png" id="5_hwacq"]
+[ext_resource type="Script" uid="uid://bjgsi2aoyu47a" path="res://system obstacles/ok.gd" id="6_u1eis"]
+[ext_resource type="Texture2D" uid="uid://f048om40enbm" path="res://assety/b.png" id="7_dcey8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
-size = Vector2(128, 128)
+size = Vector2(256, 128)
 
 [sub_resource type="Animation" id="Animation_y1rju"]
 length = 0.001
@@ -43,15 +48,23 @@ _data = {
 &"new_animation": SubResource("Animation_he16x")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_riqys"]
+size = Vector2(68, 27)
+
 [node name="Popup" type="CharacterBody2D" unique_id=999077596]
 scale = Vector2(1e-05, 1e-05)
 collision_layer = 0
 collision_mask = 32
 script = ExtResource("1_y1rju")
-speed = 200
+sprite1 = ExtResource("2_u1eis")
+sprite2 = ExtResource("3_dcey8")
+sprite3 = ExtResource("4_1lbg3")
+sprite4 = ExtResource("5_hwacq")
+speed = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1434749119]
-texture = ExtResource("2_he16x")
+scale = Vector2(2, 2)
+texture = ExtResource("5_hwacq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1143563576]
 shape = SubResource("RectangleShape2D_bhunq")
@@ -59,3 +72,25 @@ shape = SubResource("RectangleShape2D_bhunq")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=517695906]
 libraries/ = SubResource("AnimationLibrary_q8xnt")
 autoplay = &"new_animation"
+
+[node name="OK" type="Area2D" parent="." unique_id=925833526]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("6_u1eis")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OK" unique_id=1041118842]
+position = Vector2(0, 43.5)
+shape = SubResource("RectangleShape2D_riqys")
+
+[node name="bialyok" type="Sprite2D" parent="." unique_id=851688677]
+visible = false
+modulate = Color(1, 1, 1, 0.5921569)
+position = Vector2(5.722046e-06, 44)
+scale = Vector2(1.0625001, 0.40579712)
+texture = ExtResource("7_dcey8")
+
+[node name="okkk" type="Sprite2D" parent="." unique_id=1782716378]
+modulate = Color(1, 0, 0, 0.47843137)
+position = Vector2(5.722046e-06, 44)
+scale = Vector2(1.0625001, 0.40579712)
+texture = ExtResource("7_dcey8")

@@ -3,16 +3,17 @@
 [ext_resource type="Script" uid="uid://bst88428t8nxa" path="res://system obstacles/cursor_dragging.gd" id="1_b3fxp"]
 [ext_resource type="Texture2D" uid="uid://cq2toap4mqvbk" path="res://assety/kursor.png" id="2_b3fxp"]
 [ext_resource type="Script" uid="uid://clcc31u64h30n" path="res://system obstacles/cursordragginghurtbox.gd" id="3_1mjcm"]
+[ext_resource type="Texture2D" uid="uid://cn7qrxm3bqud1" path="res://assety/kursorbialy.png" id="4_yu3ed"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_igwmr"]
-radius = 23.021729
+radius = 31.016125
 
 [node name="CursorDragging" type="Node2D" unique_id=2082774963]
 script = ExtResource("1_b3fxp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1893719952]
 z_index = 1
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 texture = ExtResource("2_b3fxp")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1341460598]
@@ -23,3 +24,9 @@ script = ExtResource("3_1mjcm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=197889713]
 shape = SubResource("CircleShape2D_igwmr")
+
+[node name="bialykursor" type="Sprite2D" parent="." unique_id=1381523935]
+visible = false
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("4_yu3ed")

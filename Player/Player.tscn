@@ -221,6 +221,9 @@ states/legs_idle/node = SubResource("AnimationNodeAnimation_0j2ni")
 states/legs_idle/position = Vector2(352, 97)
 transitions = ["Start", "legs_idle", SubResource("AnimationNodeStateMachineTransition_v0k0e"), "legs_idle", "End", SubResource("AnimationNodeStateMachineTransition_5wa8t"), "legs_idle", "jump", SubResource("AnimationNodeStateMachineTransition_p7tob")]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(18, 18.5)
+
 [node name="Player" type="CharacterBody2D" unique_id=283957801 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "shooting_component", "aim_component", "animation_component")]
 scale = Vector2(2, 2)
 collision_layer = 2
@@ -291,3 +294,12 @@ gravity = 1175.0
 position = Vector2(0, 1)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_p34sf")
+
+[node name="PlayerHurtbox" type="Area2D" parent="." unique_id=1514838771]
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox" unique_id=1187250055]
+position = Vector2(0, 0.75)
+shape = SubResource("RectangleShape2D_bhunq")
+debug_color = Color(0.66653115, 0.51161075, 0, 0.41960785)

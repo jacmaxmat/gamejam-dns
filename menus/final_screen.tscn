@@ -13,7 +13,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="FinalScreen" type="Control" parent="." unique_id=805079245]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,12 +22,15 @@ grow_vertical = 2
 script = ExtResource("1_pyxie")
 
 [node name="TextureRect2" type="TextureRect" parent="FinalScreen" unique_id=642151123]
-visible = false
 modulate = Color(0.19607843, 0.19607843, 0.19607843, 0.7411765)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 300.0
+offset_top = 130.0
+offset_right = -288.0
+offset_bottom = -226.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -81,6 +83,7 @@ offset_top = 305.0
 offset_right = 850.0
 offset_bottom = 401.0
 scale = Vector2(0.5, 0.5)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.9490196, 0.59607846, 1)
 theme_override_fonts/font = ExtResource("2_30ftb")
 theme_override_font_sizes/font_size = 48
 text = "Main Menu"

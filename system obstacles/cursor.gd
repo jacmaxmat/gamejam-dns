@@ -27,10 +27,12 @@ func _process(delta: float) -> void:
 
 func hit(damage):
 	health -= damage
+	$bialykursor.visible = true
 	if health <= 0:
 		Global.add_score(30)
 		queue_free()
-	
+	await get_tree().create_timer(.1).timeout
+	$bialykursor.visible = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	is_dragging = true

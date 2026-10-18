@@ -10,7 +10,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	global_position.y += falling_speed * delta
-
+	if global_position.distance_to(Global.player.global_position + Vector2(240,135)) < 32:
+		Global.player.hit(1)
+		queue_free()
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.has_method("hit"):

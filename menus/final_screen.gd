@@ -15,12 +15,20 @@ func _ready():
 	#initialize_your_stats()
 
 func _process(delta):
-	pass
+	if Global.is_game_over:
+		game_over()
 
 #func _on_retry_pressed() -> void:
 	#get_tree().paused = false
 	#get_tree().reload_current_scene()
 
+func game_over():
+	Global.window.global_position = Global.window.global_position.move_toward(Vector2(334.0,187.0), 10)
+	Global.window.frame.size = Global.window.frame.size.move_toward(Vector2(480,270), 10)
+	if Global.window.global_position == Vector2(334.0,187.0) and Global.window.frame.size == Vector2(480,270):
+		$Menu.grab_focus()
+		visible = true
+		
 
 func _on_menu_pressed() -> void:
 	get_tree().paused = false
