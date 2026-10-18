@@ -15,9 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://dvgthpgx2ov87" path="res://Player/PlayerComponents/MovementComponent.tscn" id="8_8sa4y"]
 [ext_resource type="PackedScene" uid="uid://ba5qchpqa3sjt" path="res://Player/PlayerComponents/GravityComponent.tscn" id="9_3nb2p"]
 [ext_resource type="PackedScene" uid="uid://8dihvdwt7vo2" path="res://Player/PlayerComponents/InputComponent.tscn" id="10_d7xyo"]
-[ext_resource type="AudioStream" uid="uid://gpvhqb1wlbmn" path="res://dzwiek/JUUUUUMP.wav" id="14_dm7nj"]
-[ext_resource type="AudioStream" uid="uid://i143gd2k6535" path="res://dzwiek/fall3.wav" id="15_3mea3"]
-[ext_resource type="AudioStream" uid="uid://byayw6hqlcrpt" path="res://dzwiek/garbage.wav" id="16_7v5gs"]
 [ext_resource type="Texture2D" uid="uid://dj1wevys8s2l1" path="res://assety/ludek_cialo_dol.png" id="12_3nb2p"]
 [ext_resource type="Texture2D" uid="uid://vuly0sh18bn" path="res://assety/ludek_cialo_-45stopni.png" id="12_8sa4y"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cwhd1xmp1a823" path="res://Player/legs_machine.tres" id="12_d7xyo"]
@@ -374,10 +371,6 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(-8, 10)]
 }
-
-[sub_resource type="Animation" id="Animation_8sa4y"]
-resource_name = "invincibility"
-step = 0.083333336
 
 [sub_resource type="Animation" id="Animation_evw08"]
 resource_name = "aim_straight"
@@ -1116,43 +1109,6 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7tob"]
 _data = {
-[sub_resource type="Animation" id="Animation_3mea3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_7v5gs"]
-resource_name = "asdasd"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.40000004, 0.8, 1.2, 1.6, 1.9666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(4.2165008, 4.2165008, 4.2165008, 1), Color(1.1008143, 1.1008143, 1.1008143, 1), Color(4.483586, 4.483586, 4.483586, 1), Color(1.609101, 1.609101, 1.609101, 1), Color(3.3975437, 3.3975437, 3.3975437, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8sa4y"]
-_data = {
-&"RESET": SubResource("Animation_3mea3"),
-&"asdasd": SubResource("Animation_7v5gs")
-}
-
 &"RESET": SubResource("Animation_v0k0e"),
 &"aim_down": SubResource("Animation_u5tep"),
 &"aim_down_45": SubResource("Animation_d7xyo"),
@@ -1212,17 +1168,7 @@ fire_rate = 0.15
 gun_barrel = NodePath("../VisualLayer/UpperBody/BarrelGun")
 
 [node name="JumpComponent" parent="." unique_id=391932550 instance=ExtResource("7_7v5gs")]
-jump_velocity = -500.0
-
-[node name="JumpSound" type="AudioStreamPlayer" parent="JumpComponent" unique_id=723629796]
-stream = ExtResource("14_dm7nj")
-volume_db = 15.0
-pitch_scale = 1.2
-
-[node name="LandSound" type="AudioStreamPlayer" parent="JumpComponent" unique_id=1414788044]
-stream = ExtResource("15_3mea3")
-volume_db = -8.0
-pitch_scale = 0.93
+jump_velocity = -415.0
 
 [node name="MovementComponent" parent="." unique_id=889880810 instance=ExtResource("8_8sa4y")]
 speed = 150.0
@@ -1250,13 +1196,5 @@ parameters/UpperBodyStateMachine/AimSpace/blend_position = 0.0
 parameters/UpperBodyStateMachine/ShootSpace/blend_position = 0.0
 parameters/Blend2/blend_amount = 1.0
 
-[node name="Invincibility" type="AnimationPlayer" parent="." unique_id=83103802]
-libraries/ = SubResource("AnimationLibrary_8sa4y")
-
-[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=1480494928]
-stream = ExtResource("16_7v5gs")
-pitch_scale = 0.85
-
-[connection signal="animation_finished" from="Invincibility" to="." method="_on_invincibility_animation_finished"]
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1316428995]
 libraries/ = SubResource("AnimationLibrary_p7tob")
