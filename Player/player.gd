@@ -18,8 +18,8 @@ func _physics_process(delta: float) -> void:
 	gravity_component.handle_gravity(self, delta)
 	movement_component.handle_horizontal_movement(self, input_component.input_horizontal)
 	jump_component.handle_jump(self, input_component.get_jump_input(), input_component.get_jump_input_released())
-	aim_component.handle_aim(self, get_global_mouse_position())
-	animation_component.handle_animations(self, get_global_mouse_position())
+	aim_component.handle_aim(get_global_mouse_position())
+	animation_component.handle_animations(self, get_global_mouse_position(), input_component.get_shoot_input())
 	shooting_component.handle_shoot(input_component.get_shoot_input())
 	
 	move_and_slide()

@@ -2,13 +2,13 @@ class_name ShootingComponent
 extends Node
 
 @export var bullet_scene: PackedScene
-@export var spawn_point: Node2D
 @export var fire_rate: float = 0.2
+@export var gun_barrel: Node2D
 
 var can_shoot: bool = true
 
 func shoot() -> void:
-	if not can_shoot or bullet_scene == null or spawn_point == null:
+	if not can_shoot or bullet_scene == null or gun_barrel == null:
 		return
 	
 	var bullet = bullet_scene.instantiate()
