@@ -1116,7 +1116,6 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7tob"]
 _data = {
-
 [sub_resource type="Animation" id="Animation_3mea3"]
 length = 0.001
 tracks/0/type = "value"
