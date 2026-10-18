@@ -2,7 +2,7 @@ extends Node2D
 
 
 @onready var enemy_preload = preload("uid://dt2rugap4nnh8")
-@onready var enemy_flying_preload = preload("uid://ykqpjllv8oe8")
+@onready var enemy_flying_preload = preload("uid://d0m3enkqxwa0f")
 
 @onready var enemies = [enemy_preload, enemy_flying_preload]
 

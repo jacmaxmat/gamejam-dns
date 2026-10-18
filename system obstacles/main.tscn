@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cpk6n684j18a2" path="res://system obstacles/outside_game_manager.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://7x3pl4ailoo4" path="res://system obstacles/main.gd" id="1_x7n1j"]
 [ext_resource type="PackedScene" uid="uid://dbryayljgw6o2" path="res://system obstacles/window.tscn" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://7cniskgodnyi" path="res://assety/mapa.jpg" id="3_4avnr"]
 [ext_resource type="PackedScene" uid="uid://ddeq8d7thtyfc" path="res://menus/final_screen.tscn" id="6_mv0n7"]
+[ext_resource type="Texture2D" uid="uid://b8bd7lnxl32xh" path="res://mapa1.jpg" id="6_qqf7j"]
 [ext_resource type="Script" uid="uid://hgu722xobe4n" path="res://system obstacles/camera_2d.gd" id="7_4avnr"]
 [ext_resource type="PackedScene" uid="uid://s1otfbodyphd" path="res://menus/title_screen.tscn" id="7_mv0n7"]
 [ext_resource type="Script" uid="uid://cvob6keoht0el" path="res://system obstacles/window_view.gd" id="7_tkfrg"]
@@ -172,6 +172,8 @@ script = ExtResource("7_tkfrg")
 [node name="SubViewport" type="SubViewport" parent="Window/WindowView" unique_id=496213117]
 transparent_bg = true
 handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
 size = Vector2i(2, 2)
 render_target_update_mode = 0
 
@@ -181,16 +183,21 @@ script = ExtResource("7_4avnr")
 [node name="TextureRect" type="TextureRect" parent="Window/WindowView/SubViewport" unique_id=649328313]
 z_index = -1
 texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1150.0
-offset_bottom = 646.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 size_flags_horizontal = 6
 size_flags_vertical = 6
-texture = ExtResource("3_4avnr")
+texture = ExtResource("6_qqf7j")
 stretch_mode = 2
 
 [node name="Player" parent="Window/WindowView/SubViewport" unique_id=548577304 instance=ExtResource("9_qqf7j")]
@@ -302,5 +309,6 @@ libraries/ = SubResource("AnimationLibrary_lq1mb")
 [editable path="OutsideGameManager"]
 [editable path="Window"]
 [editable path="Window/WindowView/SubViewport/Player"]
+[editable path="Window/WindowView/SubViewport/Level"]
 [editable path="Window/TitleScreen"]
 [editable path="Window/Highscores"]

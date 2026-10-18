@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 		queue_free()
 	global_position= global_position.move_toward(target.global_position + Vector2(240,135), move_speed * delta)
 	if global_position.distance_to(Global.player.global_position + Vector2(240,135)) < 32:
+		Global.player.velocity = Vector2(sign(Global.player.scale.x)*150,-200)
 		Global.player.hit(1)
 		queue_free()
 	

@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://8dihvdwt7vo2" path="res://Player/PlayerComponents/InputComponent.tscn" id="10_d7xyo"]
 [ext_resource type="AudioStream" uid="uid://gpvhqb1wlbmn" path="res://dzwiek/JUUUUUMP.wav" id="14_dm7nj"]
 [ext_resource type="AudioStream" uid="uid://i143gd2k6535" path="res://dzwiek/fall3.wav" id="15_3mea3"]
+[ext_resource type="AudioStream" uid="uid://byayw6hqlcrpt" path="res://dzwiek/garbage.wav" id="16_7v5gs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8ooo"]
 radius = 14.0
@@ -87,6 +88,10 @@ tracks/0/keys = {
 "update": 0,
 "values": [Rect2(9, 51, 16, 13), Rect2(105, 52, 16, 12)]
 }
+
+[sub_resource type="Animation" id="Animation_8sa4y"]
+resource_name = "invincibility"
+step = 0.083333336
 
 [sub_resource type="Animation" id="Animation_0j2ni"]
 resource_name = "jump"
@@ -196,6 +201,7 @@ tracks/3/keys = {
 _data = {
 &"RESET": SubResource("Animation_p34sf"),
 &"idle": SubResource("Animation_b5s0s"),
+&"invincibility": SubResource("Animation_8sa4y"),
 &"jump": SubResource("Animation_0j2ni"),
 &"legs_idle": SubResource("Animation_evw08")
 }
@@ -223,8 +229,42 @@ states/legs_idle/node = SubResource("AnimationNodeAnimation_0j2ni")
 states/legs_idle/position = Vector2(352, 97)
 transitions = ["Start", "legs_idle", SubResource("AnimationNodeStateMachineTransition_v0k0e"), "legs_idle", "End", SubResource("AnimationNodeStateMachineTransition_5wa8t"), "legs_idle", "jump", SubResource("AnimationNodeStateMachineTransition_p7tob")]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
-size = Vector2(18, 18.5)
+[sub_resource type="Animation" id="Animation_3mea3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7v5gs"]
+resource_name = "asdasd"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40000004, 0.8, 1.2, 1.6, 1.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(4.2165008, 4.2165008, 4.2165008, 1), Color(1.1008143, 1.1008143, 1.1008143, 1), Color(4.483586, 4.483586, 4.483586, 1), Color(1.609101, 1.609101, 1.609101, 1), Color(3.3975437, 3.3975437, 3.3975437, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8sa4y"]
+_data = {
+&"RESET": SubResource("Animation_3mea3"),
+&"asdasd": SubResource("Animation_7v5gs")
+}
 
 [node name="Player" type="CharacterBody2D" unique_id=283957801 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "shooting_component", "aim_component", "animation_component")]
 scale = Vector2(2, 2)
@@ -282,7 +322,7 @@ jump_velocity = -500.0
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="JumpComponent" unique_id=723629796]
 stream = ExtResource("14_dm7nj")
-volume_db = 3.0
+volume_db = 15.0
 pitch_scale = 1.2
 
 [node name="LandSound" type="AudioStreamPlayer" parent="JumpComponent" unique_id=1414788044]
@@ -307,11 +347,11 @@ position = Vector2(0, 1)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_p34sf")
 
-[node name="PlayerHurtbox" type="Area2D" parent="." unique_id=1514838771]
-collision_layer = 2
-collision_mask = 0
+[node name="Invincibility" type="AnimationPlayer" parent="." unique_id=83103802]
+libraries/ = SubResource("AnimationLibrary_8sa4y")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox" unique_id=1187250055]
-position = Vector2(0, 0.75)
-shape = SubResource("RectangleShape2D_bhunq")
-debug_color = Color(0.66653115, 0.51161075, 0, 0.41960785)
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=1480494928]
+stream = ExtResource("16_7v5gs")
+pitch_scale = 0.85
+
+[connection signal="animation_finished" from="Invincibility" to="." method="_on_invincibility_animation_finished"]

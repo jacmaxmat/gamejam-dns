@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bvjf0dgwdip2s"]
+
+[ext_resource type="Script" uid="uid://bjd35eb6tffoc" path="res://enemy_projectile.gd" id="1_ccnu0"]
+[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="1_ff34o"]
+[ext_resource type="PackedScene" uid="uid://xpwiohrhvva5" path="res://system obstacles/WindowBackground.tscn" id="2_vpq67"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3ap4"]
+size = Vector2(28, 28)
+
+[node name="EnemyProjectile" type="Node2D" unique_id=1832477791]
+script = ExtResource("1_ccnu0")
+speed = 200.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2056087090]
+collision_layer = 0
+collision_mask = 6
+monitorable = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1609510213]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_ff34o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=59077829]
+shape = SubResource("RectangleShape2D_g3ap4")
+
+[node name="SubViewportContainer" parent="." unique_id=2093898323 instance=ExtResource("2_vpq67")]
+z_index = -3
+offset_left = -32.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0

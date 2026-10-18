@@ -61,7 +61,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_30ftb")
 theme_override_font_sizes/font_size = 32
-text = "Highscore: 10000"
+text = "Highscore: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -80,9 +80,9 @@ text = "Retry"
 [node name="Menu" type="Button" parent="FinalScreen" unique_id=1122766306]
 layout_mode = 0
 offset_left = 493.0
-offset_top = 305.0
+offset_top = 299.0
 offset_right = 850.0
-offset_bottom = 401.0
+offset_bottom = 395.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/font_focus_color = Color(0.9490196, 0.9490196, 0.59607846, 1)
 theme_override_fonts/font = ExtResource("2_30ftb")

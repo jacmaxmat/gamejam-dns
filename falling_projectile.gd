@@ -9,8 +9,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Global.is_game_over:
+		queue_free()
 	global_position.y += falling_speed * delta
 	if global_position.distance_to(Global.player.global_position + Vector2(240,135)) < 32:
+		Global.player.velocity = Vector2(sign(Global.player.scale.x)*150,-200)
 		Global.player.hit(1)
 		queue_free()
 

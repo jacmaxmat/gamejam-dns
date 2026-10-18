@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d0m3enkqxwa0f"]
+
+[ext_resource type="PackedScene" uid="uid://dt2rugap4nnh8" path="res://enemy.tscn" id="1_g3ap4"]
+[ext_resource type="Script" uid="uid://3nq440l5wakk" path="res://enemy_rotating.gd" id="2_ypd18"]
+
+[node name="EnemyRotating" unique_id=1783562719 instance=ExtResource("1_g3ap4")]
+script = ExtResource("2_ypd18")
+move_speed = 100
+
+[node name="ShootTimer" type="Timer" parent="." index="3" unique_id=304682665]
+wait_time = 4.0
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+
+[editable path="SubViewportContainer"]

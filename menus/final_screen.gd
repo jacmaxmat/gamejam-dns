@@ -32,6 +32,8 @@ func game_over():
 	Global.window.frame.size = Global.window.frame.size.move_toward(Vector2(480,270), 10)
 	if Global.window.global_position == Vector2(334.0,187.0) and Global.window.frame.size == Vector2(480,270):
 		$Menu.grab_focus()
+		$Scores/MyScore.text = "Score: " + str(Global.score)
+		$Scores/Highscore.text = "Highscore: " + str(SaveManager.highscore)
 		visible = true
 		
 

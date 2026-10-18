@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var health := 3
 
+var is_invincible = false
+
 @export_subgroup("Nodes")
 @export var gravity_component: GravityComponent
 @export var input_component: InputComponent
@@ -25,4 +27,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func hit(amount):
-	Global.update_health(amount)
+	if !is_invincible:
+		$HurtSound.play()
+		Global.shakecamera.screen_shake(8,.3)
+		is_invincible = true
+		$Invincibility.play("asdasd")
+		Global.update_health(amount)
+	
+
+func _on_invincibility_animation_finished(anim_name: StringName) -> void:
+	is_invincible = false

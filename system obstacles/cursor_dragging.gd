@@ -11,6 +11,7 @@ func hit(damage):
 	health -= damage
 	$bialykursor.visible = true
 	if health <= 0:
+		Global.cursors_dragging -=1
 		Global.add_score(30)
 		queue_free()
 	await get_tree().create_timer(.1).timeout

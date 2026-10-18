@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://djbggeigias6l"]
+
+[ext_resource type="PackedScene" uid="uid://dt2rugap4nnh8" path="res://enemy.tscn" id="1_urwbg"]
+[ext_resource type="Script" uid="uid://dwdsoofe1bwge" path="res://grounded_enemy.gd" id="2_ext67"]
+
+[sub_resource type="Animation" id="Animation_urwbg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_ext67"]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.3, 0.3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m1elb"]
+_data = {
+&"RESET": SubResource("Animation_urwbg"),
+&"spawn": SubResource("Animation_ext67")
+}
+
+[node name="GroundedEnemy" unique_id=1783562719 instance=ExtResource("1_urwbg")]
+script = ExtResource("2_ext67")
+health = 12
+move_speed = 100
+
+[node name="Sprite2D" parent="." index="0" unique_id=620188988]
+scale = Vector2(1e-05, 1e-05)
+
+[node name="Area2D" parent="." index="1" unique_id=2071093548]
+monitoring = false
+monitorable = false
+
+[node name="Left" type="Marker2D" parent="." index="3" unique_id=1041210207]
+position = Vector2(-49, 0)
+
+[node name="Right" type="Marker2D" parent="." index="4" unique_id=191079052]
+position = Vector2(48, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5" unique_id=2137313753]
+libraries/ = SubResource("AnimationLibrary_m1elb")
+autoplay = &"spawn"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="SubViewportContainer"]

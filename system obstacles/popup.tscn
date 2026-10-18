@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dkk8focqficlg" path="res://assety/popup_mamuski.png" id="5_hwacq"]
 [ext_resource type="Script" uid="uid://bjgsi2aoyu47a" path="res://system obstacles/ok.gd" id="6_u1eis"]
 [ext_resource type="Texture2D" uid="uid://f048om40enbm" path="res://assety/b.png" id="7_dcey8"]
+[ext_resource type="AudioStream" uid="uid://btca4gw1p7041" path="res://dzwiek/death.wav" id="8_1lbg3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(256, 128)
@@ -94,3 +95,8 @@ modulate = Color(1, 0, 0, 0.47843137)
 position = Vector2(5.722046e-06, 44)
 scale = Vector2(1.0625001, 0.40579712)
 texture = ExtResource("7_dcey8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=70897446]
+stream = ExtResource("8_1lbg3")
+volume_db = 5.0
+autoplay = true

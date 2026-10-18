@@ -100,15 +100,19 @@ func check_for_bounds():
 	if p_pos.x > Global.window.global_position.x + 245:
 		print("R")
 		Global.player.velocity = Vector2(-250,-350)
+		Global.player.hit(1)
 	elif p_pos.x < Global.window.global_position.x - 245:
 		print("L")
 		Global.player.velocity = Vector2(250,-350)
+		Global.player.hit(1)
 	elif p_pos.y < Global.window.global_position.y - 155:
 		print("U")
 		Global.player.set_collision_mask_value(3, false)
 		Global.player.velocity = Vector2(Global.player.velocity.x,50)
-		await get_tree().create_timer(.25).timeout
+		Global.player.hit(1)
+		await get_tree().create_timer(.15).timeout
 		Global.player.set_collision_mask_value(3, true)
 	elif p_pos.y > Global.window.global_position.y + 145:
 		print("D")
 		Global.player.velocity = Vector2(Global.player.velocity.x,-650)
+		Global.player.hit(1)

@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 		if $ShootTimer.is_stopped():
 			$ShootTimer.start()
 	if global_position.distance_to(Global.player.global_position + Vector2(240,135)) < 32:
+		Global.player.velocity = Vector2(sign(Global.player.scale.x)*150,-200)
 		Global.player.hit(1)
 		queue_free()
 
