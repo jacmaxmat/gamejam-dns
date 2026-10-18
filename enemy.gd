@@ -28,11 +28,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	#queue_free()
 	#
 func hit(damage):
+	$Sprite2D.modulate = Color(18.892, 18.892, 18.892)
 	health -= damage
 	if health <= 0:
 		Global.add_score(50)
 		queue_free()
-
+	await get_tree().create_timer(.1).timeout
+	$Sprite2D.modulate =Color(1.0, 1.0, 1.0)
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	pass
 	#if area.has_method("hit"):

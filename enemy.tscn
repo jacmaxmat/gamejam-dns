@@ -32,6 +32,8 @@ size = Vector2(16, 82)
 
 [node name="Enemy" type="Node2D" unique_id=1783562719]
 script = ExtResource("1_4gyqm")
+health = 3
+move_speed = 175
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1027576870]
 scale = Vector2(1.5, 1.5)

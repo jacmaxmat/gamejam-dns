@@ -26,10 +26,6 @@ func initialize():
 	is_game_over = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_left"):
-		game_over()
-	pass
 		
 
 func add_score(amount):

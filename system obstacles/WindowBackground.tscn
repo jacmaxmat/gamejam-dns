@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b8bd7lnxl32xh" path="res://mapa1.jpg" id="1_ftdl0"]
 [ext_resource type="Script" uid="uid://bqnx1omp38ney" path="res://system obstacles/asdasd.gd" id="2_ftdl0"]
-[ext_resource type="Texture2D" uid="uid://dgd2gfi6kmte0" path="res://system obstacles/okno.png" id="3_ftdl0"]
+[ext_resource type="Texture2D" uid="uid://bnb1qqrh5os7n" path="res://assety/okno.png" id="3_ftdl0"]
 
 [node name="SubViewportContainer" type="SubViewportContainer" unique_id=2093898323]
 anchors_preset = 15
@@ -35,6 +35,6 @@ limit_enabled = false
 script = ExtResource("2_ftdl0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1382969170]
-position = Vector2(32.500004, 31.499998)
-scale = Vector2(0.13958333, 0.26296297)
+position = Vector2(32, 31.499998)
+scale = Vector2(0.13749999, 0.26296297)
 texture = ExtResource("3_ftdl0")

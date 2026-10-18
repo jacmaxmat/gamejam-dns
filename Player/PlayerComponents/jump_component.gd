@@ -16,14 +16,14 @@ func has_just_landed(body: CharacterBody2D) -> bool:
 	return body.is_on_floor() and not last_frame_on_floor and is_jumping
 	
 func is_allowed_to_jump(body: CharacterBody2D, want_to_jump: bool) -> bool:
-	return want_to_jump and (body.is_on_floor() or not coyote_timer.is_stopped())
+	return want_to_jump and (body.is_on_floor() or not coyote_timer.is_stopped()) and !Input.is_action_pressed("down")
 
 func handle_jump(body: CharacterBody2D, want_to_jump: bool, jump_released: bool) -> void:
 	if has_just_landed(body):
 		$LandSound.play()
 		is_jumping = false
 	if is_allowed_to_jump(body, want_to_jump):
-			jump(body)
+		jump(body)
 		
 	handle_coyote_time(body)
 	handle_jump_buffer(body, want_to_jump)

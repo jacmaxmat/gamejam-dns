@@ -29,7 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://co57lmjcwokju" path="res://dzwiek/fall2.wav" id="27_hqjia"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8ooo"]
-radius = 14.0
+radius = 8.5
 height = 28.0
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_7uipr"]
@@ -1192,9 +1192,9 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" unique_id=283957801 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "shooting_component", "aim_component", "animation_component")]
 texture_filter = 1
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 collision_layer = 2
-collision_mask = 5
+collision_mask = 4
 script = ExtResource("1_0j2ni")
 gravity_component = NodePath("GravityComponent")
 input_component = NodePath("InputComponent")
@@ -1220,6 +1220,7 @@ texture = ExtResource("3_5wa8t")
 position = Vector2(-24, 19)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591169664]
+position = Vector2(-0.5, 0)
 shape = SubResource("CapsuleShape2D_e8ooo")
 
 [node name="AnimationComponent" parent="." unique_id=205644579 node_paths=PackedStringArray("animation_tree", "visuals_node") instance=ExtResource("4_p7tob")]
@@ -1235,7 +1236,7 @@ fire_rate = 0.15
 gun_barrel = NodePath("../VisualLayer/UpperBody/BarrelGun")
 
 [node name="JumpComponent" parent="." unique_id=391932550 instance=ExtResource("7_7v5gs")]
-jump_velocity = -415.0
+jump_velocity = -540.0
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="JumpComponent" unique_id=1064557099]
 stream = ExtResource("25_yifbt")
@@ -1246,10 +1247,10 @@ volume_db = -10.0
 pitch_scale = 0.5
 
 [node name="MovementComponent" parent="." unique_id=889880810 instance=ExtResource("8_8sa4y")]
-speed = 150.0
-ground_accel_speed = 17.0
+speed = 175.0
+ground_accel_speed = 20.0
 ground_decel_speed = 25.0
-air_accel_speed = 12.0
+air_accel_speed = 15.0
 air_decel_speed = 6.0
 
 [node name="GravityComponent" parent="." unique_id=758592051 instance=ExtResource("9_3nb2p")]

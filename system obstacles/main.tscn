@@ -3,8 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://cpk6n684j18a2" path="res://system obstacles/outside_game_manager.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://7x3pl4ailoo4" path="res://system obstacles/main.gd" id="1_x7n1j"]
 [ext_resource type="PackedScene" uid="uid://dbryayljgw6o2" path="res://system obstacles/window.tscn" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bnb1qqrh5os7n" path="res://assety/okno.png" id="4_tyusk"]
 [ext_resource type="PackedScene" uid="uid://ddeq8d7thtyfc" path="res://menus/final_screen.tscn" id="6_mv0n7"]
-[ext_resource type="Texture2D" uid="uid://b8bd7lnxl32xh" path="res://mapa1.jpg" id="6_qqf7j"]
+[ext_resource type="Texture2D" uid="uid://lkl1wqmiad8h" path="res://assety/mapa1.jpg" id="6_qqf7j"]
 [ext_resource type="Script" uid="uid://hgu722xobe4n" path="res://system obstacles/camera_2d.gd" id="7_4avnr"]
 [ext_resource type="PackedScene" uid="uid://s1otfbodyphd" path="res://menus/title_screen.tscn" id="7_mv0n7"]
 [ext_resource type="Script" uid="uid://cvob6keoht0el" path="res://system obstacles/window_view.gd" id="7_tkfrg"]
@@ -146,6 +147,7 @@ position = Vector2(334, 187)
 [node name="Sprite2D" parent="Window" index="0" unique_id=294253054]
 size_flags_horizontal = 6
 size_flags_vertical = 6
+texture = ExtResource("4_tyusk")
 
 [node name="HUD" parent="Window" index="3" unique_id=42208087]
 offset_left = 343.0
@@ -154,7 +156,25 @@ offset_right = 410.0
 offset_bottom = 26.0
 
 [node name="Score" parent="Window/HUD" index="0" unique_id=362071204]
-theme_override_colors/font_color = Color(1, 1, 0.2627451, 1)
+theme_override_colors/font_color = Color(0, 0.404555, 0, 1)
+
+[node name="Heart1" parent="Window" index="4" unique_id=865593871]
+offset_left = 197.00003
+offset_top = 1.0
+offset_right = 205.00003
+offset_bottom = 41.0
+
+[node name="Heart2" parent="Window" index="5" unique_id=1837270407]
+offset_left = 211.00003
+offset_top = 1.0
+offset_right = 219.00003
+offset_bottom = 41.0
+
+[node name="Heart3" parent="Window" index="6" unique_id=663685937]
+offset_left = 225.0
+offset_top = 1.0
+offset_right = 233.0
+offset_bottom = 41.0
 
 [node name="WindowView" type="SubViewportContainer" parent="Window" unique_id=1189050736]
 z_index = -1
@@ -186,16 +206,16 @@ texture_filter = 1
 offset_right = 1152.0
 offset_bottom = 648.0
 scale = Vector2(2, 2)
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 2
+size_flags_vertical = 2
 texture = ExtResource("6_qqf7j")
-stretch_mode = 2
 
 [node name="Player" parent="Window/WindowView/SubViewport" unique_id=548577304 instance=ExtResource("9_qqf7j")]
 position = Vector2(247, 133)
 collision_mask = 12
 
 [node name="Level" parent="Window/WindowView/SubViewport" unique_id=1088217774 instance=ExtResource("8_4avnr")]
+position = Vector2(-500, -135)
 
 [node name="TitleScreen" parent="Window" unique_id=1027695133 instance=ExtResource("7_mv0n7")]
 offset_left = -338.0
@@ -246,7 +266,7 @@ offset_bottom = 21.0
 theme_override_colors/font_color = Color(0.3083999, 0.3083999, 0.3083999, 1)
 theme_override_fonts/font = ExtResource("11_lq1mb")
 theme_override_font_sizes/font_size = 16
-text = "game.exe"
+text = "System_operation.exe"
 
 [node name="Bounds" type="Node2D" parent="." unique_id=161645737]
 

@@ -16,6 +16,14 @@ var is_invincible = false
 func _ready() -> void:
 	Global.player = self
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("down"):
+		Global.player.velocity.y = 0
+		print("DDASSDSAD")
+		Global.player.set_collision_mask_value(3, false)
+		await get_tree().create_timer(.2).timeout
+		Global.player.set_collision_mask_value(3, true)
+
 func _physics_process(delta: float) -> void:
 	gravity_component.handle_gravity(self, delta)
 	movement_component.handle_horizontal_movement(self, input_component.input_horizontal)
