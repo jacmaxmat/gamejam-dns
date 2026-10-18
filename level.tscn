@@ -17,6 +17,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=998911480]
 position = Vector2(84.5, 0)
 shape = SubResource("RectangleShape2D_bhunq")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=688219410]
 position = Vector2(88.00001, 0.9999962)
@@ -32,6 +33,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=591533542]
 position = Vector2(84.5, 0)
 shape = SubResource("RectangleShape2D_bhunq")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=111945704]
 position = Vector2(88.00001, 0.9999962)
@@ -47,6 +49,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=913916203]
 position = Vector2(84.5, 0)
 shape = SubResource("RectangleShape2D_bhunq")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=1198636052]
 position = Vector2(88.00001, 0.9999962)
@@ -62,6 +65,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=1327754613]
 position = Vector2(84.5, 0)
 shape = SubResource("RectangleShape2D_bhunq")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4" unique_id=256505584]
 position = Vector2(88.00001, 0.9999962)
@@ -77,6 +81,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5" unique_id=73270343]
 position = Vector2(84.5, 0)
 shape = SubResource("RectangleShape2D_bhunq")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D5" unique_id=879148239]
 position = Vector2(88.00001, 0.9999962)
@@ -92,6 +97,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6" unique_id=1366185007]
 position = Vector2(84.5, 0)
 shape = SubResource("RectangleShape2D_bhunq")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D6" unique_id=31546289]
 position = Vector2(88.00001, 0.9999962)
@@ -107,6 +113,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D7" unique_id=326757176]
 position = Vector2(84.5, 0)
 shape = SubResource("RectangleShape2D_bhunq")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D7" unique_id=1880001084]
 position = Vector2(88.00001, 0.9999962)
@@ -122,6 +129,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D8" unique_id=277490096]
 position = Vector2(84.5, 0)
 shape = SubResource("RectangleShape2D_bhunq")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D8" unique_id=2041537804]
 position = Vector2(88.00001, 0.9999962)
@@ -137,6 +145,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D9" unique_id=357848421]
 position = Vector2(84.5, 0)
 shape = SubResource("RectangleShape2D_bhunq")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D9" unique_id=278434227]
 position = Vector2(88.00001, 0.9999962)
@@ -152,6 +161,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D10" unique_id=2111365852]
 position = Vector2(84.5, 0)
 shape = SubResource("RectangleShape2D_bhunq")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D10" unique_id=1399655954]
 position = Vector2(88.00001, 0.9999962)
@@ -167,6 +177,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D11" unique_id=1007321685]
 position = Vector2(84.5, 0)
 shape = SubResource("RectangleShape2D_bhunq")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D11" unique_id=1439400231]
 position = Vector2(88.00001, 0.9999962)
@@ -182,6 +193,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D12" unique_id=1990182961]
 position = Vector2(84.5, 0)
 shape = SubResource("RectangleShape2D_bhunq")
+one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D12" unique_id=1870627466]
 position = Vector2(88.00001, 0.9999962)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bsatiy7l0smbo" path="res://menus/final_screen.gd" id="1_pyxie"]
 [ext_resource type="FontFile" uid="uid://e20nougn4186" path="res://font/upheaval/upheavtt.ttf" id="2_30ftb"]
+[ext_resource type="AudioStream" uid="uid://okbopgsyk2ds" path="res://dzwiek/death2.wav" id="3_m0ts1"]
 
 [node name="Highscores" type="Control" unique_id=1713517902]
 process_mode = 2
@@ -88,5 +89,9 @@ theme_override_fonts/font = ExtResource("2_30ftb")
 theme_override_font_sizes/font_size = 48
 text = "Main Menu"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FinalScreen" unique_id=1167483167]
+stream = ExtResource("3_m0ts1")
+
 [connection signal="pressed" from="FinalScreen/Retry" to="FinalScreen" method="_on_retry_pressed"]
 [connection signal="pressed" from="FinalScreen/Menu" to="FinalScreen" method="_on_menu_pressed"]
+[connection signal="finished" from="FinalScreen/AudioStreamPlayer" to="FinalScreen" method="_on_audio_stream_player_finished"]

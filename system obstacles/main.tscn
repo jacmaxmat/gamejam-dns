@@ -194,7 +194,7 @@ texture = ExtResource("3_4avnr")
 stretch_mode = 2
 
 [node name="Player" parent="Window/WindowView/SubViewport" unique_id=548577304 instance=ExtResource("9_qqf7j")]
-position = Vector2(237, 82)
+position = Vector2(247, 133)
 collision_mask = 12
 
 [node name="Level" parent="Window/WindowView/SubViewport" unique_id=1088217774 instance=ExtResource("8_4avnr")]

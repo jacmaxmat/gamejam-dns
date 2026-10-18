@@ -18,9 +18,11 @@ func _ready() -> void:
 	var direction = global_position.direction_to(Global.window.global_position)
 	velocity = speed * direction
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if Global.is_game_over:
 		queue_free()
+
+func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())

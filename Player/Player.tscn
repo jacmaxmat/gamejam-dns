@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://dvgthpgx2ov87" path="res://Player/PlayerComponents/MovementComponent.tscn" id="8_8sa4y"]
 [ext_resource type="PackedScene" uid="uid://ba5qchpqa3sjt" path="res://Player/PlayerComponents/GravityComponent.tscn" id="9_3nb2p"]
 [ext_resource type="PackedScene" uid="uid://8dihvdwt7vo2" path="res://Player/PlayerComponents/InputComponent.tscn" id="10_d7xyo"]
+[ext_resource type="AudioStream" uid="uid://gpvhqb1wlbmn" path="res://dzwiek/JUUUUUMP.wav" id="14_dm7nj"]
+[ext_resource type="AudioStream" uid="uid://i143gd2k6535" path="res://dzwiek/fall3.wav" id="15_3mea3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8ooo"]
 radius = 14.0
@@ -227,7 +229,7 @@ size = Vector2(18, 18.5)
 [node name="Player" type="CharacterBody2D" unique_id=283957801 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "shooting_component", "aim_component", "animation_component")]
 scale = Vector2(2, 2)
 collision_layer = 2
-collision_mask = 4
+collision_mask = 131076
 script = ExtResource("1_0j2ni")
 gravity_component = NodePath("GravityComponent")
 input_component = NodePath("InputComponent")
@@ -276,7 +278,17 @@ spawn_point = NodePath("../VisualLayer/UpperBody/GunBarrel")
 fire_rate = 0.15
 
 [node name="JumpComponent" parent="." unique_id=391932550 instance=ExtResource("7_7v5gs")]
-jump_velocity = -415.0
+jump_velocity = -500.0
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="JumpComponent" unique_id=723629796]
+stream = ExtResource("14_dm7nj")
+volume_db = 3.0
+pitch_scale = 1.2
+
+[node name="LandSound" type="AudioStreamPlayer" parent="JumpComponent" unique_id=1414788044]
+stream = ExtResource("15_3mea3")
+volume_db = -8.0
+pitch_scale = 0.93
 
 [node name="MovementComponent" parent="." unique_id=889880810 instance=ExtResource("8_8sa4y")]
 speed = 150.0
@@ -296,7 +308,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_p34sf")
 
 [node name="PlayerHurtbox" type="Area2D" parent="." unique_id=1514838771]
-collision_layer = 512
+collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox" unique_id=1187250055]

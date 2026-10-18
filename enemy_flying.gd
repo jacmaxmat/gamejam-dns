@@ -16,6 +16,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Global.is_game_over:
+		queue_free()
 	global_position= global_position.move_toward(target.global_position + target_offset, move_speed * delta)
 	if global_position.distance_to(target.global_position + target_offset) < 100:
 		if $ShootTimer.is_stopped():

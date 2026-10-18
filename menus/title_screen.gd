@@ -9,5 +9,7 @@ func _on_quit_button_pressed():
 
 func _on_start_game_button_pressed() -> void:
 	Global.initialize()
+	$AudioStreamPlayer.play()
 	get_tree().paused = false
 	self.visible = false
+	

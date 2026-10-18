@@ -11,6 +11,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Global.is_game_over:
+		queue_free()
 	global_position= global_position.move_toward(target.global_position + Vector2(240,135), move_speed * delta)
 	if global_position.distance_to(Global.player.global_position + Vector2(240,135)) < 32:
 		Global.player.hit(1)

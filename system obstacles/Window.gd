@@ -10,6 +10,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	check_for_bounds()
+	
 	#global_position = get_global_mouse_position()
 	$Bar/CollisionShape2D.shape.extents.x = $Sprite2D.size.x/2
 	$Bar.position.x = $Sprite2D.size.x/2
@@ -75,7 +77,8 @@ func resize(dir, resize_speed):
 		#global_position.y += resize_speed*2
 
 func _physics_process(delta: float) -> void:
-	
+	if Global.cursors_dragging ==0:
+		velocity = Vector2.ZERO
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal()) *.5
@@ -91,3 +94,21 @@ func move(direction, speed, delta):
 		velocity = Vector2.ZERO
 	else:
 		velocity = direction.normalized() * speed
+
+func check_for_bounds():
+	var p_pos = Global.player.global_position
+	if p_pos.x > Global.window.global_position.x + 245:
+		print("R")
+		Global.player.velocity = Vector2(-250,-350)
+	elif p_pos.x < Global.window.global_position.x - 245:
+		print("L")
+		Global.player.velocity = Vector2(250,-350)
+	elif p_pos.y < Global.window.global_position.y - 155:
+		print("U")
+		Global.player.set_collision_mask_value(3, false)
+		Global.player.velocity = Vector2(Global.player.velocity.x,50)
+		await get_tree().create_timer(.25).timeout
+		Global.player.set_collision_mask_value(3, true)
+	elif p_pos.y > Global.window.global_position.y + 145:
+		print("D")
+		Global.player.velocity = Vector2(Global.player.velocity.x,-650)

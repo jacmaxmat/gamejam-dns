@@ -1,6 +1,7 @@
 extends Node
 
 
+var shakecamera
 var hud
 var player
 var title_screen
@@ -43,6 +44,7 @@ func update_health(amount):
 	
 func game_over():
 	final_screen.game_over()
-	get_tree().paused = true
 	is_game_over = true
+	await get_tree().create_timer(.1).timeout
+	get_tree().paused = true
 	

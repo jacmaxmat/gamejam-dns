@@ -12,6 +12,18 @@ size = Vector2(472, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_riqys"]
 size = Vector2(240, 135)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sn0t7"]
+size = Vector2(561, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_308qr"]
+size = Vector2(44, 348)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrj2m"]
+size = Vector2(21, 355)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mefrc"]
+size = Vector2(570, 15)
+
 [node name="Window" type="CharacterBody2D" unique_id=427429608]
 collision_layer = 2147483664
 collision_mask = 32
@@ -83,3 +95,38 @@ offset_bottom = 40.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_308qr")
 stretch_mode = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=898885813]
+
+[node name="BoundBottom" type="StaticBody2D" parent="." unique_id=261669468]
+position = Vector2(249, 268)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundBottom" unique_id=173762045]
+position = Vector2(-7.5, 27)
+shape = SubResource("RectangleShape2D_sn0t7")
+
+[node name="BoundLeft" type="StaticBody2D" parent="." unique_id=1532220043]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundLeft" unique_id=1101467637]
+position = Vector2(-37, 114)
+shape = SubResource("RectangleShape2D_308qr")
+
+[node name="BoundRight" type="StaticBody2D" parent="." unique_id=1311743250]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundRight" unique_id=429722658]
+position = Vector2(504.5, 117.5)
+shape = SubResource("RectangleShape2D_hrj2m")
+
+[node name="BoundTop" type="StaticBody2D" parent="." unique_id=1801751469]
+collision_layer = 131072
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundTop" unique_id=1325677213]
+position = Vector2(229, -67.5)
+shape = SubResource("RectangleShape2D_mefrc")

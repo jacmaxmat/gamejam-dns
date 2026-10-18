@@ -20,6 +20,7 @@ func is_allowed_to_jump(body: CharacterBody2D, want_to_jump: bool) -> bool:
 
 func handle_jump(body: CharacterBody2D, want_to_jump: bool, jump_released: bool) -> void:
 	if has_just_landed(body):
+		$LandSound.play()
 		is_jumping = false
 	if is_allowed_to_jump(body, want_to_jump):
 			jump(body)
@@ -32,6 +33,7 @@ func handle_jump(body: CharacterBody2D, want_to_jump: bool, jump_released: bool)
 	last_frame_on_floor = body.is_on_floor()
 	
 func jump(body: CharacterBody2D) -> void:
+	$JumpSound.play()
 	body.velocity.y = jump_velocity
 	jump_buffer_timer.stop()
 	is_jumping = true

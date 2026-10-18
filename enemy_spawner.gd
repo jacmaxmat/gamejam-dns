@@ -12,7 +12,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Global.is_game_over:
+		queue_free()
 
 func _on_spawn_timer_timeout() -> void:
 	var enemy_instance = enemies[randi_range(0,enemies.size()-1)].instantiate()

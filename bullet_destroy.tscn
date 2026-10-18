@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c0ajdb5n0h87e"]
+
+[ext_resource type="Texture2D" uid="uid://iqfm3qnjsu0k" path="res://system obstacles/icon.svg" id="1_fancs"]
+[ext_resource type="Script" uid="uid://dnlf62dfoscex" path="res://bullet_destroy.gd" id="2_3x3g3"]
+[ext_resource type="AudioStream" uid="uid://b5pi28g4wb3om" path="res://dzwiek/hit1.wav" id="3_xcfan"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhunq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fancs")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BulletDestroy" type="AnimatedSprite2D" unique_id=975410563]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_bhunq")
+autoplay = "default"
+script = ExtResource("2_3x3g3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=966656718]
+stream = ExtResource("3_xcfan")
+volume_db = 15.0
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

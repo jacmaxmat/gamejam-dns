@@ -11,6 +11,7 @@ func shoot() -> void:
 	if not can_shoot or bullet_scene == null or spawn_point == null:
 		return
 	
+	Global.shakecamera.screen_shake(3, .1)
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = Global.player.global_position + Vector2(240,135)
 	get_tree().get_root().add_child(bullet)
