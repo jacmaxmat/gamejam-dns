@@ -1,6 +1,6 @@
 extends Control
 
-@onready var hs_1 = $Scores/Score1
+@onready var hs_1 = $Scores/MyScore
 
 @export var a_player: AnimationPlayer
 var sound_played = false

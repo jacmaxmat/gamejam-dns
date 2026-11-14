@@ -22,7 +22,8 @@ func _process(delta: float) -> void:
 		queue_free()
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print(body)
+	pass
+
 	#if body.has_method("hit"):
 		#body.hit(1)
 	#queue_free()

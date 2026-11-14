@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cw6lh2ns5bwgk"]
+
+[ext_resource type="Texture2D" uid="uid://dk0m7kt6nqbbr" path="res://assety/nowe/floortile.png" id="1_j0jkb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xbspc"]
+texture = ExtResource("1_j0jkb")
+texture_region_size = Vector2i(11, 11)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.5, -5.5, 5.5, -5.5, 5.5, 5.5, -5.5, 5.5)
+
+[sub_resource type="TileSet" id="TileSet_bhunq"]
+tile_size = Vector2i(11, 11)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_xbspc")
+
+[node name="Tilesets" type="Node2D" unique_id=734867660]
+
+[node name="Platforms" type="TileMapLayer" parent="." unique_id=1676686817]
+texture_filter = 1
+tile_set = SubResource("TileSet_bhunq")

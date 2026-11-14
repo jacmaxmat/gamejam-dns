@@ -6,7 +6,7 @@ extends Node
 @export var coyote_timer: Timer
 
 @export_subgroup("settings")
-@export var jump_velocity: float = -350.0
+@export var jump_velocity: float = -400
 
 var is_going_up: bool = false
 var is_jumping: bool = false
@@ -43,7 +43,9 @@ func handle_coyote_time(body: CharacterBody2D) -> void:
 	if not body.is_on_floor() and last_frame_on_floor and not is_jumping:
 		coyote_timer.start()
 	if not coyote_timer.is_stopped() and not is_jumping:
-		body.velocity.y = 0
+		pass
+		#print("aha")
+		#body.velocity.y = 0
 
 func handle_jump_buffer(body: CharacterBody2D, want_to_jump: bool) -> void:
 	if want_to_jump and not body.is_on_floor():

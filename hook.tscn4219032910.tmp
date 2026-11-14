@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cvukbqd0asnr6"]
+
+[ext_resource type="Script" uid="uid://6qv8516ln1ui" path="res://hook.gd" id="1_n13h4"]
+[ext_resource type="Texture2D" uid="uid://cq2toap4mqvbk" path="res://assety/kursor.png" id="2_xfyhh"]
+[ext_resource type="Script" uid="uid://b3j1hflss770p" path="res://sprite_offset.gd" id="3_xfyhh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(8, 8)
+
+[node name="Hook" type="Node2D" unique_id=367409116]
+script = ExtResource("1_n13h4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1323247833 node_paths=PackedStringArray("target")]
+texture_filter = 1
+rotation = 0.17453292
+scale = Vector2(-1, -1)
+texture = ExtResource("2_xfyhh")
+script = ExtResource("3_xfyhh")
+target = NodePath("..")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1199517405]
+collision_layer = 0
+collision_mask = 536870912
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=692631863]
+shape = SubResource("RectangleShape2D_bhunq")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

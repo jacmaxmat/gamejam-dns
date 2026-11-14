@@ -1,9 +1,11 @@
 extends Node
 
-
+var LEVEL_OFFSET : Vector2 = Vector2(1920*2, 1080*2)
+var mouse_position : Vector2 = -Vector2(1920*2, 1080*2)
 var shakecamera
 var hud
 var player
+var main_window
 var title_screen
 var cam
 var window
@@ -18,7 +20,7 @@ var score := 0
 var icons = []
 
 func _ready() -> void:
-	pass # Replace with function body.
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func initialize():
 	cursors_dragging = 0
@@ -26,7 +28,6 @@ func initialize():
 	is_game_over = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-		
 
 func add_score(amount):
 	score += amount
@@ -42,5 +43,5 @@ func game_over():
 	final_screen.game_over()
 	is_game_over = true
 	await get_tree().create_timer(.1).timeout
-	get_tree().paused = true
+	#get_tree().paused = true
 	

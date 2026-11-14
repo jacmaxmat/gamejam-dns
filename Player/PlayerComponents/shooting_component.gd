@@ -11,13 +11,13 @@ func shoot() -> void:
 	if not can_shoot or bullet_scene == null or gun_barrel == null:
 		return
 	
-	Global.shakecamera.screen_shake(3, .1)
+	 #Global.shakecamera.screen_shake(3, .1)
 	var bullet = bullet_scene.instantiate()
 
-	bullet.global_position = gun_barrel.global_position + Vector2(240,135)
+	bullet.global_position = gun_barrel.global_position - Global.LEVEL_OFFSET
 	get_tree().get_root().add_child(bullet)
-	bullet.look_at(bullet.get_global_mouse_position())
-	bullet.global_rotation_degrees += randi_range(-3, 3)
+	bullet.hitbox.look_at(Global.mouse_position)
+	bullet.hitbox.global_rotation_degrees += randi_range(-3, 3)
 	
 	can_shoot = false
 	await get_tree().create_timer(fire_rate).timeout

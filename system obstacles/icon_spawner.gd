@@ -17,8 +17,8 @@ func spawn_icon():
 	while Global.icons.has([slotx,sloty]):
 		slotx = randi_range(0,12)
 		sloty = randi_range(0,6)
-	var posx = 44 + slotx * 88
-	var posy = 26 + sloty * 85
+	var posx = 44 + slotx * 147
+	var posy = 26 + sloty * 154
 	var icon_instance = icon_preload.instantiate()
 	icon_instance.global_position = Vector2(posx, posy)
 	icon_instance.slotx = slotx

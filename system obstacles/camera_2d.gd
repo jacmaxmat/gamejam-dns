@@ -18,8 +18,8 @@ var noise = FastNoiseLite.new()
 func _ready() -> void:
 	Global.shakecamera = self
 
-func _process(delta: float) -> void:
-	global_position = get_parent().get_parent().get_parent().global_position
+#func _process(delta: float) -> void:
+	#global_position = get_parent().get_parent().get_parent().global_position
 
 func _physics_process(delta):
 	if active_shake_time > 0:

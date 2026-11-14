@@ -5,6 +5,7 @@
 
 [node name="OutsideGameManager" type="Node2D" unique_id=2016209311]
 script = ExtResource("1_vxjq3")
+active = false
 drag_speed = 35
 
 [node name="EventTimer" type="Timer" parent="." unique_id=42273018]

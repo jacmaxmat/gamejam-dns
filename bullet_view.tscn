@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d0xixlf4xfx7i"]
+
+[ext_resource type="PackedScene" uid="uid://c5hotye0sico6" path="res://window_view.tscn" id="1_mxyxa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(92, 90)
+
+[node name="BulletView" type="Node2D" unique_id=1018243301]
+
+[node name="WindowView" parent="." unique_id=1664561285 instance=ExtResource("1_mxyxa")]
+offset_right = -704.0
+offset_bottom = -284.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=839226368]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=272060601]
+shape = SubResource("RectangleShape2D_bhunq")

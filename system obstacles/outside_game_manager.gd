@@ -18,17 +18,17 @@ func _process(delta: float) -> void:
 	if Global.cursors_dragging > 0:
 		if $DragTimer.is_stopped():
 			$DragTimer.start()
-			Global.drag_direction = Vector2(randf_range(0,1),randf_range(0,1)).normalized()
-		if Global.cursors_dragging > 0:
-			move_window(delta)
+			Global.drag_direction = Vector2(randf_range(-1,1),randf_range(-1,1)).normalized()
+		#if Global.cursors_dragging > 0:
+			#move_window(delta)
 	else:
-		Global.window.velocity = Vector2.ZERO
+		#Global.window.velocity = Vector2.ZERO
 		if !$DragTimer.is_stopped():
 			$DragTimer.stop()
 
 
-func move_window(delta):
-	Global.window.move(Global.drag_direction, drag_speed * Global.cursors_dragging, delta)
+#func move_window(delta):
+	#Global.window.move(Global.drag_direction, drag_speed * Global.cursors_dragging, delta)
 
 func _on_timer_timeout() -> void:
 	current_event = events[randi_range(0, events.size()-1)]

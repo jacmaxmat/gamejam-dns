@@ -51,7 +51,7 @@ script = ExtResource("1_ewbvy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=824792633]
 z_index = -2
-scale = Vector2(2.5, 2.5)
+scale = Vector2(3, 3)
 texture = ExtResource("2_ewbvy")
 hframes = 7
 frame = 1

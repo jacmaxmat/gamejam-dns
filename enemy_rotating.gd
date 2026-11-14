@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 		$ShootTimer.stop()
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print(body)
+
 	#if body.has_method("hit"):
 		#body.hit(1)
 	#queue_free()

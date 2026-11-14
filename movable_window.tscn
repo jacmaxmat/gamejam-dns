@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://61s88pliuejt"]
+
+[ext_resource type="Script" uid="uid://em7m5w8vqh0q" path="res://resizable_area.gd" id="1_pbcif"]
+[ext_resource type="PackedScene" uid="uid://cgu0vb1c787g7" path="res://window_view.tscn" id="2_pbcif"]
+[ext_resource type="Texture2D" uid="uid://bnb1qqrh5os7n" path="res://assety/okno.png" id="3_ncjfv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(256, 256)
+
+[node name="MovableWindow" type="Node2D" unique_id=668140157]
+
+[node name="ResizableArea" type="Area2D" parent="." unique_id=1628878241]
+collision_layer = 536870928
+collision_mask = 2
+script = ExtResource("1_pbcif")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResizableArea" unique_id=901600934]
+shape = SubResource("RectangleShape2D_bhunq")
+debug_color = Color(0.6810153, 0.5036517, 3.85046e-07, 0.41960785)
+
+[node name="WindowView" parent="ResizableArea" unique_id=1664561285 instance=ExtResource("2_pbcif")]
+visible = false
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 256.0
+offset_bottom = 256.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="ResizableArea/WindowView" unique_id=358561777]
+position = Vector2(0, -5.9999976)
+scale = Vector2(0.55, 1.0444444)
+texture = ExtResource("3_ncjfv")
+offset = Vector2(233, 123)

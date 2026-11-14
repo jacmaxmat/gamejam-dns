@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dohkivpoc06r6"]
 
-[ext_resource type="Script" uid="uid://dy0qn3xxo543q" path="res://system obstacles/cursor.gd" id="1_33ngw"]
+[ext_resource type="Script" uid="uid://6qv8516ln1ui" path="res://player_cursor.gd" id="1_1iics"]
 [ext_resource type="Texture2D" uid="uid://cq2toap4mqvbk" path="res://assety/kursor.png" id="2_33ngw"]
 [ext_resource type="Script" uid="uid://b2j3on7wo2gi1" path="res://system obstacles/area_2d.gd" id="3_1iics"]
 [ext_resource type="Texture2D" uid="uid://cn7qrxm3bqud1" path="res://assety/kursorbialy.png" id="3_3b742"]
@@ -9,7 +9,7 @@
 size = Vector2(50, 48)
 
 [node name="Cursor" type="Node2D" unique_id=1389714305]
-script = ExtResource("1_33ngw")
+script = ExtResource("1_1iics")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1725713856]
 scale = Vector2(2, 2)

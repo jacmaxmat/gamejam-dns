@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://csdlx5gv5eopw" path="res://Player/bullet.gd" id="1_508bx"]
 [ext_resource type="Texture2D" uid="uid://duljscq5cnfvp" path="res://assety/ludzik_pocisk.png" id="1_nyi2d"]
-[ext_resource type="PackedScene" uid="uid://xpwiohrhvva5" path="res://system obstacles/WindowBackground.tscn" id="3_ft26q"]
 [ext_resource type="AudioStream" uid="uid://co57lmjcwokju" path="res://dzwiek/fall2.wav" id="4_nllvn"]
+[ext_resource type="PackedScene" uid="uid://c5hotye0sico6" path="res://window_view.tscn" id="4_tv5nm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_508bx"]
 atlas = ExtResource("1_nyi2d")
@@ -49,30 +49,16 @@ shape = SubResource("CapsuleShape2D_hynge")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="BulletHitbox" unique_id=1132215206]
 
-[node name="SubViewportContainer" parent="." unique_id=2093898323 instance=ExtResource("3_ft26q")]
-z_index = -4
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-
-[node name="SubViewport" parent="SubViewportContainer" index="0" unique_id=1565600406]
-size = Vector2i(32, 32)
-
-[node name="TextureRect" parent="SubViewportContainer/SubViewport" index="0" unique_id=1998533188]
-z_index = -4
-
-[node name="Sprite2D" parent="SubViewportContainer" index="1" unique_id=1382969170]
-position = Vector2(15.500002, 13.999998)
-scale = Vector2(0.06874999, 0.13333334)
-
 [node name="Shoot" type="AudioStreamPlayer2D" parent="." unique_id=116103342]
 stream = ExtResource("4_nllvn")
 volume_db = -5.0
 pitch_scale = 1.36
 autoplay = true
 
-[connection signal="area_entered" from="BulletHitbox" to="." method="_on_bullet_hitbox_area_entered"]
-[connection signal="screen_exited" from="BulletHitbox/VisibleOnScreenNotifier2D" to="BulletHitbox" method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[node name="WindowView" parent="." unique_id=1664561285 instance=ExtResource("4_tv5nm")]
+offset_right = -896.0
+offset_bottom = -476.0
 
-[editable path="SubViewportContainer"]
+[connection signal="area_entered" from="BulletHitbox" to="." method="_on_bullet_hitbox_area_entered"]
+[connection signal="screen_exited" from="BulletHitbox/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="screen_exited" from="BulletHitbox/VisibleOnScreenNotifier2D" to="BulletHitbox" method="_on_visible_on_screen_notifier_2d_screen_exited"]
