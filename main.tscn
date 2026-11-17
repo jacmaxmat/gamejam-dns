@@ -22,16 +22,16 @@ occlusion_enabled = false
 navigation_enabled = false
 
 [node name="MovableWindow" parent="Level" unique_id=668140157 instance=ExtResource("5_lquwl")]
-position = Vector2(394, 787)
+position = Vector2(422, 730)
 
 [node name="MovableWindow2" parent="Level" unique_id=144541191 instance=ExtResource("5_lquwl")]
-position = Vector2(742, 498)
+position = Vector2(741, 730)
 
 [node name="MovableWindow3" parent="Level" unique_id=18564713 instance=ExtResource("5_lquwl")]
-position = Vector2(1230, 737)
+position = Vector2(1368, 730)
 
 [node name="Player" parent="Level" unique_id=283957801 instance=ExtResource("4_1bvp3")]
-position = Vector2(1223, 811)
+position = Vector2(1302, 818)
 
 [node name="PlayerCursor" parent="." unique_id=367409116 instance=ExtResource("5_7mycd")]
 

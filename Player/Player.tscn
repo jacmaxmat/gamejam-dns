@@ -16,8 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://dj1wevys8s2l1" path="res://assety/ludek_cialo_dol.png" id="12_3nb2p"]
 [ext_resource type="Texture2D" uid="uid://vuly0sh18bn" path="res://assety/ludek_cialo_-45stopni.png" id="12_8sa4y"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cwhd1xmp1a823" path="res://Player/legs_machine.tres" id="12_d7xyo"]
+[ext_resource type="PackedScene" uid="uid://doja7dh18ytfw" path="res://Player/PlayerComponents/HookComponent.tscn" id="12_s0mko"]
 [ext_resource type="Texture2D" uid="uid://yk3b36yx2pkk" path="res://assety/ludek_cialo_45stopni.png" id="14_3nb2p"]
-[ext_resource type="Script" uid="uid://bcx1hyskhlvyn" path="res://Player/dash_component.gd" id="14_x70vp"]
 [ext_resource type="AudioStream" uid="uid://byayw6hqlcrpt" path="res://dzwiek/garbage.wav" id="16_7v5gs"]
 [ext_resource type="Texture2D" uid="uid://c6s1xybsupqh2" path="res://assety/ludek_strzal_dol.png" id="19_evw08"]
 [ext_resource type="Texture2D" uid="uid://d27h48j3vu3b5" path="res://assety/ludek_strzal_-45stopni.png" id="20_7uipr"]
@@ -1191,7 +1191,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x70vp"]
 size = Vector2(19, 31)
 
-[node name="Player" type="CharacterBody2D" unique_id=283957801 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "aim_component", "animation_component", "dash_component")]
+[node name="Player" type="CharacterBody2D" unique_id=283957801 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "aim_component", "animation_component", "hook_component")]
 z_index = 5
 texture_filter = 1
 collision_layer = 2
@@ -1203,7 +1203,7 @@ movement_component = NodePath("MovementComponent")
 jump_component = NodePath("JumpComponent")
 aim_component = NodePath("AimComponent")
 animation_component = NodePath("AnimationComponent")
-dash_component = NodePath("DashComponent")
+hook_component = NodePath("HookComponent")
 
 [node name="VisualLayer" type="Node2D" parent="." unique_id=808254088]
 
@@ -1219,6 +1219,17 @@ texture = ExtResource("3_5wa8t")
 
 [node name="BarrelGun" type="Marker2D" parent="VisualLayer/UpperBody" unique_id=403264116]
 position = Vector2(-24, 19)
+
+[node name="HookLine" type="Line2D" parent="VisualLayer" unique_id=1574288132]
+visible = false
+z_index = -1
+position = Vector2(29, -4)
+points = PackedVector2Array(0, 0, 0, 0)
+width = 3.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591169664]
 position = Vector2(-0.5, 0)
@@ -1254,12 +1265,9 @@ gravity = 1175.0
 
 [node name="InputComponent" parent="." unique_id=398532608 instance=ExtResource("10_d7xyo")]
 
-[node name="DashComponent" type="Node" parent="." unique_id=1534679542]
-script = ExtResource("14_x70vp")
-
-[node name="Timer" type="Timer" parent="DashComponent" unique_id=315585873]
-wait_time = 0.3
-one_shot = true
+[node name="HookComponent" parent="." unique_id=243023562 node_paths=PackedStringArray("gun_barrel", "hook_line") instance=ExtResource("12_s0mko")]
+gun_barrel = NodePath("../VisualLayer/UpperBody/BarrelGun")
+hook_line = NodePath("../VisualLayer/HookLine")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1473503091]
 tree_root = SubResource("AnimationNodeBlendTree_52ivs")
@@ -1293,7 +1301,6 @@ monitorable = false
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_x70vp")
 
-[connection signal="timeout" from="DashComponent/Timer" to="DashComponent" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Invincibility" to="." method="_on_invincibility_animation_finished"]
 [connection signal="area_entered" from="WindowDetection" to="." method="_on_window_detection_area_entered"]
 [connection signal="area_exited" from="WindowDetection" to="." method="_on_window_detection_area_exited"]

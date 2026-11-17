@@ -13,8 +13,7 @@ var is_dropping = false
 @export var shooting_component: ShootingComponent
 @export var aim_component: AimComponent
 @export var animation_component: AnimationComponent
-
-@export var dash_component: Node
+@export var hook_component: HookComponent
 
 func _ready() -> void:
 	pass
@@ -39,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	animation_component.handle_animations(self, Global.mouse_position, input_component.get_shoot_input())
 	#shooting_component.handle_shoot(input_component.get_shoot_input())
 	
-	dash_component.handle_dash(self)
+	hook_component.handle_hook(self)
 	
 	move_and_slide()
 
