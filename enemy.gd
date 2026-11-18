@@ -1,5 +1,7 @@
 extends Node2D
 
+
+var explosion = preload("uid://bti1l04bfnwm7")
 @export var health := 6
 
 var target
@@ -11,20 +13,24 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(target.global_position)
 	if Global.is_game_over:
 		queue_free()
 	global_position= global_position.move_toward(target.global_position, move_speed * delta)
 	$Sprite2D.look_at(target.global_position)
 	$Sprite2D.rotation_degrees += 90
-	if global_position.distance_to(Global.player.global_position) < 32:
-		Global.player.velocity = Vector2(sign(Global.player.scale.x)*150,-200)
-		Global.player.hit(1)
-		queue_free()
-	
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	pass
 
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if !Global.player.is_invincible:
+		if !Global.player.is_topdown:
+			Global.player.velocity = Vector2(sign(Global.player.scale.x)*150,-200)
+		Global.player.hit(1)
+	else:
+		if !Global.player.is_topdown:
+			Global.player.velocity = Vector2(sign(Global.player.scale.x)*150,-450)
+		var explosion_instance = explosion.instantiate()
+		explosion_instance.global_position = self.global_position
+		get_tree().root.add_child(explosion_instance)
+	queue_free()
 	#if body.has_method("hit"):
 		#body.hit(1)
 	#queue_free()
@@ -42,3 +48,11 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	#if area.has_method("hit"):
 		#area.hit(1)
 	#queue_free()
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	$Sprite2D/Area2D.set_collision_layer_value(4,true)
+	$Sprite2D/Area2D.set_collision_mask_value(2,true)
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	$Sprite2D/Area2D.set_collision_layer_value(4,false)
+	$Sprite2D/Area2D.set_collision_mask_value(2,false)

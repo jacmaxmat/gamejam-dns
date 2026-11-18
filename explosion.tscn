@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bti1l04bfnwm7"]
+
+[ext_resource type="Texture2D" uid="uid://riwujp4wwoj0" path="res://assety/tarakieta_wybuch.png" id="1_q7epf"]
+[ext_resource type="Script" uid="uid://mmjbhcgxy730" path="res://explosion.gd" id="2_vxas0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxas0"]
+atlas = ExtResource("1_q7epf")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4sxf"]
+atlas = ExtResource("1_q7epf")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5xho"]
+atlas = ExtResource("1_q7epf")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmxf7"]
+atlas = ExtResource("1_q7epf")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhunq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxas0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4sxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5xho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmxf7")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Explosion" type="AnimatedSprite2D" unique_id=1367868380]
+z_index = 15
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_bhunq")
+autoplay = "default"
+script = ExtResource("2_vxas0")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

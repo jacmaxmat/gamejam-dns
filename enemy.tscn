@@ -41,8 +41,8 @@ sprite_frames = SubResource("SpriteFrames_owa6l")
 
 [node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=2071093548]
 scale = Vector2(0.6666667, 0.6666667)
-collision_layer = 8
-collision_mask = 512
+collision_layer = 1024
+collision_mask = 2
 script = ExtResource("2_iifgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=13519060]
@@ -50,5 +50,10 @@ position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_iifgy")
 debug_color = Color(0.93546635, 0.11627, 0.564135, 0.41960785)
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=317365236]
+rect = Rect2(-16, -16, 32, 32)
+
 [connection signal="area_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

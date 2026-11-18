@@ -1192,7 +1192,7 @@ _data = {
 size = Vector2(15, 26)
 
 [node name="Player" type="CharacterBody2D" unique_id=283957801 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "aim_component", "animation_component", "hook_component")]
-z_index = 5
+z_index = 35
 texture_filter = 1
 collision_layer = 2
 collision_mask = 1073741828

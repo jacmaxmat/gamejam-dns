@@ -22,6 +22,7 @@ func _ready() -> void:
 	Global.player = self
 
 func _process(delta: float) -> void:
+	is_invincible = hook_component.is_hooked
 	if Input.is_action_just_pressed("tab"):
 		is_topdown = !is_topdown
 		if is_topdown:

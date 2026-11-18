@@ -73,10 +73,7 @@ unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_qi2p4")
 autoplay = "default"
 
-[node name="Area2D" parent="Sprite2D" index="0" unique_id=2071093548]
-collision_mask = 2
-
-[node name="CollisionShape2D" parent="Sprite2D/Area2D" index="0" unique_id=13519060]
+[node name="CollisionShape2D" parent="Sprite2D/Area2D" parent_id_path=PackedInt32Array(2071093548) index="0" unique_id=13519060]
 position = Vector2(-1, -17)
 shape = SubResource("RectangleShape2D_owa6l")
 

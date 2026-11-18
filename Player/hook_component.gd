@@ -17,13 +17,14 @@ func handle_hook(body):
 			hook_line.visible = true
 		hook_line.set_point_position(1,hook_line.to_local(hook.global_position+Global.LEVEL_OFFSET))
 
-	if is_hooked and dir != Vector2.ZERO:
-		if body.global_position.distance_to(hook.global_position) > 30:
+	if is_hooked and dir != Vector2.ZERO and hook:
+		if body.global_position.distance_to(hook.global_position) > 20:
 			body.velocity = body.global_position.direction_to(hook.global_position) * HOOK_SPEED
 		else:
 			body.velocity = Vector2.ZERO
 			if Input.is_action_just_pressed("jump"):
-				body.jump_component.jump(body)
+				if !body.is_topdown:
+					body.jump_component.jump(body)
 				unhook()
 	if Input.is_action_just_pressed("dash") and can_shoot:
 		dir = (Global.mouse_position - body.global_position).normalized()
@@ -34,14 +35,14 @@ func handle_hook(body):
 		hook.hitbox.look_at(Global.mouse_position)
 		can_shoot = false
 		$Timer.start()
-	elif Input.is_action_just_released("dash"):
+	if Input.is_action_just_released("dash"):
 		unhook()
 
 func unhook():
 	is_hooked = false
 	if hook:
 		hook.queue_free()
-		hook = null
+	hook = null
 	can_shoot = true
 	hook_line.visible = false
 	hook_line.set_point_position(1,Vector2.ZERO)

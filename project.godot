@@ -88,10 +88,11 @@ tab={
 2d_physics/layer_1="null"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Outside Solid"
-2d_physics/layer_4="Enemy"
+2d_physics/layer_4="Outside Enemy"
 2d_physics/layer_5="Window"
 2d_physics/layer_6="Bounds"
 2d_physics/layer_10="GiG Solid"
+2d_physics/layer_11="GiG Enemy"
 
 [physics]
 
