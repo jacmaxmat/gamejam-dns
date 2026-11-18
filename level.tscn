@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://k6bao6rhpn2"]
 
+[ext_resource type="Script" uid="uid://co4l0ia5itpv2" path="res://level.gd" id="1_f2txt"]
 [ext_resource type="Texture2D" uid="uid://7cniskgodnyi" path="res://assety/mapa.jpg" id="1_vonw3"]
 [ext_resource type="Texture2D" uid="uid://dk0m7kt6nqbbr" path="res://assety/nowe/floortile.png" id="2_oi3di"]
 [ext_resource type="PackedScene" uid="uid://dfey2ssuid7u5" path="res://ground_tile.tscn" id="2_vonw3"]
+[ext_resource type="PackedScene" uid="uid://y6xn3c1rgs1p" path="res://enemy_spawner.tscn" id="4_0b4ue"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oi3di"]
 texture = ExtResource("2_oi3di")
@@ -21,6 +23,7 @@ sources/3 = SubResource("TileSetScenesCollectionSource_oi3di")
 
 [node name="Level" type="Node2D" unique_id=2137160350]
 z_index = 11
+script = ExtResource("1_f2txt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2044938721]
 scale = Vector2(1.6682099, 1.6682099)
@@ -33,8 +36,16 @@ scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_f2txt")
 
 [node name="Collision" type="TileMapLayer" parent="." unique_id=1618244203]
+visible = false
 tile_set = SubResource("TileSet_bhunq")
 occlusion_enabled = false
 rendering_quadrant_size = 64
 physics_quadrant_size = 64
 navigation_enabled = false
+
+[node name="EnemySpawner" parent="." unique_id=2087444717 instance=ExtResource("4_0b4ue")]
+
+[node name="SpawnTimer" parent="EnemySpawner" index="1" unique_id=1420878603]
+wait_time = 3.0
+
+[editable path="EnemySpawner"]

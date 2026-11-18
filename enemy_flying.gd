@@ -10,7 +10,7 @@ var target_offset : Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	target_offset = Vector2(randi_range(200, 280), randi_range(-100, -120))
+	target_offset = Vector2(0, randi_range(-100, -120))
 	target = Global.player
 
 
@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	if global_position.distance_to(target.global_position + target_offset) < 100:
 		if $ShootTimer.is_stopped():
 			$ShootTimer.start()
-	if global_position.distance_to(Global.player.global_position + Vector2(240,135)) < 32:
+	if global_position.distance_to(Global.player.global_position) < 32:
 		Global.player.velocity = Vector2(sign(Global.player.scale.x)*150,-200)
 		Global.player.hit(1)
 		queue_free()

@@ -11,12 +11,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	print(target.global_position)
 	if Global.is_game_over:
 		queue_free()
-	global_position= global_position.move_toward(target.global_position + Vector2(240,135), move_speed * delta)
-	$Sprite2D.look_at(target.global_position + Vector2(240,135))
+	global_position= global_position.move_toward(target.global_position, move_speed * delta)
+	$Sprite2D.look_at(target.global_position)
 	$Sprite2D.rotation_degrees += 90
-	if global_position.distance_to(Global.player.global_position + Vector2(240,135)) < 32:
+	if global_position.distance_to(Global.player.global_position) < 32:
 		Global.player.velocity = Vector2(sign(Global.player.scale.x)*150,-200)
 		Global.player.hit(1)
 		queue_free()

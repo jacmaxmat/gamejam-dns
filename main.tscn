@@ -39,3 +39,4 @@ position = Vector2(1401, 726)
 [node name="OutsideGameManager" parent="." unique_id=2016209311 instance=ExtResource("6_7mycd")]
 
 [editable path="Level"]
+[editable path="Level/EnemySpawner"]

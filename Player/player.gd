@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var health := 3
+@export var health := 10
 
 var is_topdown = false
 
@@ -24,6 +24,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("tab"):
 		is_topdown = !is_topdown
+		if is_topdown:
+			motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+		else:
+			motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
 	#if Input.is_action_just_pressed("down"):
 		#velocity.y = 0
 		#is_dropping = true
@@ -49,7 +53,7 @@ func _physics_process(delta: float) -> void:
 func hit(amount):
 	if !is_invincible:
 		$HurtSound.play()
-		Global.shakecamera.screen_shake(8,.3)
+		#Global.shakecamera.screen_shake(8,.3)
 		is_invincible = true
 		$Invincibility.play("asdasd")
 		Global.update_health(amount)
@@ -60,7 +64,9 @@ func _on_invincibility_animation_finished(anim_name: StringName) -> void:
 
 func _on_window_detection_area_entered(area: Area2D) -> void:
 	is_topdown = true
+	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 
 func _on_window_detection_area_exited(area: Area2D) -> void:
 	if !$WindowDetection.has_overlapping_areas():
 		is_topdown = false
+		motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
