@@ -41,9 +41,8 @@ func update_health(amount):
 		game_over()
 	
 func game_over():
-	pass
 	#final_screen.game_over()
-	#is_game_over = true
-	#await get_tree().create_timer(.1).timeout
+	is_game_over = true
+	await get_tree().create_timer(.1).timeout
 	#get_tree().paused = true
 	

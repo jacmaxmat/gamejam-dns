@@ -44,8 +44,6 @@ func handle_coyote_time(body: CharacterBody2D) -> void:
 		coyote_timer.start()
 	if not coyote_timer.is_stopped() and not is_jumping:
 		pass
-		#print("aha")
-		#body.velocity.y = 0
 
 func handle_jump_buffer(body: CharacterBody2D, want_to_jump: bool) -> void:
 	if want_to_jump and not body.is_on_floor():

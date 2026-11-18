@@ -1,5 +1,6 @@
 extends Node2D
 
+var explosion = preload("uid://bti1l04bfnwm7")
 @onready var falling_projectile_preload = preload("uid://h4t5f8dv7rut")
 
 @export var health := 3
@@ -10,7 +11,7 @@ var target_offset : Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	target_offset = Vector2(randi_range(200, 280), randi_range(-100, -120))
+	target_offset = Vector2(0, randi_range(-100, -120))
 	target = Global.player
 
 
@@ -22,14 +23,18 @@ func _process(delta: float) -> void:
 	if global_position.distance_to(target.global_position + target_offset) < 100:
 		if $ShootTimer.is_stopped():
 			$ShootTimer.start()
-	if global_position.distance_to(Global.player.global_position + Vector2(240,135)) < 32:
-		Global.player.velocity = Vector2(sign(Global.player.scale.x)*150,-200)
-		Global.player.hit(1)
-		queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("hit"):
-		body.hit(1)
+	if !Global.player.is_invincible:
+		if !Global.player.is_topdown:
+			Global.player.velocity = Vector2(sign(Global.player.scale.x)*150,-200)
+		Global.player.hit(1)
+	else:
+		if !Global.player.is_topdown:
+			Global.player.velocity = Vector2(sign(Global.player.scale.x)*150,-520)
+		var explosion_instance = explosion.instantiate()
+		explosion_instance.global_position = self.global_position
+		get_tree().root.add_child(explosion_instance)
 	queue_free()
 
 func hit(damage):
@@ -50,3 +55,12 @@ func _on_shoot_timer_timeout() -> void:
 
 func _on_sprite_2d_animation_finished() -> void:
 	$Sprite2D.play("default")
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	$Sprite2D/Area2D.set_collision_layer_value(4,true)
+	$Sprite2D/Area2D.set_collision_mask_value(2,true)
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	$Sprite2D/Area2D.set_collision_layer_value(4,false)
+	$Sprite2D/Area2D.set_collision_mask_value(2,false)
