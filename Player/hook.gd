@@ -25,3 +25,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	target = body
 	target_offset = target.global_position - global_position
 	component.is_hooked = is_hooked
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body == target:
+		is_hooked = false
+		target = null
+		target_offset = Vector2.ZERO
+		component.is_hooked = is_hooked

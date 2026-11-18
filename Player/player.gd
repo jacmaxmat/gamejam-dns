@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var health := 3
 
+var is_topdown = false
+
 var is_invincible = false
 var is_dropping = false
 
@@ -20,24 +22,26 @@ func _ready() -> void:
 	Global.player = self
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("down"):
-		velocity.y = 0
-		is_dropping = true
-		set_collision_mask_value(3, false)
-		await get_tree().create_timer(.2).timeout
-		is_dropping = false
-		set_collision_mask_value(3, true)
+	if Input.is_action_just_pressed("tab"):
+		is_topdown = !is_topdown
+	#if Input.is_action_just_pressed("down"):
+		#velocity.y = 0
+		#is_dropping = true
+		#set_collision_mask_value(3, false)
+		#await get_tree().create_timer(.2).timeout
+		#is_dropping = false
+		#set_collision_mask_value(3, true)
 		
 	$VisualLayer.position = Global.LEVEL_OFFSET
 
 func _physics_process(delta: float) -> void:
-	gravity_component.handle_gravity(self, delta)
-	movement_component.handle_horizontal_movement(self, input_component.input_horizontal)
-	jump_component.handle_jump(self, input_component.get_jump_input(), input_component.get_jump_input_released())
+	if !is_topdown:
+		gravity_component.handle_gravity(self, delta)
+		jump_component.handle_jump(self, input_component.get_jump_input(), input_component.get_jump_input_released())
+	movement_component.handle_horizontal_movement(self, Vector2(input_component.input_horizontal,input_component.input_vertical))
 	aim_component.handle_aim(Global.mouse_position)
 	animation_component.handle_animations(self, Global.mouse_position, input_component.get_shoot_input())
 	#shooting_component.handle_shoot(input_component.get_shoot_input())
-	
 	hook_component.handle_hook(self)
 	
 	move_and_slide()
@@ -52,3 +56,11 @@ func hit(amount):
 
 func _on_invincibility_animation_finished(anim_name: StringName) -> void:
 	is_invincible = false
+
+
+func _on_window_detection_area_entered(area: Area2D) -> void:
+	is_topdown = true
+
+func _on_window_detection_area_exited(area: Area2D) -> void:
+	if !$WindowDetection.has_overlapping_areas():
+		is_topdown = false
