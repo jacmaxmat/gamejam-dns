@@ -1188,9 +1188,6 @@ _data = {
 &"asdasd": SubResource("Animation_wo5nf")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x70vp"]
-size = Vector2(19, 31)
-
 [node name="Player" type="CharacterBody2D" unique_id=283957801 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "aim_component", "animation_component", "hook_component")]
 z_index = 5
 texture_filter = 1
@@ -1292,15 +1289,4 @@ stream = ExtResource("16_7v5gs")
 [node name="Invincibility" type="AnimationPlayer" parent="." unique_id=577413648]
 libraries/ = SubResource("AnimationLibrary_croik")
 
-[node name="WindowDetection" type="Area2D" parent="." unique_id=439995857]
-collision_layer = 0
-collision_mask = 16
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WindowDetection" unique_id=1073852081]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_x70vp")
-
 [connection signal="animation_finished" from="Invincibility" to="." method="_on_invincibility_animation_finished"]
-[connection signal="area_entered" from="WindowDetection" to="." method="_on_window_detection_area_entered"]
-[connection signal="area_exited" from="WindowDetection" to="." method="_on_window_detection_area_exited"]

@@ -52,13 +52,3 @@ func hit(amount):
 
 func _on_invincibility_animation_finished(anim_name: StringName) -> void:
 	is_invincible = false
-
-func _on_window_detection_area_entered(area: Area2D) -> void:
-	if !is_dropping:
-		set_collision_mask_value(3, true)
-	set_collision_mask_value(4, true)
-
-func _on_window_detection_area_exited(area: Area2D) -> void:
-	if $WindowDetection.get_overlapping_areas().size() == 0:
-		set_collision_mask_value(3, false)
-		set_collision_mask_value(4, false)

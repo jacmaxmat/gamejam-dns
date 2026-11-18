@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://dfey2ssuid7u5"]
 
 [ext_resource type="Script" uid="uid://cd5kay6ogc3uo" path="res://ground_tile.gd" id="1_lm3os"]
-[ext_resource type="Texture2D" uid="uid://dk0m7kt6nqbbr" path="res://assety/nowe/floortile.png" id="2_lm3os"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mv1mr"]
-size = Vector2(22, 22)
+size = Vector2(32, 32)
 
 [node name="GroundTile" type="StaticBody2D" unique_id=289287055]
-collision_layer = 0
+light_mask = 0
+scale = Vector2(0.25, 0.25)
+collision_layer = 512
 collision_mask = 0
 script = ExtResource("1_lm3os")
 
@@ -15,12 +16,7 @@ script = ExtResource("1_lm3os")
 shape = SubResource("RectangleShape2D_mv1mr")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=863041346]
-rect = Rect2(-10, -11, 20, 21)
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1938206696]
-texture_filter = 1
-scale = Vector2(2, 2)
-texture = ExtResource("2_lm3os")
+rect = Rect2(-16, -16, 32, 32)
 
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

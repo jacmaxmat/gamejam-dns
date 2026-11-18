@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 var component
 var target
@@ -11,9 +11,14 @@ var is_hooked = false
 func _process(delta: float) -> void:
 	$Sprite2D.position = Global.LEVEL_OFFSET
 	if !is_hooked:
-		global_position += hitbox.transform.x * speed * delta
+		velocity = Vector2.RIGHT.rotated(hitbox.rotation) * speed
+		#global_position += hitbox.transform.x * speed * delta
 	else:
-		global_position = target.global_position - target_offset
+		velocity = Vector2.ZERO
+		#global_position = target.global_position - target_offset
+
+func _physics_process(delta: float) -> void:
+	move_and_slide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	is_hooked = true
