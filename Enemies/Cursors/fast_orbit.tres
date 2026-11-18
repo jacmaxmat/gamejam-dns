@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="OrbitPattern" format=3 uid="uid://d1rki2ty4qt8t"]
+
+[ext_resource type="Script" uid="uid://1px0ergg5rqk" path="res://Enemies/Cursors/orbit_pattern.gd" id="1_tq3db"]
+
+[resource]
+script = ExtResource("1_tq3db")
+speed = 6.0
+metadata/_custom_type_script = "uid://1px0ergg5rqk"

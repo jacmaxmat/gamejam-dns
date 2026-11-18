@@ -35,13 +35,15 @@ func add_score(amount):
 
 func update_health(amount):
 	player.health = max(0, player.health-amount)
-	hud.update_health(player.health)
+	if hud:
+		hud.update_health(player.health)
 	if player.health <= 0:
 		game_over()
 	
 func game_over():
-	final_screen.game_over()
-	is_game_over = true
-	await get_tree().create_timer(.1).timeout
+	pass
+	#final_screen.game_over()
+	#is_game_over = true
+	#await get_tree().create_timer(.1).timeout
 	#get_tree().paused = true
 	

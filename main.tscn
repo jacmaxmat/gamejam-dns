@@ -27,8 +27,8 @@ position = Vector2(394, 787)
 [node name="MovableWindow2" parent="Level" unique_id=144541191 instance=ExtResource("5_lquwl")]
 position = Vector2(742, 498)
 
-[node name="MovableWindow3" parent="Level" unique_id=18564713 instance=ExtResource("5_lquwl")]
-position = Vector2(1230, 737)
+[node name="MovableWindow3" parent="Level" unique_id=1754309615 instance=ExtResource("5_lquwl")]
+position = Vector2(1214, 820)
 
 [node name="Player" parent="Level" unique_id=283957801 instance=ExtResource("4_1bvp3")]
 position = Vector2(1223, 811)

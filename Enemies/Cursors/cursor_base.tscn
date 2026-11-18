@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://xjdtievl1ex2"]
+
+[ext_resource type="Texture2D" uid="uid://cq2toap4mqvbk" path="res://assety/kursor.png" id="1_f0na8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cts8g"]
+size = Vector2(24, 24)
+
+[node name="CursorBase" type="Node2D" unique_id=246201548]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1546629290]
+texture = ExtResource("1_f0na8")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=964908882]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2049072956]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_cts8g")

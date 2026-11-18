@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://djgkj717dknbm"]
+
+[ext_resource type="PackedScene" uid="uid://xjdtievl1ex2" path="res://Enemies/Cursors/cursor_base.tscn" id="1_7oorq"]
+[ext_resource type="Script" uid="uid://kyfyepwmgp16" path="res://Enemies/Cursors/cursor_dragging.gd" id="2_yrqe0"]
+
+[node name="CursorBase" unique_id=246201548 instance=ExtResource("1_7oorq")]
+script = ExtResource("2_yrqe0")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

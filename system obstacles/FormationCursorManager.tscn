@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ck3n5nte8bag8"]
+
+[ext_resource type="Script" uid="uid://du5m8qrfa7bvy" path="res://system obstacles/formation_cursor_manager.gd" id="1_oooij"]
+
+[node name="FormationCursorManager" type="Node2D" unique_id=445952770]
+script = ExtResource("1_oooij")
+
+[node name="PrepareTimer" type="Timer" parent="." unique_id=271254246]
+wait_time = 5.0
+one_shot = true
+
+[node name="StrikeTimer" type="Timer" parent="." unique_id=488437734]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="PrepareTimer" to="." method="_on_prepare_timer_timeout"]
+[connection signal="timeout" from="StrikeTimer" to="." method="_on_strike_timer_timeout"]

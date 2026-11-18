@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="LinePattern" format=3 uid="uid://d2j68hvop4fty"]
+
+[ext_resource type="Script" uid="uid://6qhekumdvvt3" path="res://Enemies/Cursors/line_pattern.gd" id="1_pewi0"]
+
+[resource]
+script = ExtResource("1_pewi0")
+metadata/_custom_type_script = "uid://6qhekumdvvt3"
