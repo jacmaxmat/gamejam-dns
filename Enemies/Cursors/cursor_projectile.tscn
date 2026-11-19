@@ -4,4 +4,5 @@
 [ext_resource type="Script" uid="uid://bbi734mkso66d" path="res://Enemies/Cursors/cursor_projectile.gd" id="2_sg5b0"]
 
 [node name="CursorBase" unique_id=246201548 instance=ExtResource("1_sgdp6")]
+z_index = 100
 script = ExtResource("2_sg5b0")
