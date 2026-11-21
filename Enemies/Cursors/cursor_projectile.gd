@@ -11,6 +11,11 @@ var current_state: State = State.FLYING_IN
 var target_position: Vector2 = Vector2.INF
 var strike_direction: Vector2 = Vector2.ZERO
 
+func _ready() -> void:
+	$Area2D/CollisionShape2D.set_deferred("disabled", true)
+	$Area2D.set_deferred("monitoring", false)
+	$Area2D.set_deferred("monitorable", false)
+
 func set_target_position(new_pos: Vector2) -> void:
 	if current_state == State.FLYING_IN:
 		target_position = new_pos
@@ -19,8 +24,12 @@ func prepare_strike(direction: Vector2) -> void:
 	current_state = State.WAITING
 	strike_direction = direction 
 
+# 2. POPRAWKA: Włączamy wszystko dopiero w momencie ataku
 func start_strike() -> void:
 	current_state = State.STRIKING
+	$Area2D/CollisionShape2D.set_deferred("disabled", false)
+	$Area2D.set_deferred("monitoring", true)
+	$Area2D.set_deferred("monitorable", true)
 	if not $Sprite2D/VisibleOnScreenNotifier2D.screen_exited.is_connected(die):
 		$Sprite2D/VisibleOnScreenNotifier2D.screen_exited.connect(die)
 
@@ -45,8 +54,11 @@ func _process(delta: float) -> void:
 
 func die() -> void:
 	queue_free()
-	
+
 func check_hit() -> void:
+	if current_state != State.STRIKING:
+		return
+		
 	if Global.player and is_instance_valid(Global.player):
 		if global_position.distance_to(Global.player.global_position) < 40.0:
 			Global.player.hit(damage)
