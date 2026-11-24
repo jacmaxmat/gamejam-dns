@@ -43,8 +43,8 @@ func _physics_process(delta: float) -> void:
 		gravity_component.handle_gravity(self, delta)
 		jump_component.handle_jump(self, input_component.get_jump_input(), input_component.get_jump_input_released())
 	movement_component.handle_horizontal_movement(self, Vector2(input_component.input_horizontal,input_component.input_vertical))
-	aim_component.handle_aim(Global.mouse_position)
-	animation_component.handle_animations(self, Global.mouse_position, input_component.get_shoot_input())
+	aim_component.handle_aim(get_global_mouse_position())
+	animation_component.handle_animations(self, get_global_mouse_position(), input_component.get_shoot_input())
 	#shooting_component.handle_shoot(input_component.get_shoot_input())
 	hook_component.handle_hook(self)
 	
@@ -60,7 +60,6 @@ func hit(amount):
 
 func _on_invincibility_animation_finished(anim_name: StringName) -> void:
 	is_invincible = false
-
 
 func _on_window_detection_area_entered(area: Area2D) -> void:
 	is_topdown = true

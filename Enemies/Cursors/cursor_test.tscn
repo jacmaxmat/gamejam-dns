@@ -46,3 +46,4 @@ position = Vector2(718, 713)
 
 [editable path="Level"]
 [editable path="Level/EnemySpawner"]
+[editable path="Window"]

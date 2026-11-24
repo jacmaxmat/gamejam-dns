@@ -26,14 +26,9 @@ size = Vector2(476, 18)
 
 [node name="Window" type="CharacterBody2D" unique_id=427429608]
 z_index = 1
-collision_layer = 2147483668
+collision_layer = 2147483664
 collision_mask = 32
 script = ExtResource("1_bnn13")
-
-[node name="Ground" type="Sprite2D" parent="." unique_id=1031730204]
-position = Vector2(0.9999995, 98)
-scale = Vector2(29.750002, 4.5000005)
-texture = ExtResource("2_5n0ag")
 
 [node name="WindowSprite" type="Sprite2D" parent="." unique_id=1366227095]
 texture = ExtResource("3_8lrwx")
@@ -41,7 +36,16 @@ texture = ExtResource("3_8lrwx")
 [node name="MarkerForCursor" type="Marker2D" parent="." unique_id=1619301765]
 position = Vector2(-1, -126)
 
-[node name="GroundCollision" type="CollisionShape2D" parent="." unique_id=496617160]
+[node name="GroundCollision2" type="StaticBody2D" parent="." unique_id=660720766]
+collision_layer = 516
+collision_mask = 0
+
+[node name="Ground" type="Sprite2D" parent="GroundCollision2" unique_id=1031730204]
+position = Vector2(0.9999995, 98)
+scale = Vector2(29.750002, 4.5000005)
+texture = ExtResource("2_5n0ag")
+
+[node name="GroundCollision" type="CollisionShape2D" parent="GroundCollision2" unique_id=496617160]
 position = Vector2(0.5, 98)
 shape = SubResource("RectangleShape2D_e8ooo")
 
