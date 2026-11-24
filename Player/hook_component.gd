@@ -15,7 +15,7 @@ func handle_hook(body):
 	if hook:
 		if hook_line.visible == false:
 			hook_line.visible = true
-		hook_line.set_point_position(1,hook_line.to_local(hook.global_position+Global.LEVEL_OFFSET))
+		hook_line.set_point_position(1,hook_line.to_local(hook.global_position))
 
 	if is_hooked and dir != Vector2.ZERO and hook:
 		if body.global_position.distance_to(hook.global_position) > 20:

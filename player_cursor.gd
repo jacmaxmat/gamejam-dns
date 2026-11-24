@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 		target = null
 		target_offset = Vector2.ZERO
 
-	global_position = Global.mouse_position
+	global_position = get_global_mouse_position()
 	if target:
 		target.global_position = global_position + target_offset
 	#if target == null:

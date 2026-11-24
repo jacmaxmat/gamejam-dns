@@ -19,8 +19,8 @@ var is_dropping = false
 @export var hook_component: HookComponent
 
 func _ready() -> void:
-	pass
 	Global.player = self
+	platform_floor_layers = 0
 
 func _process(delta: float) -> void:
 	is_invincible = hook_component.is_hooked
@@ -37,8 +37,6 @@ func _process(delta: float) -> void:
 		#await get_tree().create_timer(.2).timeout
 		#is_dropping = false
 		#set_collision_mask_value(3, true)
-		
-	$VisualLayer.position = Global.LEVEL_OFFSET
 
 func _physics_process(delta: float) -> void:
 	if !is_topdown:

@@ -1,132 +1,76 @@
 [gd_scene format=3 uid="uid://dbryayljgw6o2"]
 
 [ext_resource type="Script" uid="uid://dfvp4pl3k7a1g" path="res://system obstacles/Window.gd" id="1_bnn13"]
-[ext_resource type="Texture2D" uid="uid://dgd2gfi6kmte0" path="res://system obstacles/okno.png" id="2_5n0ag"]
-[ext_resource type="FontFile" uid="uid://e20nougn4186" path="res://font/upheaval/upheavtt.ttf" id="3_5n0ag"]
-[ext_resource type="Script" uid="uid://b2hxw8brwdh4a" path="res://system obstacles/hud.gd" id="3_8lrwx"]
-[ext_resource type="Texture2D" uid="uid://dwlrd6180ceoh" path="res://assety/heart.png" id="5_308qr"]
+[ext_resource type="Texture2D" uid="uid://dk0m7kt6nqbbr" path="res://assety/nowe/floortile.png" id="2_5n0ag"]
+[ext_resource type="Texture2D" uid="uid://bnb1qqrh5os7n" path="res://assety/okno.png" id="3_8lrwx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
-size = Vector2(472, 14)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8ooo"]
+size = Vector2(477, 72)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_riqys"]
-size = Vector2(240, 135)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hynge"]
+size = Vector2(53, 262)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sn0t7"]
-size = Vector2(561, 18)
+[sub_resource type="Gradient" id="Gradient_hynge"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_308qr"]
-size = Vector2(44, 348)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e8ooo"]
+gradient = SubResource("Gradient_hynge")
+width = 480
+height = 270
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrj2m"]
-size = Vector2(21, 355)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dki06"]
+size = Vector2(6, 270)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mefrc"]
-size = Vector2(570, 15)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xuprx"]
+size = Vector2(476, 18)
 
 [node name="Window" type="CharacterBody2D" unique_id=427429608]
-collision_layer = 2147483664
+z_index = 1
+collision_layer = 2147483668
 collision_mask = 32
 script = ExtResource("1_bnn13")
 
-[node name="Sprite2D" type="TextureRect" parent="." unique_id=294253054]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 480.0
-offset_bottom = 270.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Ground" type="Sprite2D" parent="." unique_id=1031730204]
+position = Vector2(0.9999995, 98)
+scale = Vector2(29.750002, 4.5000005)
 texture = ExtResource("2_5n0ag")
-expand_mode = 1
 
-[node name="Bar" type="Area2D" parent="." unique_id=414648937]
-position = Vector2(240, 3)
-collision_layer = 2149580800
-collision_mask = 0
-monitoring = false
+[node name="WindowSprite" type="Sprite2D" parent="." unique_id=1366227095]
+texture = ExtResource("3_8lrwx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bar" unique_id=892292731]
-position = Vector2(0, 10)
-shape = SubResource("RectangleShape2D_bhunq")
+[node name="MarkerForCursor" type="Marker2D" parent="." unique_id=1619301765]
+position = Vector2(-1, -126)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1169904597]
-shape = SubResource("RectangleShape2D_riqys")
+[node name="GroundCollision" type="CollisionShape2D" parent="." unique_id=496617160]
+position = Vector2(0.5, 98)
+shape = SubResource("RectangleShape2D_e8ooo")
 
-[node name="HUD" type="HBoxContainer" parent="." unique_id=42208087 node_paths=PackedStringArray("heart1", "heart2", "heart3")]
-offset_left = 342.0
-offset_top = -13.0
-offset_right = 394.0
-offset_bottom = 27.0
-alignment = 1
-script = ExtResource("3_8lrwx")
-heart1 = NodePath("../Heart1")
-heart2 = NodePath("../Heart2")
-heart3 = NodePath("../Heart3")
+[node name="LeftJumpArea" type="Area2D" parent="." unique_id=875855670]
+collision_mask = 4
 
-[node name="Score" type="Label" parent="HUD" unique_id=362071204]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_5n0ag")
-theme_override_font_sizes/font_size = 16
-text = "Score: 0"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftJumpArea" unique_id=1930840846]
+position = Vector2(-210.5, -1)
+shape = SubResource("RectangleShape2D_hynge")
 
-[node name="Heart1" type="TextureRect" parent="." unique_id=865593871]
-offset_left = 110.0
-offset_right = 118.0
-offset_bottom = 40.0
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("5_308qr")
-stretch_mode = 2
+[node name="RightJumpArea" type="Area2D" parent="." unique_id=871548164]
+collision_mask = 4
 
-[node name="Heart2" type="TextureRect" parent="." unique_id=1837270407]
-offset_left = 124.0
-offset_right = 132.0
-offset_bottom = 40.0
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("5_308qr")
-stretch_mode = 2
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightJumpArea" unique_id=2132560540]
+position = Vector2(211, 0)
+shape = SubResource("RectangleShape2D_hynge")
 
-[node name="Heart3" type="TextureRect" parent="." unique_id=663685937]
-offset_left = 138.0
-offset_right = 146.0
-offset_bottom = 40.0
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("5_308qr")
-stretch_mode = 2
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1618340893]
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_e8ooo")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=898885813]
+[node name="LeftWall" type="CollisionShape2D" parent="." unique_id=692000959]
+position = Vector2(-235, -1)
+shape = SubResource("RectangleShape2D_dki06")
 
-[node name="BoundBottom" type="StaticBody2D" parent="." unique_id=261669468]
-position = Vector2(249, 268)
-collision_layer = 0
-collision_mask = 2
+[node name="RightWall" type="CollisionShape2D" parent="." unique_id=535839163]
+position = Vector2(237, 1)
+shape = SubResource("RectangleShape2D_dki06")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundBottom" unique_id=173762045]
-position = Vector2(-7.5, 27)
-shape = SubResource("RectangleShape2D_sn0t7")
-
-[node name="BoundLeft" type="StaticBody2D" parent="." unique_id=1532220043]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundLeft" unique_id=1101467637]
-position = Vector2(-37, 114)
-shape = SubResource("RectangleShape2D_308qr")
-
-[node name="BoundRight" type="StaticBody2D" parent="." unique_id=1311743250]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundRight" unique_id=429722658]
-position = Vector2(504.5, 117.5)
-shape = SubResource("RectangleShape2D_hrj2m")
-
-[node name="BoundTop" type="StaticBody2D" parent="." unique_id=1801751469]
-collision_layer = 131072
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundTop" unique_id=1325677213]
-position = Vector2(229, -67.5)
-shape = SubResource("RectangleShape2D_mefrc")
+[node name="TopWall" type="CollisionShape2D" parent="." unique_id=448098875]
+position = Vector2(1, -126)
+shape = SubResource("RectangleShape2D_xuprx")

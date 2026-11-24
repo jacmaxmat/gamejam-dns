@@ -9,7 +9,6 @@ var is_hooked = false
 @onready var hitbox = $Area2D
 
 func _process(delta: float) -> void:
-	$Sprite2D.position = Global.LEVEL_OFFSET
 	if !is_hooked:
 		velocity = Vector2.RIGHT.rotated(hitbox.rotation) * speed
 		#global_position += hitbox.transform.x * speed * delta

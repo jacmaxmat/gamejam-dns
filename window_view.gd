@@ -12,7 +12,7 @@ func _ready() -> void:
 		target = get_parent()
 
 func _physics_process(delta: float) -> void:
-	global_position = target.global_position + Global.LEVEL_OFFSET*1.25 - size/2
+	global_position = target.global_position- size/2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -30,5 +30,5 @@ func _process(delta: float) -> void:
 
 func resize(difference: Vector2):
 	size += difference
-	global_position = target.global_position + Global.LEVEL_OFFSET*1.25 - size/2
+	global_position = target.global_position - size/2
 	cam.global_position = target.global_position

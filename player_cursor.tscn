@@ -2,24 +2,22 @@
 
 [ext_resource type="Script" uid="uid://6qv8516ln1ui" path="res://player_cursor.gd" id="1_e4vdg"]
 [ext_resource type="Texture2D" uid="uid://cq2toap4mqvbk" path="res://assety/kursor.png" id="2_qf7gk"]
-[ext_resource type="Script" uid="uid://b3j1hflss770p" path="res://sprite_offset.gd" id="3_76ls5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(8, 8)
 
 [node name="PlayerCursor" type="Node2D" unique_id=367409116]
-z_index = 11
+z_index = 100
+z_as_relative = false
 script = ExtResource("1_e4vdg")
 speed = 2000.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1323247833 node_paths=PackedStringArray("target")]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1323247833]
 texture_filter = 1
 rotation = 0.40491638
 scale = Vector2(-1, -1)
 texture = ExtResource("2_qf7gk")
 offset = Vector2(-8.07, -8.25)
-script = ExtResource("3_76ls5")
-target = NodePath("..")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1199517405]
 collision_layer = 0

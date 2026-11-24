@@ -1,118 +1,112 @@
 extends CharacterBody2D
 
-@onready var bar = $Bar
-@export var smoothing = 20
-@onready var frame = $Sprite2D
+@onready var bar: Marker2D = $MarkerForCursor
+@onready var frame: Sprite2D = $WindowSprite
+@onready var left_jump_area: Area2D = $LeftJumpArea
+@onready var right_jump_area: Area2D = $RightJumpArea
 
-# Called when the node enters the scene tree for the first time.
+@onready var left_wall: CollisionShape2D = $LeftWall
+@onready var right_wall: CollisionShape2D = $RightWall
+@onready var top_wall: CollisionShape2D = $TopWall
+
+@export var smoothing: float = 20.0
+@export var inner_half_width: float = 215.0
+@export var outer_half_width: float = 250.0
+@export var screen_size: Vector2 = Vector2(1920, 1080)
+
+var is_player_inside: bool = false
+var is_jumping_out: bool = false
+var was_on_floor: bool = false
+
 func _ready() -> void:
-	Global.window = self
+	if Global.window == null:
+		Global.window = self
+	set_walls_enabled(false)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	check_for_bounds()
-	
-	#global_position = get_global_mouse_position()
-	$Bar/CollisionShape2D.shape.extents.x = $Sprite2D.size.x/2
-	$Bar.position.x = $Sprite2D.size.x/2
-	$CollisionShape2D.shape.extents = $Sprite2D.size/2
-	$CollisionShape2D.position = $Sprite2D.size/2
-	Global.view.size = $Sprite2D.size
-	
-	#$SubViewportContainer.global_position = global_position
-	#$SubViewportContainer/SubViewport.size = Vector2(480*$Sprite2D.scale.x, 270*$Sprite2D.scale.y)
-	$WindowView.size = $Sprite2D.size
-	
-	
-	if Input.is_action_pressed("ui_left"):
-		resize(Vector2(1,0), 3)
-	if Input.is_action_pressed("ui_right"):
-		resize(Vector2(-1,0), 3)
+func get_frame_size() -> Vector2:
+	return frame.texture.get_size() * frame.scale
 
-func resize(dir, resize_speed):
-	pass
-	#match dir:
-		#Vector2(1,0):
-			#print("lewo")
-			#var start_size = $Sprite2D.size.x
-			#$Sprite2D.size.x = max($Sprite2D.size.x - (resize_speed * 2), 200)
-			#var dif = start_size - $Sprite2D.size.x
-			#print(dif)
-			#$WindowView/SubViewport/TextureRect.global_position.x += dif
-			##$Sprite2D.size.x -= resize_speed * 2
-			##global_position.x += resize_speed*2
-			#
-			#global_position.x += dif
-			##Global.cam.offset.x += dif
-		#Vector2(-1,0):
-			#var start_size = $Sprite2D.size.x
-			#$Sprite2D.size.x = max($Sprite2D.size.x - (resize_speed), 200)
-			#var dif = start_size - $Sprite2D.size.x
-			#print(dif)
-			#$WindowView/SubViewport/TextureRect.global_position.x -= 3
-			##Global.cam.offset.x += dif
-			##$Sprite2D.size.x -= resize_speed
-		#Vector2(0,1):
-			#var start_size = $Sprite2D.size.y
-			#$Sprite2D.size.y = max($Sprite2D.size.y - (resize_speed * 2), 200)
-			#var dif = start_size - $Sprite2D.size.y
-			#global_position.y += dif
-			##Global.cam.offset.y -= dif
-			##$Sprite2D.size.y -= resize_speed * 2
-			##global_position.y += resize_speed*2
-		#Vector2(0,-1):
-			#var start_size = $Sprite2D.size.y
-			#$Sprite2D.size.y = max($Sprite2D.size.y - (resize_speed), 200)
-			#var dif = start_size - $Sprite2D.size.y
-			#Global.cam.offset.y += dif
-	#if Input.is_action_pressed("ui_left"):
-		#$Sprite2D.size.x -= resize_speed
-	#elif Input.is_action_pressed("ui_right"):
-		#$Sprite2D.size.x -= resize_speed * 2
-		#global_position.x += resize_speed*2
-	#elif Input.is_action_pressed("ui_up"):
-		#$Sprite2D.size.y -= resize_speed
-	#elif Input.is_action_pressed("ui_down"):
-		#$Sprite2D.size.y -= resize_speed * 2
-		#global_position.y += resize_speed*2
+var drag_velocity: Vector2 = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
-	if Global.cursors_dragging ==0:
-		velocity = Vector2.ZERO
-	var collision = move_and_collide(velocity * delta)
+	if Global.cursors_dragging <= 0:
+		drag_velocity = Vector2.ZERO
+		
+	var collision = move_and_collide(drag_velocity * delta)
 	if collision:
-		velocity = velocity.bounce(collision.get_normal()) *.5
-		Global.drag_direction = velocity
-	#move_and_slide()
-	#if get_slide_collision_count() > 0:
-		#print("hmm")
-		#var collision = get_slide_collision(0)
-		#velocity.bounce(collision.get_normal().normalized() * velocity)
+		drag_velocity = drag_velocity.bounce(collision.get_normal()) * 0.5
+		Global.drag_direction = drag_velocity
+		
+	velocity = Vector2.ZERO
+	clamp_to_screen()
+	update_player_walls()
 
-func move(direction, speed, delta):
-	if Global.cursors_dragging == 0:
-		velocity = Vector2.ZERO
+func move(direction: Vector2, speed: float, _delta: float) -> void:
+	if Global.cursors_dragging <= 0:
+		drag_velocity = Vector2.ZERO
 	else:
-		velocity = direction.normalized() * speed
+		drag_velocity = direction.normalized() * speed
 
-func check_for_bounds():
-	var p_pos = Global.player.global_position
-	if p_pos.x > Global.window.global_position.x + 245:
+func clamp_to_screen() -> void:
+	var half_size: Vector2 = get_frame_size() * 0.5
+	global_position.x = clampf(global_position.x, half_size.x, screen_size.x - half_size.x)
+	global_position.y = clampf(global_position.y, half_size.y, screen_size.y - half_size.y)
 
-		Global.player.velocity = Vector2(-250,-350)
-		Global.player.hit(1)
-	elif p_pos.x < Global.window.global_position.x - 245:
+func update_player_walls() -> void:
+	if not Global.get("player") or not is_instance_valid(Global.player):
+		return
+		
+	var player = Global.player
+	var local_pos: Vector2 = to_local(player.global_position)
+	var on_floor: bool = player.is_on_floor()
+	
+	var inside_inner: bool = absf(local_pos.x) < inner_half_width and local_pos.y > -120.0 and local_pos.y < 85.0
+	var inside_outer: bool = absf(local_pos.x) < outer_half_width and local_pos.y > -145.0 and local_pos.y < 140.0
+	
+	if not is_player_inside:
+		if inside_inner:
+			is_player_inside = true
+			is_jumping_out = false
+			Global.window = self
+		set_walls_enabled(is_player_inside)
+		was_on_floor = on_floor
+		return
 
-		Global.player.velocity = Vector2(250,-350)
-		Global.player.hit(1)
-	elif p_pos.y < Global.window.global_position.y - 155:
+	if Global.window != self:
+		Global.window = self
+	
+	if not inside_outer:
+		if is_jumping_out:
+			is_player_inside = false
+			is_jumping_out = false
+			set_walls_enabled(false)
+			was_on_floor = on_floor
+			return
+		else:
+			local_pos.x = clampf(local_pos.x, -inner_half_width, inner_half_width)
+			local_pos.y = clampf(local_pos.y, -115.0, 55.0)
+			player.global_position = to_global(local_pos)
+			player.velocity = Vector2.ZERO
+	
+	var in_jump_zone: bool = is_point_in_area(left_jump_area, player.global_position) or is_point_in_area(right_jump_area, player.global_position)
+	
+	if on_floor and player.velocity.y >= 0.0:
+		is_jumping_out = false
+	elif not is_jumping_out and (was_on_floor or on_floor) and in_jump_zone and player.velocity.y < -10.0:
+		is_jumping_out = true
+		
+	set_walls_enabled(not is_jumping_out)
+	was_on_floor = on_floor
 
-		Global.player.set_collision_mask_value(3, false)
-		Global.player.velocity = Vector2(Global.player.velocity.x,50)
-		Global.player.hit(1)
-		await get_tree().create_timer(.15).timeout
-		Global.player.set_collision_mask_value(3, true)
-	elif p_pos.y > Global.window.global_position.y + 145:
+func is_point_in_area(area: Area2D, world_pos: Vector2) -> bool:
+	var shape_node: CollisionShape2D = area.get_node_or_null("CollisionShape2D") as CollisionShape2D
+	if not shape_node or not (shape_node.shape is RectangleShape2D):
+		return false
+	var rect_size: Vector2 = (shape_node.shape as RectangleShape2D).size
+	var local_p: Vector2 = shape_node.to_local(world_pos)
+	return absf(local_p.x) <= rect_size.x * 0.5 and absf(local_p.y) <= rect_size.y * 0.5
 
-		Global.player.velocity = Vector2(Global.player.velocity.x,-650)
-		Global.player.hit(1)
+func set_walls_enabled(enabled: bool) -> void:
+	left_wall.disabled = not enabled
+	right_wall.disabled = not enabled
+	top_wall.disabled = not enabled

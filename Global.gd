@@ -1,6 +1,5 @@
 extends Node
 
-var LEVEL_OFFSET : Vector2 = Vector2(1920*2, 1080*2)
 var mouse_position : Vector2 = -Vector2(1920*2, 1080*2)
 var shakecamera
 var hud

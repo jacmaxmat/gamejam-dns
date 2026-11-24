@@ -24,7 +24,6 @@ func prepare_strike(direction: Vector2) -> void:
 	current_state = State.WAITING
 	strike_direction = direction 
 
-# 2. POPRAWKA: Włączamy wszystko dopiero w momencie ataku
 func start_strike() -> void:
 	current_state = State.STRIKING
 	$Area2D/CollisionShape2D.set_deferred("disabled", false)
@@ -46,7 +45,6 @@ func _physics_process(delta: float) -> void:
 	check_hit()
 
 func _process(delta: float) -> void:
-	$Sprite2D.global_position = global_position + Global.LEVEL_OFFSET
 	if current_state == State.FLYING_IN and velocity.length() > 10.0:
 		$Sprite2D.global_rotation = velocity.angle()
 	elif current_state == State.WAITING or current_state == State.STRIKING:

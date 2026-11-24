@@ -37,7 +37,8 @@ func spawn_window_dragger() -> void:
 	if randf() > 0.5:
 		spawn_x = Global.window.global_position.x - 600 
 	else:
-		spawn_x = Global.window.global_position.x + Global.window.frame.size.x + 600 
+		var frame_width = Global.window.frame.texture.get_size().x * Global.window.frame.scale.x
+		spawn_x = Global.window.global_position.x + frame_width + 600 
 	var spawn_y = Global.window.global_position.y + randf_range(-150, 150)
 	dragger.global_position = Vector2(spawn_x, spawn_y)
 	add_child(dragger)

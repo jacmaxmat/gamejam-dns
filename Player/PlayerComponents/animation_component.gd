@@ -21,7 +21,7 @@ func handle_animations(body: CharacterBody2D, target_position: Vector2, want_to_
 	if animation_tree == null or visuals_node == null:
 		return
 
-	var local_mouse: Vector2 = body.get_local_mouse_position() - Global.LEVEL_OFFSET
+	var local_mouse: Vector2 = body.get_local_mouse_position()
 	var aim_direction: Vector2 = local_mouse.normalized()
 	if local_mouse.x < 0:
 		visuals_node.scale.x = -1
