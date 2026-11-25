@@ -16,7 +16,7 @@ func shoot() -> void:
 
 	bullet.global_position = gun_barrel.global_position
 	get_tree().get_root().add_child(bullet)
-	bullet.hitbox.look_at(Global.mouse_position)
+	bullet.hitbox.look_at(bullet.get_global_mouse_position())
 	bullet.hitbox.global_rotation_degrees += randi_range(-3, 3)
 	
 	can_shoot = false

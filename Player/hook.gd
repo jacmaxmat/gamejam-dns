@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 		#global_position += hitbox.transform.x * speed * delta
 	else:
 		velocity = Vector2.ZERO
-		global_position = target.global_position
+		global_position = target.global_position - target_offset
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
@@ -23,8 +23,8 @@ func handle_hook(node):
 	if target == null:
 		is_hooked = true
 		target = node
-		global_position = target.global_position
-		#target_offset = target.global_position - global_position
+		#global_position = target.global_position
+		target_offset = target.global_position - global_position
 		component.is_hooked = is_hooked
 
 func handle_unhook(node):

@@ -4,6 +4,7 @@ extends Node
 @export var hook_scene: PackedScene
 @export var gun_barrel: Node2D
 @export var hook_line: Line2D
+@export var raycast: RayCast2D
 @export var HOOK_SPEED: int = 450
 var is_hooked = false
 var can_shoot = true
@@ -16,7 +17,6 @@ func handle_hook(body):
 		if hook_line.visible == false:
 			hook_line.visible = true
 		hook_line.set_point_position(1,hook_line.to_local(hook.global_position))
-
 	if is_hooked and dir != Vector2.ZERO and hook:
 		if body.global_position.distance_to(hook.global_position) > 20:
 			body.velocity = body.global_position.direction_to(hook.global_position) * HOOK_SPEED
@@ -27,12 +27,14 @@ func handle_hook(body):
 					body.jump_component.jump(body)
 				unhook()
 	if Input.is_action_just_pressed("dash") and can_shoot:
-		dir = (Global.mouse_position - body.global_position).normalized()
+		dir = (body.get_global_mouse_position() - body.global_position).normalized()
+		#raycast.look_at(dir)
+		#raycast.enabled = true
 		hook = hook_scene.instantiate()
 		hook.component = self
 		hook.global_position = body.global_position
 		get_tree().get_root().add_child(hook)
-		hook.hitbox.look_at(Global.mouse_position)
+		hook.hitbox.look_at(body.get_global_mouse_position())
 		can_shoot = false
 		$Timer.start()
 	if Input.is_action_just_released("dash"):

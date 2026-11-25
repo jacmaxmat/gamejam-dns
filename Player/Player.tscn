@@ -1195,7 +1195,7 @@ size = Vector2(15, 26)
 z_index = 35
 texture_filter = 1
 collision_layer = 2
-collision_mask = 1073741828
+collision_mask = 1073741844
 platform_on_leave = 2
 platform_floor_layers = 0
 script = ExtResource("1_0j2ni")
@@ -1268,9 +1268,10 @@ gravity = 1175.0
 
 [node name="InputComponent" parent="." unique_id=398532608 instance=ExtResource("10_d7xyo")]
 
-[node name="HookComponent" parent="." unique_id=243023562 node_paths=PackedStringArray("gun_barrel", "hook_line") instance=ExtResource("12_s0mko")]
+[node name="HookComponent" parent="." unique_id=243023562 node_paths=PackedStringArray("gun_barrel", "hook_line", "raycast") instance=ExtResource("12_s0mko")]
 gun_barrel = NodePath("../VisualLayer/UpperBody/BarrelGun")
 hook_line = NodePath("../VisualLayer/HookLine")
+raycast = NodePath("")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1473503091]
 tree_root = SubResource("AnimationNodeBlendTree_52ivs")
