@@ -4,9 +4,11 @@ class_name Player
 @export var health := 10
 
 var is_topdown = false
-
 var is_invincible = false
 var is_dropping = false
+var default_parent: Node = null
+var pending_parent: Node = null
+var is_reparenting: bool = false
 
 @export_subgroup("Nodes")
 @export var gravity_component: GravityComponent
@@ -20,7 +22,25 @@ var is_dropping = false
 
 func _ready() -> void:
 	Global.player = self
+	default_parent = get_parent()
 	platform_floor_layers = 0
+
+func attach_to_parent(new_parent: Node) -> void:
+	if not is_instance_valid(new_parent):
+		return
+	if get_parent() == new_parent and pending_parent == null:
+		return
+	pending_parent = new_parent
+	_apply_reparent.call_deferred()
+
+func _apply_reparent() -> void:
+	var target: Node = pending_parent
+	pending_parent = null
+	if not is_instance_valid(target) or get_parent() == target:
+		return
+	is_reparenting = true
+	reparent(target, true) # true = zachowuje dokładną global_position
+	is_reparenting = false
 
 func _process(delta: float) -> void:
 	is_invincible = hook_component.is_hooked
@@ -52,7 +72,7 @@ func _physics_process(delta: float) -> void:
 
 func hit(amount):
 	if !is_invincible:
-		$HurtSound.play()
+		#$HurtSound.play()
 		#Global.shakecamera.screen_shake(8,.3)
 		is_invincible = true
 		$Invincibility.play("asdasd")
