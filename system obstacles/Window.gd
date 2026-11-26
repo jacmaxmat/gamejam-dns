@@ -75,7 +75,6 @@ func update_player_walls() -> void:
 			is_player_inside = true
 			is_jumping_out = false
 			Global.window = self
-			player.attach_to_parent(self)
 		set_walls_enabled(is_player_inside)
 		was_on_floor = on_floor
 		return

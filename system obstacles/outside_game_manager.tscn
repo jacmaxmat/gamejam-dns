@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cpk6n684j18a2"]
 
 [ext_resource type="Script" uid="uid://b4cc54pdbusj6" path="res://system obstacles/outside_game_manager.gd" id="1_vxjq3"]
-[ext_resource type="PackedScene" uid="uid://g10siwdo3ou0" path="res://system obstacles/icon_spawner.tscn" id="2_7qj5b"]
 [ext_resource type="PackedScene" uid="uid://ck3n5nte8bag8" path="res://system obstacles/FormationCursorManager.tscn" id="2_24sn8"]
 [ext_resource type="Script" uid="uid://c4agq5rbqddhv" path="res://Enemies/Cursors/formation_pattern.gd" id="3_rbi8l"]
 [ext_resource type="Resource" uid="uid://d1rki2ty4qt8t" path="res://Enemies/Cursors/fast_orbit.tres" id="4_3iim5"]
 [ext_resource type="Resource" uid="uid://d2j68hvop4fty" path="res://Enemies/Cursors/horizontal_line.tres" id="5_capry"]
+[ext_resource type="PackedScene" uid="uid://bxwqix72g58eb" path="res://Enemies/Virus/folder_spawner.tscn" id="7_rbi8l"]
 
 [node name="OutsideGameManager" type="Node2D" unique_id=2016209311]
 script = ExtResource("1_vxjq3")
@@ -20,7 +20,7 @@ wait_time = 4.0
 [node name="DragTimer" type="Timer" parent="." unique_id=1609768309]
 wait_time = 5.0
 
-[node name="IconSpawner" parent="." unique_id=1060868986 instance=ExtResource("2_7qj5b")]
+[node name="FolderSpawner" parent="." unique_id=1686681009 instance=ExtResource("7_rbi8l")]
 
 [node name="ProjectileTimer" type="Timer" parent="." unique_id=540502422]
 wait_time = 2.0

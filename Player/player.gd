@@ -25,23 +25,6 @@ func _ready() -> void:
 	default_parent = get_parent()
 	platform_floor_layers = 0
 
-func attach_to_parent(new_parent: Node) -> void:
-	if not is_instance_valid(new_parent):
-		return
-	if get_parent() == new_parent and pending_parent == null:
-		return
-	pending_parent = new_parent
-	_apply_reparent.call_deferred()
-
-func _apply_reparent() -> void:
-	var target: Node = pending_parent
-	pending_parent = null
-	if not is_instance_valid(target) or get_parent() == target:
-		return
-	is_reparenting = true
-	reparent(target, true) # true = zachowuje dokładną global_position
-	is_reparenting = false
-
 func _process(delta: float) -> void:
 	is_invincible = hook_component.is_hooked
 	if Input.is_action_just_pressed("tab"):
