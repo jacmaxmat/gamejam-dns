@@ -42,6 +42,9 @@ func hit(damage):
 	health -= damage
 	if health <= 0:
 		Global.add_score(50)
+		var explosion_instance = explosion.instantiate()
+		explosion_instance.global_position = self.global_position
+		get_tree().root.add_child(explosion_instance)
 		queue_free()
 	await get_tree().create_timer(.1).timeout
 	$Sprite2D.modulate =Color(1.0, 1.0, 1.0)

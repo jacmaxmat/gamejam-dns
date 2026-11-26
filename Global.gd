@@ -31,7 +31,8 @@ func initialize():
 
 func add_score(amount):
 	score += amount
-	hud.update_score(amount)
+	if hud:
+		hud.update_score(amount)
 
 func update_health(amount):
 	player.health = max(0, player.health-amount)

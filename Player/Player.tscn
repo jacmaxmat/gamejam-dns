@@ -17,7 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://vuly0sh18bn" path="res://assety/ludek_cialo_-45stopni.png" id="12_8sa4y"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cwhd1xmp1a823" path="res://Player/legs_machine.tres" id="12_d7xyo"]
 [ext_resource type="PackedScene" uid="uid://doja7dh18ytfw" path="res://Player/PlayerComponents/HookComponent.tscn" id="12_s0mko"]
+[ext_resource type="PackedScene" uid="uid://bh5y5laitjgr2" path="res://Player/PlayerComponents/ShootingComponent.tscn" id="13_hqjia"]
 [ext_resource type="Texture2D" uid="uid://yk3b36yx2pkk" path="res://assety/ludek_cialo_45stopni.png" id="14_3nb2p"]
+[ext_resource type="PackedScene" uid="uid://dkhf0xdun4k5b" path="res://Player/Bullet.tscn" id="14_x70vp"]
 [ext_resource type="AudioStream" uid="uid://byayw6hqlcrpt" path="res://dzwiek/garbage.wav" id="16_7v5gs"]
 [ext_resource type="Texture2D" uid="uid://c6s1xybsupqh2" path="res://assety/ludek_strzal_dol.png" id="19_evw08"]
 [ext_resource type="Texture2D" uid="uid://d27h48j3vu3b5" path="res://assety/ludek_strzal_-45stopni.png" id="20_7uipr"]
@@ -1195,7 +1197,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s0mko"]
 size = Vector2(15, 26)
 
-[node name="Player" type="CharacterBody2D" unique_id=283957801 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "aim_component", "animation_component", "hook_component")]
+[node name="Player" type="CharacterBody2D" unique_id=283957801 node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "shooting_component", "aim_component", "animation_component", "hook_component")]
 z_index = 35
 texture_filter = 1
 collision_layer = 2
@@ -1209,6 +1211,7 @@ gravity_component = NodePath("GravityComponent")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
 jump_component = NodePath("JumpComponent")
+shooting_component = NodePath("ShootingComponent")
 aim_component = NodePath("AimComponent")
 animation_component = NodePath("AnimationComponent")
 hook_component = NodePath("HookComponent")
@@ -1292,6 +1295,10 @@ visual_layer = NodePath("../VisualLayer")
 player = NodePath("..")
 HOOK_SPEED = 750
 HOOK_RANGE = 400
+
+[node name="ShootingComponent" parent="." unique_id=729869130 node_paths=PackedStringArray("gun_barrel") instance=ExtResource("13_hqjia")]
+bullet_scene = ExtResource("14_x70vp")
+gun_barrel = NodePath("../VisualLayer/UpperBody/BarrelGun")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1473503091]
 tree_root = SubResource("AnimationNodeBlendTree_52ivs")

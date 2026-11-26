@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	movement_component.handle_horizontal_movement(self, Vector2(input_component.input_horizontal,input_component.input_vertical))
 	aim_component.handle_aim(get_global_mouse_position())
 	animation_component.handle_animations(self, get_global_mouse_position(), input_component.get_shoot_input())
-	#shooting_component.handle_shoot(input_component.get_shoot_input())
+	shooting_component.handle_shoot(input_component.get_shoot_input())
 	hook_component.handle_hook(self)
 	
 	move_and_slide()

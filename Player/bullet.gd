@@ -16,16 +16,25 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
 
-#func _on_bullet_hitbox_area_entered(area: Area2D) -> void:
-	#if area.has_method("hit"):
-		#area.hit(1)
+func _on_bullet_hitbox_area_entered(area: Area2D) -> void:
+	if area.has_method("hit"):
+		area.hit(1)
 	#var bullet_destroy_instance = preload_bullet_destroy.instantiate()
 	#bullet_destroy_instance.global_position = global_position
 	#get_tree().get_root().add_child(bullet_destroy_instance)
-	#queue_free()
+	queue_free()
 
 
 #func _on_timer_timeout() -> void:
 	#var bullet_view_instance = preload_bullet_view.instantiate()
 	#bullet_view_instance.global_position = global_position
 	#get_tree().root.add_child(bullet_view_instance)
+
+
+func _on_bullet_hitbox_body_entered(body: Node2D) -> void:
+	if body.has_method("hit"):
+		body.hit(1)
+	#var bullet_destroy_instance = preload_bullet_destroy.instantiate()
+	#bullet_destroy_instance.global_position = global_position
+	#get_tree().get_root().add_child(bullet_destroy_instance)
+	queue_free()

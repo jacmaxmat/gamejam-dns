@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://csdlx5gv5eopw" path="res://Player/bullet.gd" id="1_508bx"]
 [ext_resource type="Texture2D" uid="uid://duljscq5cnfvp" path="res://assety/ludzik_pocisk.png" id="1_nyi2d"]
 [ext_resource type="AudioStream" uid="uid://co57lmjcwokju" path="res://dzwiek/fall2.wav" id="4_nllvn"]
-[ext_resource type="PackedScene" uid="uid://c5hotye0sico6" path="res://window_view.tscn" id="4_tv5nm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_508bx"]
 atlas = ExtResource("1_nyi2d")
@@ -32,12 +31,14 @@ radius = 7.0
 height = 18.0
 
 [node name="Bullet" type="Node2D" unique_id=851040047]
+z_index = 20
 script = ExtResource("1_508bx")
 
 [node name="BulletHitbox" type="Area2D" parent="." unique_id=1822330316]
 collision_layer = 0
-collision_mask = 264
+collision_mask = 780
 monitorable = false
+priority = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BulletHitbox" unique_id=502729570]
 sprite_frames = SubResource("SpriteFrames_e8ooo")
@@ -55,10 +56,7 @@ volume_db = -5.0
 pitch_scale = 1.36
 autoplay = true
 
-[node name="WindowView" parent="." unique_id=1664561285 instance=ExtResource("4_tv5nm")]
-offset_right = -896.0
-offset_bottom = -476.0
-
 [connection signal="area_entered" from="BulletHitbox" to="." method="_on_bullet_hitbox_area_entered"]
+[connection signal="body_entered" from="BulletHitbox" to="." method="_on_bullet_hitbox_body_entered"]
 [connection signal="screen_exited" from="BulletHitbox/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="screen_exited" from="BulletHitbox/VisibleOnScreenNotifier2D" to="BulletHitbox" method="_on_visible_on_screen_notifier_2d_screen_exited"]
