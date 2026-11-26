@@ -1,24 +1,31 @@
 extends CharacterBody2D
 
+signal obstacle_hit(normal: Vector2)
+
 @onready var bar: Marker2D = $MarkerForCursor
 @onready var frame: Sprite2D = $WindowSprite
 @onready var left_jump_area: Area2D = $LeftJumpArea
 @onready var right_jump_area: Area2D = $RightJumpArea
 
-@onready var left_wall: CollisionShape2D = $LeftWall
-@onready var right_wall: CollisionShape2D = $RightWall
-@onready var top_wall: CollisionShape2D = $TopWall
+@onready var left_wall: CollisionShape2D = $PlayerBounds/LeftWall
+@onready var right_wall: CollisionShape2D = $PlayerBounds/RightWall
+@onready var top_wall: CollisionShape2D = $PlayerBounds/TopWall
 
-@export var smoothing: float = 20.0
 @export var inner_half_width: float = 215.0
 @export var outer_half_width: float = 250.0
 @export var screen_size: Vector2 = Vector2(1920, 1080)
+@export var friction: float = 800.0
 
 var is_player_inside: bool = false
 var is_jumping_out: bool = false
 var was_on_floor: bool = false
 
+var drag_velocity: Vector2 = Vector2.ZERO
+var pending_drag_sum: Vector2 = Vector2.ZERO
+var pending_drag_count: int = 0
+
 func _ready() -> void:
+	add_to_group("windows")
 	if Global.window == null:
 		Global.window = self
 	set_walls_enabled(false)
@@ -26,31 +33,31 @@ func _ready() -> void:
 func get_frame_size() -> Vector2:
 	return frame.texture.get_size() * frame.scale
 
-var drag_velocity: Vector2 = Vector2.ZERO
+func apply_drag(vel: Vector2) -> void:
+	pending_drag_sum += vel
+	pending_drag_count += 1
 
 func _physics_process(delta: float) -> void:
-	if Global.cursors_dragging <= 0:
-		drag_velocity = Vector2.ZERO
-		
-	var collision = move_and_collide(drag_velocity * delta)
-	if collision:
-		drag_velocity = drag_velocity.bounce(collision.get_normal()) * 0.5
+	if pending_drag_count > 0:
+		var speed_mult: float = 10.0 + (pending_drag_count - 1) * 3
+		drag_velocity = pending_drag_sum.normalized() * speed_mult
 		Global.drag_direction = drag_velocity
-		
-	velocity = Vector2.ZERO
-	clamp_to_screen()
-	update_player_walls()
-
-func move(direction: Vector2, speed: float, _delta: float) -> void:
-	if Global.cursors_dragging <= 0:
-		drag_velocity = Vector2.ZERO
 	else:
-		drag_velocity = direction.normalized() * speed
-
-func clamp_to_screen() -> void:
-	var half_size: Vector2 = get_frame_size() * 0.5
-	global_position.x = clampf(global_position.x, half_size.x, screen_size.x - half_size.x)
-	global_position.y = clampf(global_position.y, half_size.y, screen_size.y - half_size.y)
+		drag_velocity = drag_velocity.move_toward(Vector2.ZERO, friction * delta)
+		
+	pending_drag_sum = Vector2.ZERO
+	pending_drag_count = 0
+	if drag_velocity.length_squared() > 0.1:
+		var collision:= move_and_collide(drag_velocity * delta)
+		if collision:
+			var normal: Vector2 = collision.get_normal()
+			var slide_motion: Vector2 = collision.get_remainder().slide(normal)
+			move_and_collide(slide_motion)
+			drag_velocity = drag_velocity.bounce(normal) * 0.6
+			obstacle_hit.emit(normal)
+			
+	velocity = Vector2.ZERO
+	update_player_walls()
 
 func update_player_walls() -> void:
 	if not Global.get("player") or not is_instance_valid(Global.player):
@@ -80,6 +87,8 @@ func update_player_walls() -> void:
 			is_player_inside = false
 			is_jumping_out = false
 			set_walls_enabled(false)
+			if player.get_parent() == self:
+				player.attach_to_parent(player.default_parent)
 			was_on_floor = on_floor
 			return
 		else:

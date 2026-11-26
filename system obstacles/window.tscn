@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://dbryayljgw6o2"]
 
 [ext_resource type="Script" uid="uid://dfvp4pl3k7a1g" path="res://system obstacles/Window.gd" id="1_bnn13"]
-[ext_resource type="Texture2D" uid="uid://dk0m7kt6nqbbr" path="res://assety/nowe/floortile.png" id="2_5n0ag"]
 [ext_resource type="Texture2D" uid="uid://bnb1qqrh5os7n" path="res://assety/okno.png" id="3_8lrwx"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dki06"]
+size = Vector2(6, 270)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xuprx"]
+size = Vector2(476, 18)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8ooo"]
-size = Vector2(477, 72)
+size = Vector2(477, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hynge"]
 size = Vector2(53, 262)
@@ -18,15 +23,12 @@ gradient = SubResource("Gradient_hynge")
 width = 480
 height = 270
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dki06"]
-size = Vector2(6, 270)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xuprx"]
-size = Vector2(476, 18)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cts8g"]
+size = Vector2(494, 285)
 
 [node name="Window" type="CharacterBody2D" unique_id=427429608]
 z_index = 1
-collision_layer = 2147483664
+collision_layer = 2147483680
 collision_mask = 32
 script = ExtResource("1_bnn13")
 
@@ -36,17 +38,24 @@ texture = ExtResource("3_8lrwx")
 [node name="MarkerForCursor" type="Marker2D" parent="." unique_id=1619301765]
 position = Vector2(-1, -126)
 
-[node name="GroundCollision2" type="StaticBody2D" parent="." unique_id=660720766]
-collision_layer = 516
+[node name="PlayerBounds" type="StaticBody2D" parent="." unique_id=993681125]
+collision_layer = 4
 collision_mask = 0
 
-[node name="Ground" type="Sprite2D" parent="GroundCollision2" unique_id=1031730204]
-position = Vector2(0.9999995, 98)
-scale = Vector2(29.750002, 4.5000005)
-texture = ExtResource("2_5n0ag")
+[node name="RightWall" type="CollisionShape2D" parent="PlayerBounds" unique_id=535839163]
+position = Vector2(237, 1)
+shape = SubResource("RectangleShape2D_dki06")
 
-[node name="GroundCollision" type="CollisionShape2D" parent="GroundCollision2" unique_id=496617160]
-position = Vector2(0.5, 98)
+[node name="TopWall" type="CollisionShape2D" parent="PlayerBounds" unique_id=448098875]
+position = Vector2(1, -126)
+shape = SubResource("RectangleShape2D_xuprx")
+
+[node name="LeftWall" type="CollisionShape2D" parent="PlayerBounds" unique_id=692000959]
+position = Vector2(-235, -1)
+shape = SubResource("RectangleShape2D_dki06")
+
+[node name="GroundCollision" type="CollisionShape2D" parent="PlayerBounds" unique_id=496617160]
+position = Vector2(0.5, 132.5)
 shape = SubResource("RectangleShape2D_e8ooo")
 
 [node name="LeftJumpArea" type="Area2D" parent="." unique_id=875855670]
@@ -67,14 +76,6 @@ shape = SubResource("RectangleShape2D_hynge")
 range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_e8ooo")
 
-[node name="LeftWall" type="CollisionShape2D" parent="." unique_id=692000959]
-position = Vector2(-235, -1)
-shape = SubResource("RectangleShape2D_dki06")
-
-[node name="RightWall" type="CollisionShape2D" parent="." unique_id=535839163]
-position = Vector2(237, 1)
-shape = SubResource("RectangleShape2D_dki06")
-
-[node name="TopWall" type="CollisionShape2D" parent="." unique_id=448098875]
-position = Vector2(1, -126)
-shape = SubResource("RectangleShape2D_xuprx")
+[node name="FrameCollision" type="CollisionShape2D" parent="." unique_id=1175969430]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_cts8g")
