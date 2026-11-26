@@ -73,7 +73,7 @@ position = Vector2(1702, 499.99994)
 scale = Vector2(0.52, 0.76)
 
 [node name="Window3" parent="." unique_id=1866191103 instance=ExtResource("4_1xlf3")]
-position = Vector2(254, 128)
+position = Vector2(254, 662)
 scale = Vector2(0.5, 0.7)
 
 [node name="Window" parent="." unique_id=803155470 instance=ExtResource("4_1xlf3")]
@@ -97,6 +97,18 @@ offset_bottom = -109.0
 [node name="PauseMenu" parent="." unique_id=1039648299 instance=ExtResource("9_sjacr")]
 
 [node name="HUD" parent="." unique_id=358077235 instance=ExtResource("10_svhpq")]
+
+[node name="ProgressBar" parent="HUD" index="0" unique_id=412341911]
+offset_left = 128.0
+offset_top = 101.0
+offset_right = 497.0
+offset_bottom = 144.0
+
+[node name="Score" parent="HUD" index="1" unique_id=1861790820]
+offset_left = 129.0
+offset_top = 149.0
+offset_right = 261.0
+offset_bottom = 178.0
 
 [node name="Virus" parent="." unique_id=594770997 instance=ExtResource("13_0h268")]
 
@@ -134,3 +146,4 @@ shape = SubResource("RectangleShape2D_sn0t7")
 [editable path="Level"]
 [editable path="Level/EnemySpawner"]
 [editable path="Window"]
+[editable path="HUD"]
