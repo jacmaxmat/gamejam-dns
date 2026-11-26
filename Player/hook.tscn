@@ -26,6 +26,6 @@ shape = SubResource("RectangleShape2D_bhunq")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1906257588]
 target_position = Vector2(13, 0)
-collision_mask = 1100
+collision_mask = 76
 hit_from_inside = true
 collide_with_areas = true
