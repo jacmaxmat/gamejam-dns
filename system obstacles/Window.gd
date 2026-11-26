@@ -4,13 +4,6 @@ signal obstacle_hit(normal: Vector2)
 
 @onready var bar: Marker2D = $MarkerForCursor
 @onready var frame: Sprite2D = $WindowSprite
-@onready var left_jump_area: Area2D = $LeftJumpArea
-@onready var right_jump_area: Area2D = $RightJumpArea
-@onready var up_jump_area: Area2D = $UpJumpArea
-
-@onready var left_wall: CollisionShape2D = $PlayerBounds/LeftWall
-@onready var right_wall: CollisionShape2D = $PlayerBounds/RightWall
-@onready var top_wall: CollisionShape2D = $PlayerBounds/TopWall
 
 @export var inner_half_width: float = 215.0
 @export var outer_half_width: float = 250.0
@@ -29,7 +22,6 @@ func _ready() -> void:
 	add_to_group("windows")
 	if Global.window == null:
 		Global.window = self
-	set_walls_enabled(false)
 
 func get_frame_size() -> Vector2:
 	return frame.texture.get_size() * frame.global_scale.abs()
@@ -58,55 +50,6 @@ func _physics_process(delta: float) -> void:
 			obstacle_hit.emit(normal)
 			
 	velocity = Vector2.ZERO
-	update_player_walls()
-
-func update_player_walls() -> void:
-	if not Global.get("player") or not is_instance_valid(Global.player):
-		return
-		
-	var player = Global.player
-	var local_pos: Vector2 = to_local(player.global_position)
-	var on_floor: bool = player.is_on_floor()
-	
-	var inside_inner: bool = absf(local_pos.x) < inner_half_width and local_pos.y > -120.0 and local_pos.y < 85.0
-	var inside_outer: bool = absf(local_pos.x) < outer_half_width and local_pos.y > -145.0 and local_pos.y < 140.0
-	
-	if not is_player_inside:
-		if inside_inner:
-			is_player_inside = true
-			is_jumping_out = false
-			Global.window = self
-		set_walls_enabled(is_player_inside)
-		was_on_floor = on_floor
-		return
-
-	if Global.window != self:
-		Global.window = self
-	
-	if not inside_outer:
-		if is_jumping_out:
-			is_player_inside = false
-			is_jumping_out = false
-			set_walls_enabled(false)
-			if player.get_parent() == self:
-				player.attach_to_parent(player.default_parent)
-			was_on_floor = on_floor
-			return
-		else:
-			local_pos.x = clampf(local_pos.x, -inner_half_width, inner_half_width)
-			local_pos.y = clampf(local_pos.y, -115.0, 55.0)
-			player.global_position = to_global(local_pos)
-			player.velocity = Vector2.ZERO
-	
-	var in_jump_zone: bool = is_point_in_area(left_jump_area, player.global_position) or is_point_in_area(right_jump_area, player.global_position) or is_point_in_area(up_jump_area, player.global_position)
-	
-	if on_floor and player.velocity.y >= 0.0:
-		is_jumping_out = false
-	elif not is_jumping_out and (was_on_floor or on_floor) and in_jump_zone and player.velocity.y < -10.0:
-		is_jumping_out = true
-		
-	set_walls_enabled(not is_jumping_out)
-	was_on_floor = on_floor
 
 func is_point_in_area(area: Area2D, world_pos: Vector2) -> bool:
 	var shape_node: CollisionShape2D = area.get_node_or_null("CollisionShape2D") as CollisionShape2D
@@ -115,8 +58,3 @@ func is_point_in_area(area: Area2D, world_pos: Vector2) -> bool:
 	var rect_size: Vector2 = (shape_node.shape as RectangleShape2D).size
 	var local_p: Vector2 = shape_node.to_local(world_pos)
 	return absf(local_p.x) <= rect_size.x * 0.5 and absf(local_p.y) <= rect_size.y * 0.5
-
-func set_walls_enabled(enabled: bool) -> void:
-	left_wall.disabled = not enabled
-	right_wall.disabled = not enabled
-	top_wall.disabled = not enabled
