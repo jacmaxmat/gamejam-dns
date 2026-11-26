@@ -27,9 +27,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	else:
 		if !Global.player.is_topdown:
 			Global.player.velocity = Vector2(sign(Global.player.scale.x)*150,-500)
-		var explosion_instance = explosion.instantiate()
-		explosion_instance.global_position = self.global_position
-		get_tree().root.add_child(explosion_instance)
+		hit(5)
 	queue_free()
 	#if body.has_method("hit"):
 		#body.hit(1)

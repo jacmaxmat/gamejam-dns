@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends CanvasLayer
 
 @export var heart1: TextureRect
 @export var heart2: TextureRect
@@ -14,16 +14,17 @@ func _process(delta: float) -> void:
 	pass
 
 func update_health(amount):
-	match amount:
-		2:
-			heart3.visible = false
-		1:
-			heart3.visible = false
-			heart2.visible = false
-		0:
-			heart3.visible = false
-			heart2.visible = false
-			heart1.visible = false
+	$ProgressBar.value = amount
+	#match amount:
+		#2:
+			#heart3.visible = false
+		#1:
+			#heart3.visible = false
+			#heart2.visible = false
+		#0:
+			#heart3.visible = false
+			#heart2.visible = false
+			#heart1.visible = false
 
 func update_score(amount):
 	$Score.text = "Score: " + str(Global.score)

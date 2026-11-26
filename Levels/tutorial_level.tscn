@@ -1,0 +1,24 @@
+[gd_scene format=4 uid="uid://xy0mk4ycddy5"]
+
+[ext_resource type="Script" uid="uid://hgu722xobe4n" path="res://system obstacles/camera_2d.gd" id="1_sykva"]
+[ext_resource type="PackedScene" uid="uid://k6bao6rhpn2" path="res://level.tscn" id="2_7263l"]
+[ext_resource type="PackedScene" uid="uid://dtcpjvqdarjjv" path="res://menus/pause_menu.tscn" id="3_i2ex2"]
+[ext_resource type="PackedScene" uid="uid://dbryayljgw6o2" path="res://system obstacles/window.tscn" id="4_7263l"]
+
+[node name="TutorialLevel" type="Node2D" unique_id=566918771]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=421782042]
+script = ExtResource("1_sykva")
+
+[node name="Level" parent="." unique_id=2137160350 instance=ExtResource("2_7263l")]
+
+[node name="Visual" parent="Level" index="1" unique_id=1565347687]
+tile_map_data = PackedByteArray("AAAPABMAAAAAAAAAAAAQABMAAAAAAAAAAAARABMAAAAAAAAAAAASABMAAAAAAAAAAAATABMAAAAAAAAAAAAUABMAAAAAAAAAAAAVABMAAAAAAAAAAAAWABMAAAAAAAAAAAAXABMAAAAAAAAAAAAYABMAAAAAAAAAAAAZABMAAAAAAAAAAAAaABMAAAAAAAAAAAAbABMAAAAAAAAAAAAcABMAAAAAAAAAAAAdABMAAAAAAAAAAAAeABMAAAAAAAAAAAAfABMAAAAAAAAAAAAgABMAAAAAAAAAAAAhABMAAAAAAAAAAAAiABMAAAAAAAAAAAAjABMAAAAAAAAAAAAkABMAAAAAAAAAAAAlABMAAAAAAAAAAAAmABMAAAAAAAAAAAAnABMAAAAAAAAAAAAoABMAAAAAAAAAAAApABMAAAAAAAAAAAAqABMAAAAAAAAAAAArABMAAAAAAAAAAAAsABMAAAAAAAAAAAAtABMAAAAAAAAAAAAuABMAAAAAAAAAAAAvABMAAAAAAAAAAAAwABMAAAAAAAAAAAAxABMAAAAAAAAAAAAOABMAAAAAAAAAAAANABMAAAAAAAAAAAAMABMAAAAAAAAAAAALABMAAAAAAAAAAAA=")
+
+[node name="PauseMenu" parent="." unique_id=1039648299 instance=ExtResource("3_i2ex2")]
+
+[node name="Window" parent="." unique_id=427429608 instance=ExtResource("4_7263l")]
+position = Vector2(521, 138)
+
+[editable path="Level"]
+[editable path="Level/EnemySpawner"]

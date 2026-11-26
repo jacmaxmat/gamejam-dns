@@ -9,9 +9,8 @@
 [ext_resource type="Script" uid="uid://uqtennchkr03" path="res://Enemies/Cursors/active_collision.gd" id="4_borsh"]
 [ext_resource type="PackedScene" uid="uid://cpk6n684j18a2" path="res://system obstacles/outside_game_manager.tscn" id="6_120g1"]
 [ext_resource type="PackedScene" uid="uid://dtcpjvqdarjjv" path="res://menus/pause_menu.tscn" id="9_sjacr"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5n0ag"]
-light_mode = 2
+[ext_resource type="PackedScene" uid="uid://dfqtb1t3us5jf" path="res://menus/tutorial.tscn" id="9_ttin6"]
+[ext_resource type="PackedScene" uid="uid://dhd1lo4rcujuu" path="res://hud.tscn" id="10_svhpq"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_borsh"]
 light_mode = 2
@@ -38,7 +37,6 @@ z_index = 0
 
 [node name="Sprite2D" parent="Level" index="0" unique_id=2044938721]
 light_mask = 2
-material = SubResource("CanvasItemMaterial_5n0ag")
 
 [node name="Visual2" type="TileMapLayer" parent="Level" unique_id=1379288806]
 light_mask = 2
@@ -65,16 +63,24 @@ position = Vector2(1383, 870)
 
 [node name="Window" parent="." unique_id=803155470 instance=ExtResource("4_1xlf3")]
 z_as_relative = false
-position = Vector2(370, 398.00003)
+position = Vector2(582, 419.00003)
 scale = Vector2(1.5, 1.5)
 
 [node name="OutsideGameManager" parent="." unique_id=2016209311 instance=ExtResource("6_120g1")]
 active = true
 
 [node name="Player" parent="." unique_id=283957801 instance=ExtResource("4_0ndtp")]
-position = Vector2(205, 518)
+position = Vector2(576, 365)
+
+[node name="Tutorial" parent="Player" unique_id=169638499 instance=ExtResource("9_ttin6")]
+offset_left = 5.0
+offset_top = -109.0
+offset_right = 5.0
+offset_bottom = -109.0
 
 [node name="PauseMenu" parent="." unique_id=1039648299 instance=ExtResource("9_sjacr")]
+
+[node name="HUD" parent="." unique_id=358077235 instance=ExtResource("10_svhpq")]
 
 [editable path="Level"]
 [editable path="Level/EnemySpawner"]

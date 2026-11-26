@@ -1,6 +1,6 @@
 extends Node2D
 
-#var preload_bullet_destroy = preload("uid://c0ajdb5n0h87e")
+var preload_bullet_destroy = preload("uid://c0ajdb5n0h87e")
 
 var preload_bullet_view = preload("uid://d0xixlf4xfx7i")
 
@@ -33,7 +33,7 @@ func _on_bullet_hitbox_area_entered(area: Area2D) -> void:
 func _on_bullet_hitbox_body_entered(body: Node2D) -> void:
 	if body.has_method("hit"):
 		body.hit(1)
-	#var bullet_destroy_instance = preload_bullet_destroy.instantiate()
-	#bullet_destroy_instance.global_position = global_position
-	#get_tree().get_root().add_child(bullet_destroy_instance)
+	var bullet_destroy_instance = preload_bullet_destroy.instantiate()
+	bullet_destroy_instance.global_position = global_position
+	get_tree().get_root().add_child(bullet_destroy_instance)
 	queue_free()
