@@ -19,9 +19,8 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func _on_bullet_hitbox_area_entered(area: Area2D) -> void:
 	if area.has_method("hit"):
 		area.hit(1)
-	#var bullet_destroy_instance = preload_bullet_destroy.instantiate()
-	#bullet_destroy_instance.global_position = global_position
-	#get_tree().get_root().add_child(bullet_destroy_instance)
+	elif area.get_parent() and area.get_parent().has_method("hit"):
+		area.get_parent().hit(1)
 	queue_free()
 
 

@@ -6,6 +6,7 @@ signal obstacle_hit(normal: Vector2)
 @onready var frame: Sprite2D = $WindowSprite
 @onready var left_jump_area: Area2D = $LeftJumpArea
 @onready var right_jump_area: Area2D = $RightJumpArea
+@onready var up_jump_area: Area2D = $UpJumpArea
 
 @onready var left_wall: CollisionShape2D = $PlayerBounds/LeftWall
 @onready var right_wall: CollisionShape2D = $PlayerBounds/RightWall
@@ -97,7 +98,7 @@ func update_player_walls() -> void:
 			player.global_position = to_global(local_pos)
 			player.velocity = Vector2.ZERO
 	
-	var in_jump_zone: bool = is_point_in_area(left_jump_area, player.global_position) or is_point_in_area(right_jump_area, player.global_position)
+	var in_jump_zone: bool = is_point_in_area(left_jump_area, player.global_position) or is_point_in_area(right_jump_area, player.global_position) or is_point_in_area(up_jump_area, player.global_position)
 	
 	if on_floor and player.velocity.y >= 0.0:
 		is_jumping_out = false

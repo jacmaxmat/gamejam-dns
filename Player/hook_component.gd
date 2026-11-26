@@ -11,13 +11,29 @@ extends Node
 @export var HOOK_SPEED: int = 450
 @export var HOOK_BOUNCE_VECTOR = Vector2(250,-475)
 @export var HOOK_RANGE: int= 700
+@export var folder_break_distance: float = 65.0
+@export var folder_bounce_y: float = -350.0
 var is_hooked = false
 var can_bounce = false
 var can_shoot = true
 var dir = Vector2.ZERO
 var hook = null
+var hooked_folder: Node2D = null
 
 func handle_hook(body):
+	if hook != null and not is_instance_valid(hook):
+		unhook()
+
+	if is_hooked and hooked_folder != null:
+		if not is_instance_valid(hooked_folder):
+			unhook()
+			return
+		if body.global_position.distance_to(hooked_folder.global_position) <= folder_break_distance:
+			var folder_to_break: Node2D = hooked_folder
+			unhook()
+			folder_to_break.break_folder()
+			body.velocity.y = minf(body.velocity.y, folder_bounce_y)
+			return
 	if is_hooked and can_bounce and (body.is_on_wall() or body.is_on_ceiling()):
 		bounce(body)
 	#aim_indicator.set_point_position(0,gun_barrel.position)
@@ -63,6 +79,7 @@ func unhook():
 	if player.is_on_floor():
 		player.velocity.x *= .6
 	is_hooked = false
+	hooked_folder = null
 	if hook:
 		hook.queue_free()
 	hook = null
