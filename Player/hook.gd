@@ -48,7 +48,8 @@ func handle_hook(node):
 		is_hooked = true
 		target = node
 		#global_position = target.global_position
-		target_offset = target.global_position - global_position
+		if target:
+			target_offset = target.global_position - global_position
 		component.bounce_timer.start()
 		component.is_hooked = is_hooked
 

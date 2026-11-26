@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://uqtennchkr03" path="res://Enemies/Cursors/active_collision.gd" id="4_borsh"]
 [ext_resource type="PackedScene" uid="uid://cpk6n684j18a2" path="res://system obstacles/outside_game_manager.tscn" id="6_120g1"]
 [ext_resource type="PackedScene" uid="uid://dtcpjvqdarjjv" path="res://menus/pause_menu.tscn" id="9_sjacr"]
+[ext_resource type="PackedScene" uid="uid://dfqtb1t3us5jf" path="res://menus/tutorial.tscn" id="9_ttin6"]
 [ext_resource type="PackedScene" uid="uid://dhd1lo4rcujuu" path="res://hud.tscn" id="10_svhpq"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_borsh"]
@@ -70,6 +71,12 @@ active = true
 
 [node name="Player" parent="." unique_id=283957801 instance=ExtResource("4_0ndtp")]
 position = Vector2(576, 365)
+
+[node name="Tutorial" parent="Player" unique_id=169638499 instance=ExtResource("9_ttin6")]
+offset_left = 5.0
+offset_top = -109.0
+offset_right = 5.0
+offset_bottom = -109.0
 
 [node name="PauseMenu" parent="." unique_id=1039648299 instance=ExtResource("9_sjacr")]
 

@@ -46,5 +46,7 @@ func game_over():
 	final_screen.game_over()
 	is_game_over = true
 	
+func tutorial_finished():
+	pass
 	
 	

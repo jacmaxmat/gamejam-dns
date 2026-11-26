@@ -45,6 +45,7 @@ collision_mask = 0
 [node name="RightWall" type="CollisionShape2D" parent="PlayerBounds" unique_id=535839163]
 position = Vector2(237, 1)
 shape = SubResource("RectangleShape2D_dki06")
+disabled = true
 
 [node name="TopWall" type="CollisionShape2D" parent="PlayerBounds" unique_id=448098875]
 position = Vector2(1, -126)
