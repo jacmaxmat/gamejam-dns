@@ -36,7 +36,6 @@ scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_f2txt")
 
 [node name="Collision" type="TileMapLayer" parent="." unique_id=1618244203]
-visible = false
 tile_set = SubResource("TileSet_bhunq")
 occlusion_enabled = false
 rendering_quadrant_size = 64

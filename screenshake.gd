@@ -12,8 +12,10 @@ var shake_time_speed: float = 20.0
 
 var noise = FastNoiseLite.new()
 
-@export var player: CharacterBody2D
 @export var smoothing := 5.0
+
+func _ready() -> void:
+	Global.shakecamera = self
 
 func _physics_process(delta):
 	if active_shake_time > 0:

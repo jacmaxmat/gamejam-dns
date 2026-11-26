@@ -27,6 +27,10 @@
 [ext_resource type="AudioStream" uid="uid://bic2hwndc4i8d" path="res://dzwiek/jump1.wav" id="25_yifbt"]
 [ext_resource type="AudioStream" uid="uid://co57lmjcwokju" path="res://dzwiek/fall2.wav" id="27_hqjia"]
 
+[sub_resource type="Gradient" id="Gradient_s0mko"]
+offsets = PackedFloat32Array(0, 0.01438849, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8ooo"]
 radius = 8.5
 height = 28.0
@@ -1196,6 +1200,7 @@ z_index = 35
 texture_filter = 1
 collision_layer = 2
 collision_mask = 1073741844
+floor_stop_on_slope = false
 platform_on_leave = 2
 platform_floor_layers = 0
 script = ExtResource("1_0j2ni")
@@ -1234,6 +1239,17 @@ begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
 
+[node name="AimIndicator" type="Line2D" parent="VisualLayer" unique_id=998115835]
+visible = false
+z_index = -1
+position = Vector2(29, -4)
+points = PackedVector2Array(0, 0, 0, 0)
+width = 3.0
+gradient = SubResource("Gradient_s0mko")
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591169664]
 position = Vector2(-0.5, 0)
 shape = SubResource("CapsuleShape2D_e8ooo")
@@ -1268,10 +1284,15 @@ gravity = 1175.0
 
 [node name="InputComponent" parent="." unique_id=398532608 instance=ExtResource("10_d7xyo")]
 
-[node name="HookComponent" parent="." unique_id=243023562 node_paths=PackedStringArray("gun_barrel", "hook_line", "raycast") instance=ExtResource("12_s0mko")]
+[node name="HookComponent" parent="." unique_id=243023562 node_paths=PackedStringArray("bounce_timer", "gun_barrel", "hook_line", "aim_indicator", "visual_layer", "player") instance=ExtResource("12_s0mko")]
+bounce_timer = NodePath("BounceTimer")
 gun_barrel = NodePath("../VisualLayer/UpperBody/BarrelGun")
 hook_line = NodePath("../VisualLayer/HookLine")
-raycast = NodePath("")
+aim_indicator = NodePath("../VisualLayer/AimIndicator")
+visual_layer = NodePath("../VisualLayer")
+player = NodePath("..")
+HOOK_SPEED = 750
+HOOK_RANGE = 400
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1473503091]
 tree_root = SubResource("AnimationNodeBlendTree_52ivs")
@@ -1308,3 +1329,5 @@ shape = SubResource("RectangleShape2D_s0mko")
 [connection signal="animation_finished" from="Invincibility" to="." method="_on_invincibility_animation_finished"]
 [connection signal="area_entered" from="WindowDetection" to="." method="_on_window_detection_area_entered"]
 [connection signal="area_exited" from="WindowDetection" to="." method="_on_window_detection_area_exited"]
+
+[editable path="HookComponent"]

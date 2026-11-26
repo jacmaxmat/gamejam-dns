@@ -3,14 +3,12 @@
 [ext_resource type="Script" uid="uid://bcx1hyskhlvyn" path="res://Player/hook_component.gd" id="1_5chsn"]
 [ext_resource type="PackedScene" uid="uid://dyvr35uj2rnyb" path="res://Player/hook.tscn" id="2_1hjln"]
 
-[node name="HookComponent" type="Node" unique_id=243023562 node_paths=PackedStringArray("gun_barrel", "hook_line")]
+[node name="HookComponent" type="Node" unique_id=243023562]
 script = ExtResource("1_5chsn")
 hook_scene = ExtResource("2_1hjln")
-gun_barrel = NodePath("")
-hook_line = NodePath("")
 
-[node name="Timer" type="Timer" parent="." unique_id=1766432610]
-wait_time = 0.3
+[node name="BounceTimer" type="Timer" parent="." unique_id=1766432610]
+wait_time = 0.1
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="BounceTimer" to="." method="_on_timer_timeout"]

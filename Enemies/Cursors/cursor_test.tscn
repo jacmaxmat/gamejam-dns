@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://qlxkulpiinwc"]
 
 [ext_resource type="Script" uid="uid://blotbo7lt642g" path="res://main.gd" id="1_7vuhj"]
+[ext_resource type="Script" uid="uid://cx0nwaiecax3p" path="res://screenshake.gd" id="2_4v00w"]
 [ext_resource type="PackedScene" uid="uid://k6bao6rhpn2" path="res://level.tscn" id="2_m7jhb"]
 [ext_resource type="PackedScene" uid="uid://dxqolxv2isnx4" path="res://Player/Player.tscn" id="4_0ndtp"]
 [ext_resource type="PackedScene" uid="uid://dbryayljgw6o2" path="res://system obstacles/window.tscn" id="4_1xlf3"]
@@ -16,6 +17,7 @@ script = ExtResource("1_7vuhj")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=98042917]
 position = Vector2(960, 540)
 limit_enabled = false
+script = ExtResource("2_4v00w")
 
 [node name="Level" parent="." unique_id=2137160350 instance=ExtResource("2_m7jhb")]
 z_index = 0

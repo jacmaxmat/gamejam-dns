@@ -27,7 +27,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
-size = Vector2(16, 82)
+size = Vector2(28, 82)
 
 [node name="Enemy" type="Node2D" unique_id=1783562719]
 z_index = 5
