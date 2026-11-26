@@ -31,7 +31,7 @@ func _ready() -> void:
 	set_walls_enabled(false)
 
 func get_frame_size() -> Vector2:
-	return frame.texture.get_size() * frame.scale
+	return frame.texture.get_size() * frame.global_scale.abs()
 
 func apply_drag(vel: Vector2) -> void:
 	pending_drag_sum += vel
