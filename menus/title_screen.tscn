@@ -95,6 +95,7 @@ _data = {
 }
 
 [node name="TitleScreen" type="Control" unique_id=120509092]
+z_index = 100
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

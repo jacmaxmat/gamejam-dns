@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://co4l0ia5itpv2" path="res://level.gd" id="1_f2txt"]
 [ext_resource type="Texture2D" uid="uid://7cniskgodnyi" path="res://assety/mapa.jpg" id="1_vonw3"]
+[ext_resource type="Material" uid="uid://c64pq56luyr5o" path="res://WindowView.tres" id="2_1ainy"]
 [ext_resource type="Texture2D" uid="uid://dk0m7kt6nqbbr" path="res://assety/nowe/floortile.png" id="2_oi3di"]
 [ext_resource type="PackedScene" uid="uid://dfey2ssuid7u5" path="res://ground_tile.tscn" id="2_vonw3"]
 [ext_resource type="PackedScene" uid="uid://y6xn3c1rgs1p" path="res://enemy_spawner.tscn" id="4_0b4ue"]
@@ -26,6 +27,7 @@ z_index = 11
 script = ExtResource("1_f2txt")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2044938721]
+material = ExtResource("2_1ainy")
 scale = Vector2(1.6682099, 1.6682099)
 texture = ExtResource("1_vonw3")
 centered = false

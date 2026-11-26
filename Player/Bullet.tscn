@@ -27,8 +27,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hynge"]
-radius = 7.0
-height = 18.0
+radius = 8.0
+height = 22.0
 
 [node name="Bullet" type="Node2D" unique_id=851040047]
 z_index = 20
@@ -37,8 +37,6 @@ script = ExtResource("1_508bx")
 [node name="BulletHitbox" type="Area2D" parent="." unique_id=1822330316]
 collision_layer = 0
 collision_mask = 780
-monitorable = false
-priority = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BulletHitbox" unique_id=502729570]
 sprite_frames = SubResource("SpriteFrames_e8ooo")
