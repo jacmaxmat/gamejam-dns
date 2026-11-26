@@ -37,16 +37,14 @@ func handle_hook(body):
 	if is_hooked and can_bounce and (body.is_on_wall() or body.is_on_ceiling()):
 		bounce(body)
 	#aim_indicator.set_point_position(0,gun_barrel.position)
-	aim_indicator.set_point_position(1,aim_indicator.global_position.direction_to(body.get_global_mouse_position())*HOOK_RANGE*Vector2(body.get_wall_normal().x,1))
+	aim_indicator.set_point_position(1,aim_indicator.global_position.direction_to(body.get_global_mouse_position())*HOOK_RANGE*Vector2(sign(visual_layer.scale.x),1))
 	hook_line.set_point_position(0,gun_barrel.position)
 	if hook:
 		if hook_line.visible == false:
 			hook_line.visible = true
 		hook_line.set_point_position(1,hook_line.to_local(hook.global_position))
 	if is_hooked and dir != Vector2.ZERO and hook:
-		if Input.is_action_just_pressed("jump"):
-			unhook()
-		elif body.global_position.distance_to(hook.global_position) > 25:
+		if body.global_position.distance_to(hook.global_position) > 25:
 			body.velocity = body.global_position.direction_to(hook.global_position) * HOOK_SPEED
 		elif body.is_on_floor():
 			unhook()
