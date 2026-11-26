@@ -4,6 +4,9 @@
 
 [node name="FormationCursorManager" type="Node2D" unique_id=445952770]
 script = ExtResource("1_oooij")
+enemy_count = 3
+fly_in_time = 3.0
+wait_time = 2.0
 
 [node name="PrepareTimer" type="Timer" parent="." unique_id=271254246]
 wait_time = 5.0

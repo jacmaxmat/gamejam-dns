@@ -100,6 +100,7 @@ func _create_folder(pos: Vector2) -> Node2D:
 	return folder_instance
 
 func on_swarm_cleared() -> void:
+	Global.virus_hp.remove_hp()
 	Global.has_folder = false
 	$FolderTimer.start()
 

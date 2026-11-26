@@ -6,6 +6,7 @@ var player
 var main_window
 var title_screen
 var cam
+var virus_hp
 var window
 var view
 var final_screen

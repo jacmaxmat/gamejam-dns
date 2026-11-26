@@ -33,6 +33,7 @@ height = 22.0
 [node name="Bullet" type="Node2D" unique_id=851040047]
 z_index = 20
 script = ExtResource("1_508bx")
+speed = 1200.0
 
 [node name="BulletHitbox" type="Area2D" parent="." unique_id=1822330316]
 collision_layer = 0

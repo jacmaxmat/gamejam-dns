@@ -46,6 +46,7 @@ _data = {
 [node name="File" type="Node2D" unique_id=1901807984]
 scale = Vector2(5, 5)
 script = ExtResource("1_ef8k4")
+speed = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=631052348]
 texture = ExtResource("2_ef8k4")
