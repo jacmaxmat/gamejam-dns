@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dxqolxv2isnx4" path="res://Player/Player.tscn" id="4_0ndtp"]
 [ext_resource type="PackedScene" uid="uid://dbryayljgw6o2" path="res://system obstacles/window.tscn" id="4_1xlf3"]
 [ext_resource type="Script" uid="uid://uqtennchkr03" path="res://Enemies/Cursors/active_collision.gd" id="4_borsh"]
-[ext_resource type="PackedScene" uid="uid://cvukbqd0asnr6" path="res://player_cursor.tscn" id="5_w3aom"]
 [ext_resource type="PackedScene" uid="uid://cpk6n684j18a2" path="res://system obstacles/outside_game_manager.tscn" id="6_120g1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5n0ag"]
@@ -66,9 +65,6 @@ position = Vector2(1383, 870)
 [node name="Window" parent="." unique_id=803155470 instance=ExtResource("4_1xlf3")]
 z_as_relative = false
 position = Vector2(264, 499)
-
-[node name="PlayerCursor" parent="." unique_id=367409116 instance=ExtResource("5_w3aom")]
-z_index = 10
 
 [node name="OutsideGameManager" parent="." unique_id=2016209311 instance=ExtResource("6_120g1")]
 active = true

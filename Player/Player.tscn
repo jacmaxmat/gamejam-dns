@@ -1242,7 +1242,6 @@ antialiased = true
 [node name="AimIndicator" type="Line2D" parent="VisualLayer" unique_id=998115835]
 visible = false
 z_index = -1
-position = Vector2(29, -4)
 points = PackedVector2Array(0, 0, 0, 0)
 width = 3.0
 gradient = SubResource("Gradient_s0mko")

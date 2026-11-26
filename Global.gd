@@ -19,7 +19,8 @@ var icons = []
 var has_folder = false
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	#Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func initialize():
 	cursors_dragging = 0

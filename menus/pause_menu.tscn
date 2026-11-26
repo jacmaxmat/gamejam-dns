@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dtcpjvqdarjjv"]
+
+[ext_resource type="Script" uid="uid://pjcyje1y8crx" path="res://menus/pause_menu.gd" id="1_s0u37"]
+[ext_resource type="FontFile" uid="uid://e20nougn4186" path="res://font/upheaval/upheavtt.ttf" id="2_p1qj3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3phtt"]
+corner_detail = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dnikq"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1039648299]
+process_mode = 3
+layer = 3
+script = ExtResource("1_s0u37")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=741783050]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.68700004)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=893476151]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_right = 190.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=224814091]
+modulate = Color(0.447059, 0.447059, 0.447059, 1)
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0.352941, 0.352941, 0.352941, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2_p1qj3")
+theme_override_font_sizes/font_size = 80
+text = "Game Paused"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer" unique_id=487621523]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.580392, 0.580392, 0.580392, 1)
+theme_override_colors/font_hover_color = Color(0.823529, 0.823529, 0.823529, 1)
+theme_override_fonts/font = ExtResource("2_p1qj3")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/hover = SubResource("StyleBoxFlat_3phtt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dnikq")
+text = "Resume
+"
+flat = true
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=992540782]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.580392, 0.580392, 0.580392, 1)
+theme_override_colors/font_hover_color = Color(0.823529, 0.823529, 0.823529, 1)
+theme_override_fonts/font = ExtResource("2_p1qj3")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/hover = SubResource("StyleBoxFlat_3phtt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dnikq")
+text = "Quit"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

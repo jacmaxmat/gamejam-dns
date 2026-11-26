@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://cx0nwaiecax3p" path="res://screenshake.gd" id="2_272bh"]
 [ext_resource type="PackedScene" uid="uid://dxqolxv2isnx4" path="res://Player/Player.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://k6bao6rhpn2" path="res://level.tscn" id="4_lquwl"]
-[ext_resource type="PackedScene" uid="uid://cvukbqd0asnr6" path="res://player_cursor.tscn" id="5_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cpk6n684j18a2" path="res://system obstacles/outside_game_manager.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dtcpjvqdarjjv" path="res://menus/pause_menu.tscn" id="6_272bh"]
 
 [node name="Main" type="Node2D" unique_id=873094949]
 script = ExtResource("1_0xm2m")
@@ -27,11 +27,11 @@ tile_map_data = PackedByteArray("AAA8ADgAAwAAAAAAAQA8ADkAAwAAAAAAAQA8ADoAAwAAAAA
 [node name="Player" parent="Level" unique_id=283957801 instance=ExtResource("4_1bvp3")]
 position = Vector2(1401, 726)
 
-[node name="PlayerCursor" parent="." unique_id=367409116 instance=ExtResource("5_7mycd")]
-z_index = 40
-
 [node name="OutsideGameManager" parent="." unique_id=2016209311 instance=ExtResource("6_7mycd")]
 z_index = 10
+
+[node name="PauseMenu" parent="." unique_id=1039648299 instance=ExtResource("6_272bh")]
+visible = false
 
 [editable path="Level"]
 [editable path="Level/EnemySpawner"]
