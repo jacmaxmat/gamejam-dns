@@ -39,7 +39,7 @@ z_index = 0
 [node name="Sprite2D" parent="Level" index="0" unique_id=2044938721]
 light_mask = 2
 
-[node name="Visual2" type="TileMapLayer" parent="Level" unique_id=1379288806]
+[node name="Visual2" type="TileMapLayer" parent="Level" unique_id=1379288806 groups=["map_tiles"]]
 light_mask = 2
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_borsh")

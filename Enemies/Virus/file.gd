@@ -37,6 +37,9 @@ func hit(damage: int = 1) -> void:
 		return
 	health -= damage
 	if health <= 0:
+		$Area2D/CollisionShape2D.set_deferred("disabled", true)
+		$AnimationPlayer.play("kablow")
+		await $AnimationPlayer.animation_finished
 		destroyed.emit(self)
 		queue_free()
 
