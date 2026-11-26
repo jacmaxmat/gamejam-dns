@@ -31,6 +31,12 @@ func apply_drag(vel: Vector2) -> void:
 	pending_drag_count += 1
 
 func _physics_process(delta: float) -> void:
+	if is_instance_valid(Global.player):
+		var half: Vector2 = get_frame_size() * 0.5
+		var offset: Vector2 = (Global.player.global_position - global_position).abs()
+		is_player_inside = offset.x <= half.x and offset.y <= half.y
+		if is_player_inside:
+			Global.window = self
 	if pending_drag_count > 0:
 		var speed_mult: float = 10.0 + (pending_drag_count - 1) * 3
 		drag_velocity = pending_drag_sum.normalized() * speed_mult
