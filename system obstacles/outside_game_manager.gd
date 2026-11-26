@@ -7,7 +7,9 @@ var current_event = "none"
 # Variables for projectile cursors
 @export var projectile_cursor_controller: PackedScene
 @export var available_formations: Array[FormationPattern] = []
-@export var spawn_interval: float = 8.0
+@export var spawn_interval: float = 12.0
+@export var min_formation_enemies: int = 2
+@export var max_formation_enemies: int = 4
 
 var popup_preload = preload("uid://dfyfwjfuri5wl")
 var push_preload = preload("uid://b4ttwoadwy288")
@@ -18,6 +20,7 @@ const cursor_dragger_preload = preload("res://Enemies/Cursors/cursor_dragging.ts
 func _ready() -> void:
 	if active:
 		$EventTimer.start()
+	$ProjectileTimer.wait_time = spawn_interval
 	$ProjectileTimer.start()
 	$DragTimer.start()
 		
@@ -26,7 +29,7 @@ func spawn_random_formation() -> void:
 		var random_pattern = available_formations.pick_random()
 		var new_cursor_controller = projectile_cursor_controller.instantiate() as FormationController
 		new_cursor_controller.pattern = random_pattern
-		new_cursor_controller.enemy_count = randi_range(4,8)
+		new_cursor_controller.enemy_count = randi_range(min_formation_enemies, max_formation_enemies)
 		add_child(new_cursor_controller)
 		
 func spawn_window_dragger() -> void:
