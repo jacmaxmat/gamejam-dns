@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://dj2hqb1spr2yi"]
+
+[ext_resource type="Texture2D" uid="uid://bjbqainejvpxo" path="res://assety/nowe/wirus_idle.png" id="1_0nl2j"]
+[ext_resource type="Script" uid="uid://curgi0vg1ei66" path="res://Enemies/Virus/virus.gd" id="1_abijp"]
+[ext_resource type="Texture2D" uid="uid://dq1not2tw2wrh" path="res://assety/nowe/wirus_dostal_dmg.png" id="3_3uua1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abijp"]
+atlas = ExtResource("1_0nl2j")
+region = Rect2(0, 0, 112, 89)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uua1"]
+atlas = ExtResource("1_0nl2j")
+region = Rect2(112, 0, 112, 89)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6llq"]
+atlas = ExtResource("1_0nl2j")
+region = Rect2(224, 0, 112, 89)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85gn6"]
+atlas = ExtResource("1_0nl2j")
+region = Rect2(336, 0, 112, 89)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lujb"]
+atlas = ExtResource("3_3uua1")
+region = Rect2(0, 0, 110, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kknh"]
+atlas = ExtResource("3_3uua1")
+region = Rect2(110, 0, 110, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2e21"]
+atlas = ExtResource("3_3uua1")
+region = Rect2(220, 0, 110, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8vut"]
+atlas = ExtResource("3_3uua1")
+region = Rect2(330, 0, 110, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkok4"]
+atlas = ExtResource("3_3uua1")
+region = Rect2(440, 0, 110, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e0fs"]
+atlas = ExtResource("3_3uua1")
+region = Rect2(550, 0, 110, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pfom"]
+atlas = ExtResource("3_3uua1")
+region = Rect2(660, 0, 110, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfu4g"]
+atlas = ExtResource("3_3uua1")
+region = Rect2(770, 0, 110, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1m6i"]
+atlas = ExtResource("3_3uua1")
+region = Rect2(880, 0, 110, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g63uq"]
+atlas = ExtResource("3_3uua1")
+region = Rect2(990, 0, 110, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwt5x"]
+atlas = ExtResource("3_3uua1")
+region = Rect2(1100, 0, 110, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk2tg"]
+atlas = ExtResource("3_3uua1")
+region = Rect2(1210, 0, 110, 85)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhunq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abijp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uua1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6llq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85gn6")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lujb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kknh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2e21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8vut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkok4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e0fs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pfom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfu4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1m6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g63uq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwt5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk2tg")
+}],
+"loop": 0,
+"name": &"hurt",
+"speed": 10.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_0nl2j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 785, 47, 0, 0, 0, 0, 47, 47, 0, 0, 0, 0, 40, 1042, 0, 0, 0, 0, 1859, 1024, 0, 0, 0, 0, 1859, 51, 0, 0, 0, 0, 1050, 47)
+}
+point_count = 6
+
+[node name="Virus" type="CanvasLayer" unique_id=594770997]
+script = ExtResource("1_abijp")
+
+[node name="Head" type="AnimatedSprite2D" parent="." unique_id=667167361]
+position = Vector2(974, 64)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_bhunq")
+autoplay = "default"
+frame_progress = 0.035928275
+
+[node name="Path2D" type="Path2D" parent="." unique_id=2005929066]
+curve = SubResource("Curve2D_0nl2j")
+
+[connection signal="animation_finished" from="Head" to="." method="_on_head_animation_finished"]

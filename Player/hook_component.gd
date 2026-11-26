@@ -44,7 +44,9 @@ func handle_hook(body):
 			hook_line.visible = true
 		hook_line.set_point_position(1,hook_line.to_local(hook.global_position))
 	if is_hooked and dir != Vector2.ZERO and hook:
-		if body.global_position.distance_to(hook.global_position) > 25:
+		if Input.is_action_just_pressed("jump"):
+			unhook()
+		elif body.global_position.distance_to(hook.global_position) > 25:
 			body.velocity = body.global_position.direction_to(hook.global_position) * HOOK_SPEED
 		elif body.is_on_floor():
 			unhook()
