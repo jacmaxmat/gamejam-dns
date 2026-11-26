@@ -11,6 +11,7 @@ corner_detail = 1
 [node name="PauseMenu" type="CanvasLayer" unique_id=1039648299]
 process_mode = 3
 layer = 3
+visible = false
 script = ExtResource("1_s0u37")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=741783050]
