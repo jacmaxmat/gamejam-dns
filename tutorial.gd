@@ -1,6 +1,8 @@
 extends Control
 
 var tutorial_step = 1
+#@export var 
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
